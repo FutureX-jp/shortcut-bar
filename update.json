@@ -1,1 +1,1 @@
-{"version": "1.1.0", "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe", "notes": "メディア列へのフォルダ追加 / 無操作時の自動折りたたみ / 決定後のカーソル自動移動 / 操作ヒント・バージョン表記 ほか", "sha256": "1dbdc5429b750579c89466e045a91fe5178cd52991e46c98d142d0dc5b899c48"}
+{"version": "1.2.0", "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe", "notes": "写真リスト刷新（4:3サムネ・背景プレビュー）/ Steamゲーム自動取り込み / システム情報 / 設定サブメニュー・中クリック=戻る・季節パーティクル / 矢印キー不具合の修正", "sha256": "776926b1a5de5e9ca12d286680bef0e93b6057e462f2316ccb747734b1b24fed"}
