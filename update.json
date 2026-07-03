@@ -1,1 +1,1 @@
-{"version": "1.0.0", "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe", "notes": "初回リリース", "sha256": "33664042a6b57299279d76825dc6e6e16578bf86706aa63d3147d92229b1ce20"}
+{"version": "1.1.0", "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe", "notes": "メディア列へのフォルダ追加 / 無操作時の自動折りたたみ / 決定後のカーソル自動移動 / 操作ヒント・バージョン表記 ほか", "sha256": "1dbdc5429b750579c89466e045a91fe5178cd52991e46c98d142d0dc5b899c48"}
