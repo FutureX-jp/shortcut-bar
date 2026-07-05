@@ -1,1 +1,7 @@
-{"version":"1.4.1","url":"https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe","notes":"起動エラーの修正: VC++ランタイム(vcruntime140/vcruntime140_1/ucrtbase)をexeに同梱し、ランタイム未導入のPCでも追加インストール不要で起動できるように。機能はv1.4.0と同じ","sha256":"78099cacb7ef259a1be9079965ce1e63ca3b50fbb29fcd0ccc619290ad26fb71"}
+{
+  "version": "1.5.0",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
+  "notes": "・ゲーム専用カテゴリ（Steam/Epic・ボックスアート）を追加\n・Windowsの設定が開かない不具合を修正\n・ライセンス/Pro版の土台を追加（購入機能は近日公開）\n・安定性の向上",
+  "sha256": "aa99c8113ac9de5ee4618b6f4d6844942e5d660fc106dae18fd03343b509d504",
+  "revoked": []
+}
