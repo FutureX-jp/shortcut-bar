@@ -1,7 +1,7 @@
 {
-  "version": "1.6.0",
+  "version": "1.6.1",
   "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
-  "notes": "・右クリックメニューが着せ替えに対応\n・Exposé表示を改善＋アプリアイコン\n・アプリ専用アイコン／デスクトップにショートカット作成\n・時計カスタマイズ（サイズ・秒・書式、Proで書体/色）\n・「今日の作業ログ」を追加\n・設定画面の表示改善ほか",
-  "sha256": "a82e39c806e6a865f4d7bab894e31185f885b2675a9a73774798a8eb6fb84300",
+  "notes": "・時計の12時間表示を午前/午後に修正\n・設定を開いてる時にメインバーを触ると設定が点滅\n・設定画面をどこでもホイールでスクロール可能に\n・設定にライセンス/Pro版の状態を表示\n・デスクトップショートカットにアイコンを付与\n・アプリを軽量化",
+  "sha256": "215d01f07b27c3390fd0d303e914320d81cad4fab33f5284ee50defe75cc6f0f",
   "revoked": []
 }
