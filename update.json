@@ -1,7 +1,7 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
-  "notes": "・ゲーム専用カテゴリ（Steam/Epic・ボックスアート）を追加\n・Windowsの設定が開かない不具合を修正\n・ライセンス/Pro版の土台を追加（購入機能は近日公開）\n・安定性の向上",
-  "sha256": "aa99c8113ac9de5ee4618b6f4d6844942e5d660fc106dae18fd03343b509d504",
+  "notes": "・右クリックメニューが着せ替えに対応\n・Exposé表示を改善＋アプリアイコン\n・アプリ専用アイコン／デスクトップにショートカット作成\n・時計カスタマイズ（サイズ・秒・書式、Proで書体/色）\n・「今日の作業ログ」を追加\n・設定画面の表示改善ほか",
+  "sha256": "a82e39c806e6a865f4d7bab894e31185f885b2675a9a73774798a8eb6fb84300",
   "revoked": []
 }
