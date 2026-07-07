@@ -1,7 +1,7 @@
 {
-  "version": "1.7.4",
+  "version": "1.7.5",
   "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
-  "notes": "・設定をヘッダーの⚙ボタンからも開けるように\n・設定タブ切替で位置が中央に飛ぶ不具合を修正\n・設定の見出し階層を強調\n・ボスキーワード欄を複数行に",
-  "sha256": "c52ebb6d645b9aa74a2242fa6356d85ca9173ce440a84aa6eec8c623d45ad361",
+  "notes": "設定画面を見やすく再設計\n・タブを一般/デザイン/動作/履歴/詳細に整理\n・項目を役割ごとにグループ分け\n・スライダーに目盛りと現在値(%/px)を表示\n・専門用語にかんたんな説明を追加",
+  "sha256": "5b9550e357e43ad07993ac8f2b2e16bfc2e2c7d5af20fb678480b30c8ca4b617",
   "revoked": []
 }
