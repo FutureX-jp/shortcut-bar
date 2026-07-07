@@ -1,7 +1,7 @@
 {
-  "version": "1.7.1",
+  "version": "1.7.2",
   "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
-  "notes": "・時計の12時間表示を AM/PM に\n・デスクトップショートカットのパス文字化けを修正（アイコンも表示されます）\n・設定画面のスクロール表示を調整\n（v1.7.0の画面端固定・自動隠し・カイル・作業ログ等も含みます）",
-  "sha256": "b9a3596efeb3c423dca0b8f3ca36131de37b986519bd70ca6467919afb924f9a",
+  "notes": "・Pro→無料版に戻すボタンを追加\n・時計のAM/PMを時刻の前に表示\n・画面端固定＋自動で隠すのマルチモニタ不具合を修正\n・設定画面のスクロールを刷新（中身に合わせて自動リサイズ）",
+  "sha256": "6eb23862dd20a9591091702e7f6a99e7f8e8616c9b82351c684bda63e6e4ac14",
   "revoked": []
 }
