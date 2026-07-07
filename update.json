@@ -1,7 +1,7 @@
 {
-  "version": "1.7.2",
+  "version": "1.7.3",
   "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
-  "notes": "・Pro→無料版に戻すボタンを追加\n・時計のAM/PMを時刻の前に表示\n・画面端固定＋自動で隠すのマルチモニタ不具合を修正\n・設定画面のスクロールを刷新（中身に合わせて自動リサイズ）",
-  "sha256": "6eb23862dd20a9591091702e7f6a99e7f8e8616c9b82351c684bda63e6e4ac14",
+  "notes": "・設定ウィンドウでタブを切り替えても位置が中央に戻らないよう修正",
+  "sha256": "e15167ee457164e1172265db4c6835e36ed84f0b7e13d78f4dcf911c674f5b51",
   "revoked": []
 }
