@@ -1,7 +1,7 @@
 {
-  "version": "1.7.6",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.6/ShortcutBar.exe",
-  "notes": "・画面端固定（AppBar）で既存の最大化ウィンドウが重なる問題を修正\n・自動更新の信頼性向上（ダウンロード自動リトライ／更新後に起動できない場合は旧バージョンへ自動復帰）\n・不具合発生時の匿名自動報告を追加（使用状況の共有ONのときだけ）\n・一部環境で更新後に起動できなくなる問題を修正",
-  "sha256": "25a291870bc122542940816bb49ecb625ca0d45cf0e650ab3bfdf9f35613c243",
+  "version": "1.7.7",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.7/ShortcutBar.exe",
+  "notes": "表記と画像の整理（メンテナンスリリース）\n・テーマ名を刷新（ミニマル／クラシック（青）／レトロ携帯機風）\n・クラシックテーマのスタートボタン画像・窓アイコンを自社デザインに刷新\n・アシスタントの名前を「フィン」に変更\n・README・配布ドキュメントを更新",
+  "sha256": "c576ce7be4ff9abc88ed98382ef7bb71d49361a2dd4ea57647b19f2004ba82a9",
   "revoked": []
 }
