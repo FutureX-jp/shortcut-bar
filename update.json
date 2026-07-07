@@ -1,7 +1,7 @@
 {
-  "version": "1.7.3",
+  "version": "1.7.4",
   "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
-  "notes": "・設定ウィンドウでタブを切り替えても位置が中央に戻らないよう修正",
-  "sha256": "e15167ee457164e1172265db4c6835e36ed84f0b7e13d78f4dcf911c674f5b51",
+  "notes": "・設定をヘッダーの⚙ボタンからも開けるように\n・設定タブ切替で位置が中央に飛ぶ不具合を修正\n・設定の見出し階層を強調\n・ボスキーワード欄を複数行に",
+  "sha256": "c52ebb6d645b9aa74a2242fa6356d85ca9173ce440a84aa6eec8c623d45ad361",
   "revoked": []
 }
