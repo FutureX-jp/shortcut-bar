@@ -1,7 +1,7 @@
 {
-  "version": "1.7.5",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe",
-  "notes": "設定画面を見やすく再設計\n・タブを一般/デザイン/動作/履歴/詳細に整理\n・項目を役割ごとにグループ分け\n・スライダーに目盛りと現在値(%/px)を表示\n・専門用語にかんたんな説明を追加",
-  "sha256": "5b9550e357e43ad07993ac8f2b2e16bfc2e2c7d5af20fb678480b30c8ca4b617",
+  "version": "1.7.6",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.6/ShortcutBar.exe",
+  "notes": "・画面端固定（AppBar）で既存の最大化ウィンドウが重なる問題を修正\n・自動更新の信頼性向上（ダウンロード自動リトライ／更新後に起動できない場合は旧バージョンへ自動復帰）\n・不具合発生時の匿名自動報告を追加（使用状況の共有ONのときだけ）\n・一部環境で更新後に起動できなくなる問題を修正",
+  "sha256": "25a291870bc122542940816bb49ecb625ca0d45cf0e650ab3bfdf9f35613c243",
   "revoked": []
 }
