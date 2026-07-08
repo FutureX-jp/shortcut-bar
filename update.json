@@ -1,7 +1,7 @@
 {
-  "version": "1.7.10",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.10/ShortcutBar.exe",
-  "notes": "v1.7.10\n- フィードバック画面などのダイアログで、環境によって文字が入力できない\n  ことがある問題をさらに修正（前面のアプリによって入力の受け渡しが\n  拒否されるケースへの対応を追加）\n",
-  "sha256": "7b7ff4d8390f70254882133ae70d8ed829b063ec337de732aaf83bc2462b3a47",
+  "version": "1.7.12",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.12/ShortcutBar.exe",
+  "notes": "不具合修正",
+  "sha256": "34aca4a806054cf2992a8986291abea8eac8408e023280a8adf96236957c80b4",
   "revoked": []
 }
