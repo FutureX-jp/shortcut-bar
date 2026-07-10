@@ -1,7 +1,7 @@
 {
-  "version": "1.7.12",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.12/ShortcutBar.exe",
-  "notes": "不具合修正",
-  "sha256": "34aca4a806054cf2992a8986291abea8eac8408e023280a8adf96236957c80b4",
+  "version": "1.7.13",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.13/ShortcutBar.exe",
+  "notes": "v1.7.13\n- ダイアログ（プロダクトキー入力・ショートカット追加・フィードバック等）で、\n  他のウィンドウへ切り替えた後や操作の途中から文字が入力できなくなる\n  問題を根本から修正しました\n",
+  "sha256": "baec4de183bad61cc4d89bcbd0a0ba3b571d7984dd75b5fbef3ab4739ee585a8",
   "revoked": []
 }
