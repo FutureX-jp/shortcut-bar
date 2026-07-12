@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ショートカットバー — 変幻自在のデスクトップ・ランチャー</title>
+<meta name="description" content="Windowsに常駐するフローティング・ランチャー。アプリ/URL/ゲーム/仕事道具を1本のバーに。レトロ携帯ゲーム機風の十字メニューにも着せ替え可能。無料。">
+<style>
+  :root{
+    --bg:#0c1018; --bg2:#0f1524; --card:#161f33; --line:#243149;
+    --ink:#eaf1fb; --dim:#9fb2cc; --accent:#4aa3ff; --accent2:#2ec6a6;
+    --grad:linear-gradient(135deg,#4aa3ff,#2ec6a6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI","Meiryo",system-ui,sans-serif;background:var(--bg);
+       color:var(--ink);line-height:1.75;overflow-x:hidden}
+  a{color:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;padding:15px 30px;border-radius:13px;font-weight:700;
+       text-decoration:none;font-size:1.05rem;transition:transform .12s,box-shadow .12s;cursor:pointer;border:none}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-free{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .btn-pro{background:var(--grad);color:#04121f;box-shadow:0 10px 30px rgba(74,163,255,.35)}
+  .note{color:var(--dim);font-size:.9rem;margin-top:8px}
+
+  /* hero */
+  header{position:relative;text-align:center;padding:96px 20px 60px;overflow:hidden}
+  .glow{position:absolute;inset:0;background:
+     radial-gradient(600px 300px at 50% -5%,rgba(74,163,255,.20),transparent 70%),
+     radial-gradient(500px 300px at 80% 20%,rgba(46,198,166,.16),transparent 70%);
+     pointer-events:none}
+  .badge{display:inline-block;background:var(--card);border:1px solid var(--line);
+         color:var(--dim);font-size:.82rem;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  h1{font-size:2.8rem;letter-spacing:.01em;line-height:1.2}
+  h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tag{color:var(--dim);font-size:1.15rem;margin-top:16px;max-width:620px;margin-left:auto;margin-right:auto}
+  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:34px 0 6px}
+
+  /* mockup bar */
+  .mock{margin:52px auto 0;max-width:760px;position:relative}
+  .barmock{background:linear-gradient(180deg,#1b2540,#131b2e);border:1px solid var(--line);
+     border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:14px;
+     box-shadow:0 30px 80px rgba(0,0,0,.5);animation:float 5s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  .tile{width:44px;height:44px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;
+        font-size:20px;background:#0f1728;border:1px solid var(--line)}
+  .tile.a{background:linear-gradient(135deg,#4aa3ff,#2f7dff)}
+  .tile.b{background:linear-gradient(135deg,#2ec6a6,#1f9e86)}
+  .tile.c{background:linear-gradient(135deg,#78e0c8,#49c3a5)}
+  .barmock .clock{margin-left:auto;text-align:right}
+  .barmock .clock b{font-size:1.5rem;font-variant-numeric:tabular-nums}
+  .barmock .clock span{display:block;color:var(--dim);font-size:.72rem}
+
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:1.8rem;margin-bottom:8px;text-align:center}
+  .sub{color:var(--dim);text-align:center;margin-bottom:34px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;
+        transition:transform .15s,border-color .15s}
+  .feat:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .feat .ic{font-size:1.7rem;margin-bottom:10px}
+  .feat h3{font-size:1.08rem;margin-bottom:8px}
+  .feat p{color:var(--dim);font-size:.95rem}
+
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+        border-radius:16px;overflow:hidden}
+  th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#111a2c;font-size:.95rem}
+  td.y{color:var(--accent2);font-weight:700}
+  td.n{color:#5b6b83}
+
+  .price{text-align:center}
+  .pricebox{display:inline-block;background:var(--card);border:1px solid var(--line);
+     border-radius:22px;padding:34px 46px;position:relative;overflow:hidden}
+  .pricebox:before{content:"";position:absolute;inset:0;background:var(--grad);opacity:.06}
+  .amt{font-size:3rem;font-weight:800}
+  .amt small{font-size:1rem;color:var(--dim);font-weight:400}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;
+          padding:14px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--dim);margin-top:8px;font-size:.95rem}
+
+  footer{text-align:center;color:var(--dim);font-size:.82rem;padding:44px 20px 70px;border-top:1px solid var(--line)}
+  .pay{color:var(--dim);font-size:.85rem;margin-top:10px}
+  @media(max-width:560px){h1{font-size:2.1rem}.amt{font-size:2.4rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="glow"></div>
+  <div class="wrap">
+    <span class="badge">Windows 10 / 11 ・ インストール不要 ・ 無料</span>
+    <h1>デスクトップに寄り添う<br><span class="g">変幻自在のランチャー</span></h1>
+    <p class="tag">アプリ・URL・ゲーム・仕事道具を1本のバーに。覗き窓・PiP監視・レトロ携帯ゲーム機風の十字メニューまで、あなたのデスクトップを自由自在に。</p>
+    <div class="cta">
+      <a class="btn btn-free" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
+      <a class="btn btn-pro" href="STRIPE_PAYMENT_LINK_HERE">Pro版を購入</a>
+    </div>
+    <p class="note">まずは無料版で全機能をお試し ・ お支払いは PayPay / カード対応</p>
+
+    <div class="mock">
+      <div class="barmock">
+        <div class="tile a">★</div>
+        <div class="tile b">🗂</div>
+        <div class="tile c">🎮</div>
+        <div class="tile">＋</div>
+        <div class="clock"><b>13:06</b><span>2026年7月6日 (月)</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>できること</h2>
+    <p class="sub">小さな1本のバーに、必要なものぜんぶ</p>
+    <div class="grid">
+      <div class="feat"><div class="ic">🚀</div><h3>ランチャー＋タスクバー</h3><p>ショートカット、起動中アプリ一覧、時計、クリップボード履歴をまとめて常駐。</p></div>
+      <div class="feat"><div class="ic">👁</div><h3>覗き窓・PiP監視</h3><p>ウィンドウの中身をミニ表示。変換・解析の完了を見張って通知も。</p></div>
+      <div class="feat"><div class="ic">🎮</div><h3>レトロ携帯機風テーマ</h3><p>月替わりカラーの十字メニュー。Steam / Epic のゲームが自動で並ぶ。</p></div>
+      <div class="feat"><div class="ic">🧰</div><h3>仕事モード列</h3><p>図面・現場フォルダ・CADなど仕事道具を専用列に。効率が上がる。</p></div>
+      <div class="feat"><div class="ic">🔎</div><h3>横断検索・電卓</h3><p>文字を打つだけで全カテゴリを検索。式を打てば電卓にもなる。</p></div>
+      <div class="feat"><div class="ic">🎨</div><h3>3種類の着せ替え</h3><p>ミニマル・クラシック（青）・レトロ携帯機風に一発切替。今後も追加予定。</p></div>
+      <div class="feat"><div class="ic">🕐</div><h3>時計カスタマイズ</h3><p>サイズ・秒表示・書式を自由に。Proでは書体や色も。</p></div>
+      <div class="feat"><div class="ic">🔄</div><h3>自動アップデート</h3><p>新バージョンは起動時に自動更新。渡したあとも手間ゼロ。</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>無料版とPro版</h2>
+    <p class="sub">無料でもほぼ全部使える。Proはもっと深く。</p>
+    <table>
+      <tr><th>機能</th><th>無料</th><th>Pro</th></tr>
+      <tr><td>標準ランチャー・検索・電卓・全テーマ</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>覗き窓・全ウィンドウ一覧・重力モード ほか</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>時計カスタマイズ（サイズ・秒・書式）</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>時計の書体・カスタム色</td><td class="n">—</td><td class="y">✓</td></tr>
+      <tr><td>カスタムカテゴリ（自分専用の列）</td><td>1つまで</td><td class="y">無制限</td></tr>
+      <tr><td>PiP実映像＋クリック転送＋見張り</td><td class="n">—</td><td class="y">✓</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="price">
+  <div class="wrap">
+    <h2>Pro版</h2>
+    <p class="sub">買い切り・ずっと使える</p>
+    <div class="pricebox">
+      <div class="amt">¥980 <small>／ 買い切り</small></div>
+      <p class="note">PC買い替えも同じキーで再認証OK ・ 30日以内なら返金対応</p>
+      <div class="cta"><a class="btn btn-pro" href="STRIPE_PAYMENT_LINK_HERE">購入する</a></div>
+      <p class="pay">購入後、登録メールにプロダクトキーが自動で届きます</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>よくある質問</h2>
+    <p class="sub"></p>
+    <details><summary>本当に無料で使えますか？</summary><p>はい。標準機能はすべて無料です。Pro版は一部の追加機能を解放するものです。</p></details>
+    <details><summary>インストールは必要ですか？</summary><p>不要です。exeをダウンロードしてダブルクリックするだけ。必要な実行ライブラリは同梱済みです。</p></details>
+    <details><summary>SmartScreenの警告が出ます</summary><p>個人開発のため署名が無いだけで動作に問題はありません。「詳細情報」→「実行」で起動できます。</p></details>
+    <details><summary>PCを買い替えたらキーは？</summary><p>同じメールアドレスとキーでそのまま再認証できます。回数制限はありません。</p></details>
+    <details><summary>支払い方法は？</summary><p>PayPayと各種クレジットカードに対応（Stripeで安全に決済されます）。</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>本アプリは個人が開発した非公式のツールです。<br>
+    Microsoft・Apple・ソニー・インタラクティブエンタテインメント・Valve・Epic Games ほか、
+    いかなる企業とも関係ありません。<br>
+    各テーマは雰囲気を楽しむためのオリジナルの近似表現であり、各社のロゴ・画像・音声等の素材は使用していません。<br>
+    記載の製品名・サービス名は、各社の商標または登録商標です。</p>
+    <p style="margin-top:14px;">
+      <a href="terms.html">利用規約</a> ・
+      <a href="privacy.html">プライバシーポリシー</a> ・
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+    </p>
+    <p style="margin-top:14px;">© FutureX</p>
+  </div>
+</footer>
+
+<script>
+/* Payment Link未設定の間は購入ボタンを「準備中」にする。
+   STRIPE_PAYMENT_LINK_HERE を実URLに置換すれば自動で有効化（第38便） */
+document.querySelectorAll('a.btn-pro').forEach(function(a){
+  var h = a.getAttribute('href') || '';
+  if (h.indexOf('STRIPE_') === 0) {
+    a.textContent = '準備中';
+    a.style.opacity = '.55';
+    a.style.pointerEvents = 'none';
+    a.removeAttribute('href');
+  }
+});
+</script>
+</body>
+</html>
