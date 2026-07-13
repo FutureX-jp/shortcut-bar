@@ -1,7 +1,7 @@
 {
-  "notes": "・壁紙モード（Pro）: 背景画像をバー全面に表示。リスト裏は半透明パネル、文字色は画像の明るさで自動切替\n・文字表示のカスタム設定（Pro）\n・スタートメニュー: 「すべてのプログラム」の開閉を安定化／メニューが横に間延びする問題を修正",
+  "notes": "・Pro版の購入導線を開通（設定→サポート、公式サイトから購入できます）\n・ショートカット編集時にまれに落ちるクラッシュを根治",
   "revoked": [],
-  "sha256": "3ea224f560ac45f01b4fed8341aea02c98152c36429c82b45869b4e14eee1345",
-  "version": "1.7.15",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.15/ShortcutBar.exe"
+  "sha256": "d81490f23ec6404676444ee3cc5b492c5f740370255fb841fdb6d69601d77632",
+  "version": "1.7.16",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.16/ShortcutBar.exe"
 }
