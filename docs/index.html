@@ -5,9 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ショートカットバー — 変幻自在のデスクトップ・ランチャー</title>
 <meta name="description" content="Windowsに常駐するフローティング・ランチャー。アプリ/URL/ゲーム/仕事道具を1本のバーに。レトロ携帯ゲーム機風の十字メニューにも着せ替え可能。無料。">
+<meta property="og:title" content="ショートカットバー — 変幻自在のデスクトップ・ランチャー">
+<meta property="og:description" content="アプリ・URL・ゲーム・仕事道具を1本のバーに。4種類の着せ替え＋壁紙モード。無料。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://futurex-jp.github.io/shortcut-bar/">
+<meta property="og:image" content="https://futurex-jp.github.io/shortcut-bar/img/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
-    --bg:#0c1018; --bg2:#0f1524; --card:#161f33; --line:#243149;
+    --bg:#0c1018; --bg2:#0f1524; --card:#161f33; --card2:#1a2540; --line:#243149;
     --ink:#eaf1fb; --dim:#9fb2cc; --accent:#4aa3ff; --accent2:#2ec6a6;
     --grad:linear-gradient(135deg,#4aa3ff,#2ec6a6);
   }
@@ -16,7 +22,8 @@
   body{font-family:"Segoe UI","Meiryo",system-ui,sans-serif;background:var(--bg);
        color:var(--ink);line-height:1.75;overflow-x:hidden}
   a{color:inherit}
-  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  img{max-width:100%;height:auto}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
   .btn{display:inline-block;padding:15px 30px;border-radius:13px;font-weight:700;
        text-decoration:none;font-size:1.05rem;transition:transform .12s,box-shadow .12s;cursor:pointer;border:none}
   .btn:hover{transform:translateY(-2px)}
@@ -24,37 +31,74 @@
   .btn-pro{background:var(--grad);color:#04121f;box-shadow:0 10px 30px rgba(74,163,255,.35)}
   .note{color:var(--dim);font-size:.9rem;margin-top:8px}
 
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(12,16,24,.82);
+      backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .navin{display:flex;align-items:center;gap:22px;max-width:1020px;margin:0 auto;
+         padding:12px 22px;font-size:.92rem}
+  .navin .logo{font-weight:800;font-size:1rem;margin-right:auto;text-decoration:none}
+  .navin .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .navin a{text-decoration:none;color:var(--dim)}
+  .navin a:hover{color:var(--ink)}
+  .navdl{background:var(--grad);color:#04121f!important;font-weight:700;
+         padding:7px 16px;border-radius:9px}
+  @media(max-width:640px){.navin a:not(.logo):not(.navdl){display:none}}
+
   /* hero */
-  header{position:relative;text-align:center;padding:96px 20px 60px;overflow:hidden}
+  header{position:relative;overflow:hidden;padding:72px 0 64px}
   .glow{position:absolute;inset:0;background:
-     radial-gradient(600px 300px at 50% -5%,rgba(74,163,255,.20),transparent 70%),
-     radial-gradient(500px 300px at 80% 20%,rgba(46,198,166,.16),transparent 70%);
+     radial-gradient(700px 340px at 30% -5%,rgba(74,163,255,.20),transparent 70%),
+     radial-gradient(560px 340px at 85% 30%,rgba(46,198,166,.14),transparent 70%);
      pointer-events:none}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+  @media(max-width:820px){.hero{grid-template-columns:1fr}}
   .badge{display:inline-block;background:var(--card);border:1px solid var(--line);
          color:var(--dim);font-size:.82rem;padding:6px 14px;border-radius:999px;margin-bottom:22px}
-  h1{font-size:2.8rem;letter-spacing:.01em;line-height:1.2}
+  h1{font-size:2.7rem;letter-spacing:.01em;line-height:1.22}
   h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .tag{color:var(--dim);font-size:1.15rem;margin-top:16px;max-width:620px;margin-left:auto;margin-right:auto}
-  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:34px 0 6px}
+  .tag{color:var(--dim);font-size:1.12rem;margin-top:16px;max-width:560px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0 6px}
+  .real{display:inline-flex;align-items:center;gap:8px;color:var(--dim);
+        font-size:.85rem;margin-top:16px}
+  .real:before{content:"📷"}
 
-  /* mockup bar */
-  .mock{margin:52px auto 0;max-width:760px;position:relative}
-  .barmock{background:linear-gradient(180deg,#1b2540,#131b2e);border:1px solid var(--line);
-     border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:14px;
-     box-shadow:0 30px 80px rgba(0,0,0,.5);animation:float 5s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  .tile{width:44px;height:44px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;
-        font-size:20px;background:#0f1728;border:1px solid var(--line)}
-  .tile.a{background:linear-gradient(135deg,#4aa3ff,#2f7dff)}
-  .tile.b{background:linear-gradient(135deg,#2ec6a6,#1f9e86)}
-  .tile.c{background:linear-gradient(135deg,#78e0c8,#49c3a5)}
-  .barmock .clock{margin-left:auto;text-align:right}
-  .barmock .clock b{font-size:1.5rem;font-variant-numeric:tabular-nums}
-  .barmock .clock span{display:block;color:var(--dim);font-size:.72rem}
+  .shots{position:relative;min-height:520px}
+  .shots img{position:absolute;border-radius:10px;
+     box-shadow:0 30px 70px rgba(0,0,0,.55),0 4px 18px rgba(0,0,0,.4)}
+  .shots .back{width:53%;left:0;top:56px;transform:rotate(-4deg);opacity:.92}
+  .shots .front{width:56%;right:2%;top:0;animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @media(max-width:820px){
+    .shots{min-height:0;display:flex;gap:14px;justify-content:center;margin-top:10px}
+    .shots img{position:static;width:44%;transform:none;animation:none}
+  }
 
-  section{padding:56px 0;border-top:1px solid var(--line)}
+  section{padding:60px 0;border-top:1px solid var(--line)}
   h2{font-size:1.8rem;margin-bottom:8px;text-align:center}
-  .sub{color:var(--dim);text-align:center;margin-bottom:34px}
+  .sub{color:var(--dim);text-align:center;margin-bottom:36px}
+
+  /* theme gallery */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end}
+  @media(max-width:820px){.gal{grid-template-columns:repeat(2,1fr)}}
+  .gal figure{background:var(--card);border:1px solid var(--line);border-radius:16px;
+      padding:14px;text-align:center;transition:transform .15s,border-color .15s}
+  .gal figure:hover{transform:translateY(-5px);border-color:var(--accent)}
+  .gal img{border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .gal figcaption{margin-top:10px;font-weight:700;font-size:.95rem}
+  .gal figcaption small{display:block;color:var(--dim);font-weight:400;font-size:.8rem;line-height:1.5;margin-top:2px}
+  .galwide{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  @media(max-width:820px){.galwide{grid-template-columns:1fr}}
+  .galwide figure{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;
+      text-align:left;background:var(--card);border:1px solid var(--line);
+      border-radius:16px;padding:16px;transition:transform .15s,border-color .15s}
+  .galwide figure:hover{transform:translateY(-5px);border-color:var(--accent2)}
+  .galwide img{border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .galwide .tall{max-height:250px;width:auto}
+  .galwide figcaption{font-weight:700}
+  .galwide figcaption small{display:block;color:var(--dim);font-weight:400;font-size:.85rem;line-height:1.6;margin-top:4px}
+  .pro-chip{display:inline-block;background:var(--grad);color:#04121f;font-size:.7rem;
+      font-weight:800;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:2px}
+
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
   .feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;
         transition:transform .15s,border-color .15s}
@@ -80,40 +124,84 @@
   details{background:var(--card);border:1px solid var(--line);border-radius:12px;
           padding:14px 18px;margin-bottom:10px}
   summary{cursor:pointer;font-weight:600}
-  details p{color:var(--dim);margin-top:8px;font-size:.95rem}
+  details p,details ol{color:var(--dim);margin-top:8px;font-size:.95rem}
+  details ol{padding-left:1.4em}
 
   footer{text-align:center;color:var(--dim);font-size:.82rem;padding:44px 20px 70px;border-top:1px solid var(--line)}
   .pay{color:var(--dim);font-size:.85rem;margin-top:10px}
-  @media(max-width:560px){h1{font-size:2.1rem}.amt{font-size:2.4rem}}
+  @media(max-width:560px){h1{font-size:2.05rem}.amt{font-size:2.4rem}}
 </style>
 </head>
 <body>
 
+<nav>
+  <div class="navin">
+    <a class="logo" href="#"><span>ショートカットバー</span></a>
+    <a href="#themes">テーマ</a>
+    <a href="#features">機能</a>
+    <a href="#pro">価格</a>
+    <a href="#faq">FAQ</a>
+    <a class="navdl" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料DL</a>
+  </div>
+</nav>
+
 <header>
   <div class="glow"></div>
-  <div class="wrap">
-    <span class="badge">Windows 10 / 11 ・ インストール不要 ・ 無料</span>
-    <h1>デスクトップに寄り添う<br><span class="g">変幻自在のランチャー</span></h1>
-    <p class="tag">アプリ・URL・ゲーム・仕事道具を1本のバーに。覗き窓・PiP監視・レトロ携帯ゲーム機風の十字メニューまで、あなたのデスクトップを自由自在に。</p>
-    <div class="cta">
-      <a class="btn btn-free" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
-      <a class="btn btn-pro" href="https://buy.stripe.com/eVqbIT6247Xn3i59s87Vm00">Pro版を購入</a>
-    </div>
-    <p class="note">まずは無料版で全機能をお試し ・ お支払いは PayPay / カード対応</p>
-
-    <div class="mock">
-      <div class="barmock">
-        <div class="tile a">★</div>
-        <div class="tile b">🗂</div>
-        <div class="tile c">🎮</div>
-        <div class="tile">＋</div>
-        <div class="clock"><b>13:06</b><span>2026年7月6日 (月)</span></div>
+  <div class="wrap hero">
+    <div>
+      <span class="badge">Windows 10 / 11 ・ インストール不要 ・ 無料</span>
+      <h1>デスクトップに寄り添う<br><span class="g">変幻自在のランチャー</span></h1>
+      <p class="tag">アプリ・URL・ゲーム・仕事道具を1本のバーに。覗き窓・PiP監視・レトロ携帯ゲーム機風の十字メニューまで、あなたのデスクトップを自由自在に。</p>
+      <div class="cta">
+        <a class="btn btn-pro" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
+        <a class="btn btn-free" href="#pro">Pro版 ¥980</a>
       </div>
+      <p class="note">まずは無料版で全機能をお試し ・ お支払いはカード / Apple Pay対応</p>
+      <p class="real">掲載している画像は、すべて実際の動作画面です</p>
+    </div>
+    <div class="shots">
+      <img class="back" src="img/wall_mode.png" alt="壁紙モードのショートカットバー" width="286" height="487">
+      <img class="front" src="img/hero_xp.png" alt="クラシック（青）テーマのショートカットバー" width="286" height="522">
     </div>
   </div>
 </header>
 
-<section>
+<section id="themes">
+  <div class="wrap">
+    <h2>着せ替えテーマ</h2>
+    <p class="sub">気分と作業に合わせて、ワンクリックで切替</p>
+    <div class="gal">
+      <figure>
+        <img src="img/theme_minimal.png" alt="ミニマルテーマ" loading="lazy">
+        <figcaption>ミニマル<small>白基調。どんなデスクトップにも馴染む</small></figcaption>
+      </figure>
+      <figure>
+        <img src="img/theme_glass.png" alt="ガラス風テーマ" loading="lazy">
+        <figcaption>ガラス風<small>涼しげな半透明ブルー</small></figcaption>
+      </figure>
+      <figure>
+        <img src="img/hero_xp.png" alt="クラシック（青）テーマ" loading="lazy">
+        <figcaption>クラシック（青）<small>懐かしさ全開。スタートメニュー付き</small></figcaption>
+      </figure>
+      <figure>
+        <img src="img/wall_mode.png" alt="壁紙モード" loading="lazy">
+        <figcaption>壁紙モード<span class="pro-chip">Pro</span><small>好きな画像をバー全面に</small></figcaption>
+      </figure>
+    </div>
+    <div class="galwide">
+      <figure style="grid-template-columns:1fr">
+        <img src="img/theme_retro.png" alt="レトロ携帯機風テーマの十字メニュー" loading="lazy">
+        <figcaption>レトロ携帯機風<small>月替わりカラーの十字メニュー。Steam / Epic のゲームが自動で並び、操作音・季節のパーティクルまで再現。ゲーム機のホーム画面感覚でPCを操作できる。</small></figcaption>
+      </figure>
+      <figure style="grid-template-columns:1fr;align-content:center">
+        <figcaption style="align-self:center">壁紙モード（Pro）<small>スマホのホーム画面のように、お気に入りの画像を1枚まるごとバーの背景へ。文字色・書体もカスタムでき、明るさに応じて文字は自動で読みやすく調整される。</small>
+        <small style="margin-top:12px">どのテーマも切替は 設定 → テーマ からワンクリック。再起動不要。</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="features">
   <div class="wrap">
     <h2>できること</h2>
     <p class="sub">小さな1本のバーに、必要なものぜんぶ</p>
@@ -123,7 +211,7 @@
       <div class="feat"><div class="ic">🎮</div><h3>レトロ携帯機風テーマ</h3><p>月替わりカラーの十字メニュー。Steam / Epic のゲームが自動で並ぶ。</p></div>
       <div class="feat"><div class="ic">🧰</div><h3>仕事モード列</h3><p>図面・現場フォルダ・CADなど仕事道具を専用列に。効率が上がる。</p></div>
       <div class="feat"><div class="ic">🔎</div><h3>横断検索・電卓</h3><p>文字を打つだけで全カテゴリを検索。式を打てば電卓にもなる。</p></div>
-      <div class="feat"><div class="ic">🎨</div><h3>3種類の着せ替え</h3><p>ミニマル・クラシック（青）・レトロ携帯機風に一発切替。今後も追加予定。</p></div>
+      <div class="feat"><div class="ic">🎨</div><h3>4種類の着せ替え</h3><p>ミニマル・クラシック（青）・ガラス風・レトロ携帯機風。さらにProは壁紙モードも。</p></div>
       <div class="feat"><div class="ic">🕐</div><h3>時計カスタマイズ</h3><p>サイズ・秒表示・書式を自由に。Proでは書体や色も。</p></div>
       <div class="feat"><div class="ic">🔄</div><h3>自動アップデート</h3><p>新バージョンは起動時に自動更新。渡したあとも手間ゼロ。</p></div>
     </div>
@@ -140,26 +228,27 @@
       <tr><td>覗き窓・全ウィンドウ一覧・重力モード ほか</td><td class="y">✓</td><td class="y">✓</td></tr>
       <tr><td>時計カスタマイズ（サイズ・秒・書式）</td><td class="y">✓</td><td class="y">✓</td></tr>
       <tr><td>時計の書体・カスタム色</td><td class="n">—</td><td class="y">✓</td></tr>
+      <tr><td>壁紙モード（好きな画像をバー全面に）</td><td class="n">—</td><td class="y">✓</td></tr>
       <tr><td>カスタムカテゴリ（自分専用の列）</td><td>1つまで</td><td class="y">無制限</td></tr>
       <tr><td>PiP実映像＋クリック転送＋見張り</td><td class="n">—</td><td class="y">✓</td></tr>
     </table>
   </div>
 </section>
 
-<section class="price">
+<section class="price" id="pro">
   <div class="wrap">
     <h2>Pro版</h2>
     <p class="sub">買い切り・ずっと使える</p>
     <div class="pricebox">
       <div class="amt">¥980 <small>／ 買い切り</small></div>
       <p class="note">PC買い替えも同じキーで再認証OK ・ 30日以内なら返金対応</p>
-      <div class="cta"><a class="btn btn-pro" href="https://buy.stripe.com/eVqbIT6247Xn3i59s87Vm00">購入する</a></div>
+      <div class="cta" style="justify-content:center"><a class="btn btn-pro" href="https://buy.stripe.com/eVqbIT6247Xn3i59s87Vm00">購入する</a></div>
       <p class="pay">購入後、登録メールにプロダクトキーが自動で届きます</p>
     </div>
   </div>
 </section>
 
-<section>
+<section id="faq">
   <div class="wrap">
     <h2>よくある質問</h2>
     <p class="sub"></p>
@@ -188,18 +277,5 @@
   </div>
 </footer>
 
-<script>
-/* Payment Link未設定の間は購入ボタンを「準備中」にする。
-   STRIPE_PAYMENT_LINK_HERE を実URLに置換すれば自動で有効化（第38便） */
-document.querySelectorAll('a.btn-pro').forEach(function(a){
-  var h = a.getAttribute('href') || '';
-  if (h.indexOf('STRIPE_') === 0) {
-    a.textContent = '準備中';
-    a.style.opacity = '.55';
-    a.style.pointerEvents = 'none';
-    a.removeAttribute('href');
-  }
-});
-</script>
 </body>
 </html>
