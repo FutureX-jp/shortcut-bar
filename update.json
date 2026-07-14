@@ -1,7 +1,7 @@
 {
-  "notes": "・自動アップデート後の再起動で「Failed to load Python DLL」が出て落ちることがある問題を根治（PyInstallerの内部環境変数が新exeへ引き継がれ、消えた一時フォルダを参照していた）",
+  "notes": "・『ボスが来た』のキーワードをチェックボックスで選べるように（一覧＋その他欄。手打ち不要に）\n・起動時に「タスクバー置き換え」のおすすめ設定を案内（次回から表示しないチェック付き。画面端固定済み/タスクバー自動非表示の環境では出ません）\n・初期設定の時計を通常表記（秒なし・24時間）へ戻しました",
   "revoked": [],
-  "sha256": "2835493024aad580c5709f3a8e84ee7275985dcdcdfae1223c165f218f5397b7",
-  "version": "1.7.18",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.18/ShortcutBar.exe"
+  "sha256": "a9c87eb42aaeb06770cfd9213573082ea824ca9f8761a5a0a25bb00f8437d65a",
+  "version": "1.7.19",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.19/ShortcutBar.exe"
 }
