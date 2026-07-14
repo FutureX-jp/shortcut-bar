@@ -1,7 +1,7 @@
 {
-  "notes": "・『ボスが来た』機能をいったん取り下げ（メニュー等から非表示。設定は保持されるので将来復活予定）\n・起動時のおすすめ設定案内を改善: 画面端固定済みの場合も「タスクバーを自動的に隠す」の案内を表示し、ワンクリックでWindowsのタスクバー設定を開けるように",
+  "notes": "PiP監視（実映像・クリック転送・見張り）をPro版限定に変更（覗き窓プレビューは引き続き無料）。メニューに（Pro）表記を追加",
   "revoked": [],
-  "sha256": "fb2cce77a145650b44250c8ad248b7d61df8e8d4b730e8df75e546def98403fa",
-  "version": "1.7.20",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.20/ShortcutBar.exe"
+  "sha256": "da7de9c1fea358039b4a7124207c3bb88343acb1a67f6a0cb1595755739fc5e3",
+  "version": "1.7.21",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.21/ShortcutBar.exe"
 }
