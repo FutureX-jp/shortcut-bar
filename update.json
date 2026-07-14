@@ -1,7 +1,7 @@
 {
-  "notes": "・初期設定を刷新（作者の実運用設定を初期値に: クラシック（青）テーマ・クリップボード履歴/最近のウィンドウON・時計カスタム 等。画面端固定は従来どおり初期OFF）\n・推奨設定をサイトFAQに追加（画面端固定＋Windowsタスクバーの自動非表示）",
+  "notes": "・自動アップデート後の再起動で「Failed to load Python DLL」が出て落ちることがある問題を根治（PyInstallerの内部環境変数が新exeへ引き継がれ、消えた一時フォルダを参照していた）",
   "revoked": [],
-  "sha256": "5f3486051a6f72608014958c405201be6d6803122b58c51f0dccddf955ad74c9",
-  "version": "1.7.17",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.17/ShortcutBar.exe"
+  "sha256": "2835493024aad580c5709f3a8e84ee7275985dcdcdfae1223c165f218f5397b7",
+  "version": "1.7.18",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.18/ShortcutBar.exe"
 }
