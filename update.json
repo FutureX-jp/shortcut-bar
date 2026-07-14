@@ -1,7 +1,7 @@
 {
-  "notes": "・Pro版の購入導線を開通（設定→サポート、公式サイトから購入できます）\n・ショートカット編集時にまれに落ちるクラッシュを根治",
+  "notes": "・初期設定を刷新（作者の実運用設定を初期値に: クラシック（青）テーマ・クリップボード履歴/最近のウィンドウON・時計カスタム 等。画面端固定は従来どおり初期OFF）\n・推奨設定をサイトFAQに追加（画面端固定＋Windowsタスクバーの自動非表示）",
   "revoked": [],
-  "sha256": "d81490f23ec6404676444ee3cc5b492c5f740370255fb841fdb6d69601d77632",
-  "version": "1.7.16",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.16/ShortcutBar.exe"
+  "sha256": "5f3486051a6f72608014958c405201be6d6803122b58c51f0dccddf955ad74c9",
+  "version": "1.7.17",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.17/ShortcutBar.exe"
 }
