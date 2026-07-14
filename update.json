@@ -1,7 +1,7 @@
 {
-  "notes": "・『ボスが来た』のキーワードをチェックボックスで選べるように（一覧＋その他欄。手打ち不要に）\n・起動時に「タスクバー置き換え」のおすすめ設定を案内（次回から表示しないチェック付き。画面端固定済み/タスクバー自動非表示の環境では出ません）\n・初期設定の時計を通常表記（秒なし・24時間）へ戻しました",
+  "notes": "・『ボスが来た』機能をいったん取り下げ（メニュー等から非表示。設定は保持されるので将来復活予定）\n・起動時のおすすめ設定案内を改善: 画面端固定済みの場合も「タスクバーを自動的に隠す」の案内を表示し、ワンクリックでWindowsのタスクバー設定を開けるように",
   "revoked": [],
-  "sha256": "a9c87eb42aaeb06770cfd9213573082ea824ca9f8761a5a0a25bb00f8437d65a",
-  "version": "1.7.19",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.19/ShortcutBar.exe"
+  "sha256": "fb2cce77a145650b44250c8ad248b7d61df8e8d4b730e8df75e546def98403fa",
+  "version": "1.7.20",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.20/ShortcutBar.exe"
 }
