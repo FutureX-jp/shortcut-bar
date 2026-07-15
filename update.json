@@ -1,7 +1,7 @@
 {
-  "notes": "PiP監視（実映像・クリック転送・見張り）をPro版限定に変更（覗き窓プレビューは引き続き無料）。メニューに（Pro）表記を追加",
+  "notes": "・デスクトップのねこ「めめ」を大幅強化（おすわり／寝る／なでなで／時報／窓のフチ歩き ほか）\n・イルカの「フィン」も強化（泳ぎアニメ・ドラッグで移動・リマインダー／ポモドーロの保存）\n・ミニマルテーマにアプリランチャーを追加（Launchpad／Dock／メニュー）\n・多重起動の防止と起動まわりの安定化\n・細かな表示の改善",
   "revoked": [],
-  "sha256": "da7de9c1fea358039b4a7124207c3bb88343acb1a67f6a0cb1595755739fc5e3",
-  "version": "1.7.21",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.21/ShortcutBar.exe"
+  "sha256": "9fdf7eaccf2d6d1873fd538fb185a7f4a259ccbe5ffbe66b991a1d20f3cf46b4",
+  "version": "1.7.22",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.22/ShortcutBar.exe"
 }
