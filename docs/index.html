@@ -42,7 +42,13 @@
   .navin a:hover{color:var(--ink)}
   .navdl{background:var(--grad);color:#04121f!important;font-weight:700;
          padding:7px 16px;border-radius:9px}
-  @media(max-width:640px){.navin a:not(.logo):not(.navdl){display:none}}
+  /* モバイル: 旧実装は nav リンクを display:none で全部消していた＝スマホだと
+     テーマ/機能/使い方/価格/FAQ が一切押せなかった。折り返して常に出す。 */
+  @media(max-width:640px){
+    .navin{flex-wrap:wrap;gap:10px 16px;padding:10px 16px}
+    .navin .logo{margin-right:auto;width:100%;margin-bottom:2px}
+    .navin a:not(.logo){font-size:.9rem}
+  }
 
   /* hero */
   header{position:relative;overflow:hidden;padding:72px 0 64px}
@@ -76,7 +82,7 @@
     .shots .s3{width:92%}
   }
 
-  section{padding:60px 0;border-top:1px solid var(--line)}
+  section{padding:60px 0;border-top:1px solid var(--line);scroll-margin-top:64px}
   h2{font-size:1.8rem;margin-bottom:8px;text-align:center}
   .sub{color:var(--dim);text-align:center;margin-bottom:36px}
 
@@ -113,6 +119,25 @@
   .feat h3{font-size:1.08rem;margin-bottom:8px}
   .feat p{color:var(--dim);font-size:.95rem}
 
+  /* 使い方ガイド */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:40px}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 24px}
+  .step .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+     border-radius:50%;background:var(--grad);color:#04121f;font-weight:800;margin-bottom:12px}
+  .step h3{font-size:1.05rem;margin-bottom:6px}
+  .step p{color:var(--dim);font-size:.92rem}
+  .howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+  .howto .row{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+  .howto .row h4{font-size:.98rem;margin-bottom:5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .howto .row .ic{font-size:1.15rem}
+  .howto .row p{color:var(--dim);font-size:.9rem}
+  .howto .pro{background:var(--grad);color:#04121f;font-size:.68rem;font-weight:800;
+     border-radius:999px;padding:1px 8px}
+  .kbd{background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:1px 7px;
+     font-size:.85rem;color:var(--ink)}
+  .guide-note{text-align:center;color:var(--dim);font-size:.9rem;margin-top:30px}
+
   table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
         border-radius:16px;overflow:hidden}
   th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line)}
@@ -123,7 +148,8 @@
   .price{text-align:center}
   .pricebox{display:inline-block;background:var(--card);border:1px solid var(--line);
      border-radius:22px;padding:34px 46px;position:relative;overflow:hidden}
-  .pricebox:before{content:"";position:absolute;inset:0;background:var(--grad);opacity:.06}
+  .pricebox:before{content:"";position:absolute;inset:0;background:var(--grad);opacity:.06;pointer-events:none}
+  .pricebox .cta{position:relative;z-index:1}
   .amt{font-size:3rem;font-weight:800}
   .amt small{font-size:1rem;color:var(--dim);font-weight:400}
 
@@ -145,6 +171,7 @@
     <a class="logo" href="#"><span>ショートカットバー</span></a>
     <a href="#themes">テーマ</a>
     <a href="#features">機能</a>
+    <a href="#guide">使い方</a>
     <a href="#pro">価格</a>
     <a href="#faq">FAQ</a>
     <a class="navdl" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料DL</a>
@@ -222,6 +249,60 @@
       <div class="feat"><div class="ic">🕐</div><h3>時計カスタマイズ</h3><p>サイズ・秒表示・書式を自由に。Proでは書体や色も。</p></div>
       <div class="feat"><div class="ic">🔄</div><h3>自動アップデート</h3><p>新バージョンは起動時に自動更新。渡したあとも手間ゼロ。</p></div>
     </div>
+  </div>
+</section>
+
+<section id="guide">
+  <div class="wrap">
+    <h2>使い方ガイド</h2>
+    <p class="sub">できることが多いので、まずはここだけ。あとは触りながら覚えられます</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>起動する</h3>
+        <p>ダウンロードした <b>ShortcutBar.exe</b> をダブルクリックするだけ。インストール不要で、画面の端に小さなバーが常駐します。</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>ショートカットを追加</h3>
+        <p>バーを右クリック →「📌ショートカットを追加」。<b>「🔍アプリから探す」</b>に名前を打つと候補が出るので、選ぶだけで名前・アイコンが自動で入ります。URLやフォルダも登録OK。</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>自分好みに着せ替え</h3>
+        <p><b>⚙設定 → テーマ</b> でワンクリック着せ替え（再起動不要）。<b>配置 →「画面端に固定」</b>にすると、Windowsのタスクバー代わりに使えます。</p>
+      </div>
+    </div>
+
+    <div class="howto">
+      <div class="row">
+        <h4><span class="ic">🔎</span>横断検索・電卓</h4>
+        <p>バー上部の検索欄に文字を打つと、アプリ・URLをまとめて検索。<span class="kbd">12*8</span> のように式を打てばそのまま電卓になります。</p>
+      </div>
+      <div class="row">
+        <h4><span class="ic">👁</span>覗き窓・PiP監視 <span class="pro">一部Pro</span></h4>
+        <p>起動中アプリの行にカーソルを合わせると中身をプレビュー。右クリックからミニ表示（PiP）で、変換や解析の完了を見張れます。</p>
+      </div>
+      <div class="row">
+        <h4><span class="ic">📷</span>ウィンドウをスクショ</h4>
+        <p>起動中アプリの行の <b>📷</b> を押すと、その窓だけを画像として保存できます。資料づくりや記録に便利。</p>
+      </div>
+      <div class="row">
+        <h4><span class="ic">🔑</span>シークレットメモ <span class="pro">Pro</span></h4>
+        <p>右クリック → 🚀ツール → 🔑。パスワードなどを暗号化して保存し、クリックでコピー → <b>30秒後に自動消去</b>。このPCの本人だけが復号できます。</p>
+      </div>
+      <div class="row">
+        <h4><span class="ic">🐱</span>デスクトップのお供</h4>
+        <p>小さな相棒が住みつきます。ドラッグで移動、<b>ダブルクリックでなでなで</b>、ファイルをドラッグすればゴミ箱へ。ときどき便利な使い方も教えてくれます。</p>
+      </div>
+      <div class="row">
+        <h4><span class="ic">🎨</span>壁紙モード <span class="pro">Pro</span></h4>
+        <p>スマホのホーム画面のように、好きな画像を1枚まるごとバーの背景に。文字色・書体もカスタムでき、明るさに応じて文字が自動で読みやすく調整されます。</p>
+      </div>
+    </div>
+
+    <p class="guide-note">迷ったら、まずバーを<b>右クリック</b>。使える機能がメニューにまとまっています。</p>
   </div>
 </section>
 
