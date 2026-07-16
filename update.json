@@ -1,7 +1,7 @@
 {
-  "notes": "・デスクトップのねこ「めめ」を大幅強化（おすわり／寝る／なでなで／時報／窓のフチ歩き ほか）\n・イルカの「フィン」も強化（泳ぎアニメ・ドラッグで移動・リマインダー／ポモドーロの保存）\n・ミニマルテーマにアプリランチャーを追加（Launchpad／Dock／メニュー）\n・多重起動の防止と起動まわりの安定化\n・細かな表示の改善",
+  "notes": "・起動中の行の📷ボタンを見やすく改善（枠付きアイコン化＋ホバーで説明）\n・シークレットメモ: 一覧の●表示を強化＋👁ボタンで文字/●をワンタッチ切替\n・シークレットメモがテーマ切替（着せ替え）に追従するよう修正\n・スタートメニューのツール一覧を整理（作業ログ/セット保存/シークレットメモを追加）",
   "revoked": [],
-  "sha256": "9fdf7eaccf2d6d1873fd538fb185a7f4a259ccbe5ffbe66b991a1d20f3cf46b4",
-  "version": "1.7.22",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.22/ShortcutBar.exe"
+  "sha256": "2895b573367263bba6ef8dfce599ef7d375082842ae520c14f21b3d3431ce563",
+  "version": "1.7.23",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.23/ShortcutBar.exe"
 }
