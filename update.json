@@ -1,7 +1,7 @@
 {
-  "notes": "・🌧雨雲レーダーのズームが快適に: 地図を消さずに読み込み＆一度見たズームは即切替（キャッシュ）\n・レーダー左上の時刻表示を見やすく（不透明バッジ＋大きめ文字）\n・起動アニメーションを滑らかに（カクつき解消・フェードアウト付き）",
+  "notes": "・壁紙モードで時計が消えることがある不具合を修正（起動アニメーションが原因でした。自己修復機能も追加）\n・🌧雨雲レーダーのズームが即時に: 押した瞬間に拡大/縮小表示→裏で高画質を読み込み\n・レーダー左上の時刻バッジの幅を文字にぴったり合わせて見やすく",
   "revoked": [],
-  "sha256": "fec171d4ad0c49ebc5d996094acfd7f638107ec5dd7af799aa863ca6d42e8972",
-  "version": "1.7.29",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.29/ShortcutBar.exe"
+  "sha256": "b4c4af99ddfd0a0ccba85cb9c04e70963839ae9f99a18ca4e262eaa46017a9ee",
+  "version": "1.7.30",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.30/ShortcutBar.exe"
 }
