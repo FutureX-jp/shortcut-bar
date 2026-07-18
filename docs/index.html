@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ショートカットバー — 1本のバーに、ぜんぶ入り。</title>
-<meta name="description" content="Windowsに常駐するオールインワン・ランチャー。アプリ起動・時計・天気・雨雲レーダー・クリップボード履歴・スクショ・相棒の猫まで、1本のバーに。インストール不要・無料。">
-<meta property="og:title" content="ショートカットバー — 1本のバーに、ぜんぶ入り。">
-<meta property="og:description" content="アプリ起動・時計・天気・雨雲レーダー・スクショ・相棒の猫まで1本のバーに。着せ替え自由。無料。">
+<title>ショートカットバー — 変幻自在の着せ替えランチャー</title>
+<meta name="description" content="Windowsに常駐する着せ替え自由のフローティング・ランチャー。アプリ/URL/ゲーム/仕事道具を1本のバーに。天気・雨雲レーダー・クリップボード履歴・スクショ・相棒つき。インストール不要・無料。">
+<meta property="og:title" content="ショートカットバー — 変幻自在の着せ替えランチャー">
+<meta property="og:description" content="アプリ・URL・ゲーム・仕事道具を1本のバーに。着せ替え3種類＋壁紙モード。天気や相棒までぜんぶ入り。無料。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://futurex-jp.github.io/shortcut-bar/">
 <meta property="og:image" content="https://futurex-jp.github.io/shortcut-bar/img/ogp.png">
@@ -47,12 +47,12 @@
     .navin a:not(.logo){font-size:.9rem}
   }
 
-  header{position:relative;overflow:hidden;padding:70px 0 60px}
+  header{position:relative;overflow:hidden;padding:72px 0 64px}
   .glow{position:absolute;inset:0;background:
      radial-gradient(700px 340px at 30% -5%,rgba(74,163,255,.20),transparent 70%),
      radial-gradient(560px 340px at 85% 30%,rgba(46,198,166,.14),transparent 70%);
      pointer-events:none}
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
   @media(max-width:820px){.hero{grid-template-columns:1fr}}
   .badge{display:inline-block;background:var(--card);border:1px solid var(--line);
          color:var(--dim);font-size:.82rem;padding:6px 14px;border-radius:999px;margin-bottom:22px}
@@ -63,23 +63,25 @@
   .real{display:inline-flex;align-items:center;gap:8px;color:var(--dim);
         font-size:.85rem;margin-top:16px}
   .real:before{content:"📷"}
-  .shots{position:relative;min-height:560px}
+
+  .shots{position:relative;min-height:570px}
   .shots img{position:absolute;border-radius:10px;
      box-shadow:0 30px 70px rgba(0,0,0,.55),0 4px 18px rgba(0,0,0,.4)}
-  .shots .s1{width:52%;left:0;top:20px;transform:rotate(-4deg);z-index:1}
-  .shots .s2{width:56%;right:0;top:0;z-index:2;animation:float 6s ease-in-out infinite}
+  .shots .s1{width:46%;left:0;top:6px;transform:rotate(-5deg);opacity:.95}
+  .shots .s2{width:48%;right:0;top:0;z-index:2;animation:float 6s ease-in-out infinite}
+  .shots .s3{width:92%;left:4%;bottom:0;z-index:3}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
   @media(max-width:820px){
     .shots{min-height:0;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:10px}
     .shots img{position:static;transform:none;animation:none}
-    .shots .s1,.shots .s2{width:46%}
+    .shots .s1,.shots .s2{width:44%}
+    .shots .s3{width:92%}
   }
 
   section{padding:60px 0;border-top:1px solid var(--line);scroll-margin-top:64px}
   h2{font-size:1.8rem;margin-bottom:8px;text-align:center}
   .sub{color:var(--dim);text-align:center;margin-bottom:36px}
 
-  /* 3つの理由 */
   .why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:820px){.why{grid-template-columns:1fr}}
   .why .w{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -88,39 +90,7 @@
   .why h3{font-size:1.1rem;margin-bottom:8px}
   .why p{color:var(--dim);font-size:.95rem}
 
-  /* 大きい機能行（画像+説明の交互） */
-  .bigrow{display:grid;grid-template-columns:1fr 1.1fr;gap:34px;align-items:center;
-      margin-bottom:56px}
-  .bigrow.rev{grid-template-columns:1.1fr 1fr}
-  .bigrow.rev .pic{order:2}
-  @media(max-width:820px){.bigrow,.bigrow.rev{grid-template-columns:1fr}
-    .bigrow.rev .pic{order:0}}
-  .bigrow .pic{text-align:center}
-  .bigrow .pic img{border-radius:10px;
-     box-shadow:0 24px 60px rgba(0,0,0,.5)}
-  .bigrow .pic img.nofx{box-shadow:none;border-radius:0}
-  .bigrow h3{font-size:1.45rem;margin-bottom:12px;line-height:1.4}
-  .bigrow h3 small{display:block;font-size:.85rem;color:var(--accent);font-weight:700;
-      letter-spacing:.08em;margin-bottom:6px}
-  .bigrow p{color:var(--dim);margin-bottom:10px}
-  .ticks{list-style:none;margin-top:12px}
-  .ticks li{color:var(--dim);font-size:.95rem;padding:4px 0 4px 26px;position:relative}
-  .ticks li:before{content:"✓";position:absolute;left:2px;color:var(--accent2);font-weight:800}
-  .pro-chip{display:inline-block;background:var(--grad);color:#04121f;font-size:.7rem;
-      font-weight:800;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:2px}
-  .soon-chip{display:inline-block;background:var(--card2);color:var(--dim);
-      border:1px solid var(--line);font-size:.7rem;font-weight:700;border-radius:999px;
-      padding:1px 9px;margin-left:6px;vertical-align:2px}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
-        transition:transform .15s,border-color .15s}
-  .feat:hover{transform:translateY(-4px);border-color:var(--accent)}
-  .feat .ic{font-size:1.4rem;margin-bottom:6px}
-  .feat h3{font-size:1rem;margin-bottom:5px}
-  .feat p{color:var(--dim);font-size:.88rem}
-
-  /* ギャラリー */
+  /* 着せ替えギャラリー */
   .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end}
   @media(max-width:820px){.gal{grid-template-columns:repeat(2,1fr)}}
   .gal figure{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -129,6 +99,43 @@
   .gal img{border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
   .gal figcaption{margin-top:10px;font-weight:700;font-size:.95rem}
   .gal figcaption small{display:block;color:var(--dim);font-weight:400;font-size:.8rem;line-height:1.5;margin-top:2px}
+  .galwide{margin-top:18px}
+  .galwide figure{background:var(--card);border:1px solid var(--line);
+      border-radius:16px;padding:16px;text-align:center;transition:transform .15s,border-color .15s}
+  .galwide figure:hover{transform:translateY(-5px);border-color:var(--accent2)}
+  .galwide img{border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .galwide figcaption{font-weight:700;margin-top:10px}
+  .galwide figcaption small{display:block;color:var(--dim);font-weight:400;font-size:.85rem;line-height:1.6;margin-top:4px}
+  .pro-chip{display:inline-block;background:var(--grad);color:#04121f;font-size:.7rem;
+      font-weight:800;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:2px}
+  .soon-chip{display:inline-block;background:var(--card2);color:var(--dim);
+      border:1px solid var(--line);font-size:.7rem;font-weight:700;border-radius:999px;
+      padding:1px 9px;margin-left:6px;vertical-align:2px}
+
+  .bigrow{display:grid;grid-template-columns:1fr 1.1fr;gap:34px;align-items:center;
+      margin-bottom:56px}
+  .bigrow.rev{grid-template-columns:1.1fr 1fr}
+  .bigrow.rev .pic{order:2}
+  @media(max-width:820px){.bigrow,.bigrow.rev{grid-template-columns:1fr}
+    .bigrow.rev .pic{order:0}}
+  .bigrow .pic{text-align:center}
+  .bigrow .pic img{border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+  .bigrow .pic img.nofx{box-shadow:none;border-radius:0}
+  .bigrow h3{font-size:1.45rem;margin-bottom:12px;line-height:1.4}
+  .bigrow h3 small{display:block;font-size:.85rem;color:var(--accent);font-weight:700;
+      letter-spacing:.08em;margin-bottom:6px}
+  .bigrow p{color:var(--dim);margin-bottom:10px}
+  .ticks{list-style:none;margin-top:12px}
+  .ticks li{color:var(--dim);font-size:.95rem;padding:4px 0 4px 26px;position:relative}
+  .ticks li:before{content:"✓";position:absolute;left:2px;color:var(--accent2);font-weight:800}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+        transition:transform .15s,border-color .15s}
+  .feat:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .feat .ic{font-size:1.4rem;margin-bottom:6px}
+  .feat h3{font-size:1rem;margin-bottom:5px}
+  .feat p{color:var(--dim);font-size:.88rem}
 
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:820px){.steps{grid-template-columns:1fr}}
@@ -170,8 +177,8 @@
 <nav>
   <div class="navin">
     <a class="logo" href="#"><span>ショートカットバー</span></a>
-    <a href="#features">機能</a>
     <a href="#themes">着せ替え</a>
+    <a href="#features">機能</a>
     <a href="#guide">使い方</a>
     <a href="#pro">価格</a>
     <a href="#faq">FAQ</a>
@@ -184,8 +191,8 @@
   <div class="wrap hero">
     <div>
       <span class="badge">Windows 10 / 11 ・ exeを開くだけ ・ 無料ではじめられる</span>
-      <h1>1本のバーに、<br><span class="g">ぜんぶ入り。</span></h1>
-      <p class="tag">アプリ起動・時計・<b>天気と雨雲レーダー</b>・クリップボード履歴・ウィンドウのスクショ・そして相棒の猫。デスクトップに必要なもの全部を、好きな見た目の1本のバーへ。</p>
+      <h1>デスクトップに寄り添う<br><span class="g">変幻自在の着せ替えランチャー</span></h1>
+      <p class="tag">アプリ・URL・ゲーム・仕事道具を1本のバーに。ミニマルからレトロ携帯ゲーム機風まで<b>ワンクリックで着せ替え</b>。天気・雨雲レーダーやスクショ、デスクトップの相棒までついてくる。</p>
       <div class="cta">
         <a class="btn btn-pro" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
         <a class="btn btn-free" href="#pro">Pro版 ¥980（買い切り）</a>
@@ -194,8 +201,9 @@
       <p class="real">このページの画像は、すべて実際の動作画面です</p>
     </div>
     <div class="shots">
-      <img class="s1" src="img/wx_popup.png" alt="天気ポップアップ（週間予報・雨雲レーダー）" width="384" height="821">
-      <img class="s2" src="img/wall_weather.png" alt="壁紙モードのバー（天気アニメ時計）" width="286" height="487">
+      <img class="s1" src="img/theme_minimal.png" alt="ミニマルテーマのショートカットバー" width="286" height="484">
+      <img class="s2" src="img/hero_xp.png" alt="クラシック（青）テーマのショートカットバー" width="286" height="522">
+      <img class="s3" src="img/theme_retro.png" alt="レトロ携帯機風テーマの十字メニュー" width="670" height="353">
     </div>
   </div>
 </header>
@@ -203,11 +211,42 @@
 <section>
   <div class="wrap">
     <h2>選ばれる3つの理由</h2>
-    <p class="sub">「ランチャー」の枠を、だいぶはみ出しています</p>
+    <p class="sub">まずは「見た目から入れる」ランチャーです</p>
     <div class="why">
-      <div class="w"><div class="ic">🧰</div><h3>これ1本で足りる</h3><p>アプリ起動・タスク切替・時計・天気・クリップボード履歴・スクショ。散らばっていた道具がバー1本にまとまるので、デスクトップが広く静かになります。</p></div>
-      <div class="w"><div class="ic">🎨</div><h3>見た目は自分で決める</h3><p>ミニマル・クラシック（青）・レトロ携帯機風にワンクリック着せ替え。Proなら好きな画像を壁紙にでき、時計の背景ではその時の空がアニメで流れます。</p></div>
+      <div class="w"><div class="ic">🎨</div><h3>見た目は自分で決める</h3><p>ミニマル・クラシック（青）・レトロ携帯機風にワンクリック着せ替え（再起動不要）。Proなら好きな画像をバー全面の壁紙にもできます。</p></div>
+      <div class="w"><div class="ic">🧰</div><h3>これ1本で足りる</h3><p>アプリ起動・タスク切替・時計・クリップボード履歴・スクショ、さらに天気・雨雲レーダーまで。散らばっていた道具がバー1本にまとまります。</p></div>
       <div class="w"><div class="ic">💴</div><h3>無料でずっと・Proは買い切り</h3><p>標準機能は無料のまま期限なし。気に入ったら¥980の買い切りで全部解放。サブスクはありません。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="themes">
+  <div class="wrap">
+    <h2>着せ替えギャラリー</h2>
+    <p class="sub">気分と作業に合わせて、ワンクリックで切替（再起動不要）</p>
+    <div class="gal">
+      <figure>
+        <img src="img/theme_minimal.png" alt="ミニマルテーマ" loading="lazy">
+        <figcaption>ミニマル<small>白基調。どんなデスクトップにも馴染む</small></figcaption>
+      </figure>
+      <figure>
+        <img src="img/hero_xp.png" alt="クラシック（青）テーマ" loading="lazy">
+        <figcaption>クラシック（青）<small>懐かしさ全開。スタートメニュー付き</small></figcaption>
+      </figure>
+      <figure>
+        <img src="img/wall_weather.png" alt="壁紙モード（天気アニメ時計）" loading="lazy">
+        <figcaption>壁紙モード<span class="pro-chip">Pro</span><small>好きな画像をバー全面に。時計には空のアニメ</small></figcaption>
+      </figure>
+      <figure>
+        <img src="img/theme_glass.png" alt="ガラス風テーマ（開発中）" loading="lazy" style="opacity:.85">
+        <figcaption>ガラス風<span class="soon-chip">今後公開予定</span><small>涼しげな半透明ブルー。開発中のプレビュー</small></figcaption>
+      </figure>
+    </div>
+    <div class="galwide">
+      <figure>
+        <img src="img/theme_retro.png" alt="レトロ携帯機風テーマの十字メニュー" loading="lazy">
+        <figcaption>レトロ携帯機風<small>月替わりカラーの十字メニュー。Steam / Epic のゲームが自動で並び、操作音・季節のパーティクルまで再現。ゲーム機のホーム画面感覚でPCを操作できる（無料版は5日間の体験つき・Proで無制限）。</small></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -215,24 +254,9 @@
 <section id="features">
   <div class="wrap">
     <h2>主な機能</h2>
-    <p class="sub">毎日ひらく道具だから、細部までつくり込みました</p>
+    <p class="sub">ランチャーの基本から、ちょっと欲張りな機能まで</p>
 
     <div class="bigrow">
-      <div class="pic"><img src="img/wx_popup.png" alt="天気・防災パネルの実画面" width="340"></div>
-      <div>
-        <h3><small>WEATHER & SAFETY</small>🌤 天気・防災、ここまで無料</h3>
-        <p>気象庁のデータで、今の天気から週間予報までひと目で。<b>雨雲レーダー</b>は再生・コマ送り・ズームつきで「あと何分で降るか」まで教えてくれます。</p>
-        <ul class="ticks">
-          <li>24時間の降水確率グラフ＋週間予報（気温は気象庁準拠）</li>
-          <li>雨雲レーダー: 実況30分＋予報60分をアニメ再生・拡大縮小OK</li>
-          <li>警報・注意報を色分け表示（注意報=黄 / 警報=赤 / 特別警報=紫）・最近の地震も</li>
-          <li>地域は 都道府県 → 市区町村 を選ぶだけ（入力不要）</li>
-          <li>時計の背景でその時の空をアニメ表示。晴れの日は太陽が東から西へ、夜は星と月と季節の星座</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="bigrow rev">
       <div class="pic"><img src="img/wall_weather.png" alt="壁紙モードの実画面" width="280"></div>
       <div>
         <h3><small>WALLPAPER MODE</small>🖼 バーが、あなたの壁紙になる<span class="pro-chip">Pro</span></h3>
@@ -245,23 +269,26 @@
       </div>
     </div>
 
-    <div class="bigrow">
-      <div class="pic"><img src="img/theme_retro.png" alt="レトロ携帯機風テーマの実画面"></div>
+    <div class="bigrow rev">
+      <div class="pic"><img src="img/wx_popup.png" alt="天気・防災パネルの実画面" width="330"></div>
       <div>
-        <h3><small>RETRO HANDHELD</small>🎮 ゲーム機みたいなホーム画面</h3>
-        <p>月替わりカラーの十字メニューに、Steam / Epic のゲームが自動で並ぶ。操作音や季節のパーティクルまで再現した、遊び心全開のテーマです。</p>
+        <h3><small>WEATHER & SAFETY</small>🌤 天気・防災もついてくる（無料）</h3>
+        <p>気象庁のデータで、今の天気から週間予報までひと目で。雨雲レーダーは再生・コマ送り・ズームつきで「あと何分で降るか」まで教えてくれます。</p>
         <ul class="ticks">
-          <li>ゲームランチャーとしてそのまま使える</li>
-          <li>無料版は5日間の体験つき（Proで無制限）</li>
+          <li>24時間の降水確率グラフ＋週間予報（気温は気象庁準拠）</li>
+          <li>雨雲レーダー: 直近の実況＋60分先までの予報をアニメ再生・拡大縮小OK</li>
+          <li>警報・注意報を色分け（注意報=黄 / 警報=赤 / 特別警報=紫）・最近の地震も</li>
+          <li>地域は 都道府県 → 市区町村 を選ぶだけ（入力不要）</li>
+          <li>時計の背景でその時の空をアニメ表示。夜は星と月と季節の星座</li>
         </ul>
       </div>
     </div>
 
-    <div class="bigrow rev">
-      <div class="pic"><img class="nofx" src="img/meme.png" alt="デスクトップのお供（猫）" width="180"></div>
+    <div class="bigrow">
+      <div class="pic"><img class="nofx" src="img/meme.png" alt="デスクトップのお供（ねこスキン）" width="170"></div>
       <div>
-        <h3><small>DESKTOP BUDDY</small>🐱 デスクトップに、相棒がすみつく</h3>
-        <p>画面の中を小さな猫がのんびり歩きます。ちゃんと役に立つのがポイント。</p>
+        <h3><small>DESKTOP BUDDY</small>🐬 デスクトップに、相棒がすみつく</h3>
+        <p>画面の中を小さな相棒がのんびり歩きます。標準はイルカの「フィン」、きせかえで猫の「めめ」にも（写真は猫）。ちゃんと役に立つのがポイント。</p>
         <ul class="ticks">
           <li>ファイルをドラッグして渡すとゴミ箱へ運んでくれる</li>
           <li>雨雲が近づくと「傘の準備を！」と教えてくれる</li>
@@ -272,41 +299,16 @@
     </div>
 
     <h2 style="font-size:1.3rem;margin-top:10px">まだまだあります</h2>
-    <p class="sub" style="margin-bottom:22px">ぜんぶ標準搭載。設定はバーの右クリックから</p>
+    <p class="sub" style="margin-bottom:22px">迷ったらバーを右クリック。機能がメニューにまとまっています</p>
     <div class="grid">
       <div class="feat"><div class="ic">🔎</div><h3>横断検索・電卓</h3><p>1つの検索欄でアプリ・URL・Webを横断。式を打てば電卓に。</p></div>
       <div class="feat"><div class="ic">📋</div><h3>クリップボード履歴</h3><p>コピーの履歴がバーに残る。クリックで再コピー。</p></div>
       <div class="feat"><div class="ic">📷</div><h3>ウィンドウのスクショ</h3><p>起動中の行の📷で、その窓だけを画像保存。</p></div>
-      <div class="feat"><div class="ic">👁</div><h3>覗き窓・PiP監視</h3><p>他の窓の中身をミニ表示して見張れる（PiPはPro）。</p></div>
+      <div class="feat"><div class="ic">👁</div><h3>覗き窓・PiP監視</h3><p>行にカーソルで中身をプレビュー（無料）。ミニ表示で見張るPiP監視はPro。</p></div>
       <div class="feat"><div class="ic">🔑</div><h3>シークレットメモ<span class="pro-chip">Pro</span></h3><p>暗号化メモ。クリックでコピー→30秒後に自動消去。</p></div>
-      <div class="feat"><div class="ic">🚀</div><h3>スタートメニュー</h3><p>懐かしのスタートメニューを再現。項目の編集・検索起動も。</p></div>
+      <div class="feat"><div class="ic">🚀</div><h3>スタートメニュー</h3><p>クラシック（青）では懐かしのスタートメニューを再現。項目の編集や検索起動も。</p></div>
       <div class="feat"><div class="ic">🪟</div><h3>窓投げ・重力モード</h3><p>ウィンドウを投げて整列、アイコンが落ちる重力モードも。</p></div>
       <div class="feat"><div class="ic">🌈</div><h3>自動アップデート</h3><p>新バージョンが出ると目玉が虹色にお知らせ。ワンクリック更新。</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="themes">
-  <div class="wrap">
-    <h2>着せ替えギャラリー</h2>
-    <p class="sub">切替は 設定 → テーマ からワンクリック。再起動不要</p>
-    <div class="gal">
-      <figure>
-        <img src="img/theme_minimal.png" alt="ミニマルテーマ" loading="lazy">
-        <figcaption>ミニマル<small>白基調。どんなデスクトップにも馴染む</small></figcaption>
-      </figure>
-      <figure>
-        <img src="img/hero_xp.png" alt="クラシック（青）テーマ" loading="lazy">
-        <figcaption>クラシック（青）<small>懐かしさ全開。スタートメニュー付き</small></figcaption>
-      </figure>
-      <figure>
-        <img src="img/wall_mode.png" alt="壁紙モード" loading="lazy">
-        <figcaption>壁紙モード<span class="pro-chip">Pro</span><small>好きな画像をバー全面に</small></figcaption>
-      </figure>
-      <figure>
-        <img src="img/theme_glass.png" alt="ガラス風テーマ（開発中）" loading="lazy" style="opacity:.85">
-        <figcaption>ガラス風<span class="soon-chip">今後公開予定</span><small>涼しげな半透明ブルー。開発中のプレビュー</small></figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -324,12 +326,12 @@
       <div class="step">
         <div class="num">2</div>
         <h3>よく使うものを登録</h3>
-        <p>バーを右クリック →「📌ショートカットを追加」。アプリ名を打つと候補が出て、<b>名前もアイコンも自動</b>で入ります。</p>
+        <p>バーを右クリック →「📌ショートカットを追加」。アプリ名を打つと候補が出て、<b>名前もアイコンも自動</b>で入ります。URLやフォルダも登録OK。</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h3>タスクバー代わりに</h3>
-        <p><b>⚙設定 → 配置 → 画面端に固定</b>、Windowsのタスクバーを自動的に隠す設定にすれば、画面が広々。おすすめの使い方です。</p>
+        <h3>着せ替えて、タスクバー代わりに</h3>
+        <p><b>⚙設定 → テーマ</b> で好みの見た目に。<b>配置 → 画面端に固定</b>＋Windowsのタスクバーを自動的に隠す設定にすれば、画面が広々。</p>
       </div>
     </div>
     <p class="guide-note">迷ったら、まずバーを<b>右クリック</b>。使える機能がメニューにまとまっています。</p>
@@ -344,7 +346,8 @@
       <tr><th>機能</th><th>無料</th><th>Pro</th></tr>
       <tr><td>ランチャー・検索・電卓・クリップボード履歴・スクショ</td><td class="y">✓</td><td class="y">✓</td></tr>
       <tr><td>天気・防災（週間予報・雨雲レーダー・警報・地震）・時計の空アニメ</td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td>デスクトップのお供（猫）・覗き窓・重力モード ほか</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>着せ替え（ワンクリック切替・再起動不要）</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>デスクトップのお供・覗き窓・重力モード ほか</td><td class="y">✓</td><td class="y">✓</td></tr>
       <tr><td>テーマ: ミニマル / クラシック（青）</td><td class="y">✓</td><td class="y">✓</td></tr>
       <tr><td>テーマ: レトロ携帯機風</td><td>5日間の体験版</td><td class="y">無制限</td></tr>
       <tr><td>PiP監視（実映像・クリック転送・見張り）</td><td class="n">—</td><td class="y">✓</td></tr>
