@@ -56,6 +56,13 @@
   @media(max-width:820px){.hero{grid-template-columns:1fr}}
   .badge{display:inline-block;background:var(--card);border:1px solid var(--line);
          color:var(--dim);font-size:.82rem;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  .osbadge{display:inline-block;background:rgba(74,163,255,.14);border:1.5px solid var(--accent);
+           color:var(--accent);font-size:.95rem;font-weight:700;padding:7px 16px;
+           border-radius:999px;margin:0 0 22px 8px}
+  .oswarn{color:var(--dim);font-size:.9rem;margin-top:10px;
+          border:1px solid var(--line);border-radius:10px;padding:8px 14px;
+          display:inline-block;background:var(--card)}
+  .oswarn b{color:var(--accent)}
   h1{font-size:2.7rem;letter-spacing:.01em;line-height:1.22}
   h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
   .tag{color:var(--dim);font-size:1.12rem;margin-top:16px;max-width:560px}
@@ -190,7 +197,7 @@
   <div class="glow"></div>
   <div class="wrap hero">
     <div>
-      <span class="badge">Windows 10 / 11 ・ exeを開くだけ ・ 無料ではじめられる</span>
+      <span class="badge">Windows 10 / 11 ・ exeを開くだけ ・ 無料ではじめられる</span><span class="osbadge">🪟 Windows専用（Mac非対応）</span>
       <h1>デスクトップに寄り添う<br><span class="g">変幻自在の着せ替えランチャー</span></h1>
       <p class="tag">アプリ・URL・ゲーム・仕事道具を1本のバーに。ミニマルからレトロ携帯ゲーム機風まで<b>ワンクリックで着せ替え</b>。天気・雨雲レーダーやスクショ、デスクトップの相棒までついてくる。</p>
       <div class="cta">
@@ -369,6 +376,7 @@
       <p class="note">PC買い替えも同じキーで再認証OK ・ 30日以内なら返金対応</p>
       <div class="cta" style="justify-content:center"><a class="btn btn-pro" href="https://buy.stripe.com/eVqbIT6247Xn3i59s87Vm00">購入する</a></div>
       <p class="pay">購入後、登録メールにプロダクトキーが自動で届きます</p>
+      <p class="oswarn">⚠ 本アプリは<b>Windows専用</b>です（Mac・スマホでは動作しません）。ご購入前にお使いのPCがWindows 10 / 11であることをご確認ください。</p>
     </div>
   </div>
 </section>
@@ -377,6 +385,7 @@
   <div class="wrap">
     <h2>よくある質問</h2>
     <p class="sub"></p>
+    <details><summary>Macやスマホで使えますか？</summary><p>いいえ、本アプリは<b>Windows 10 / 11専用</b>です。Mac・Linux・スマートフォン（iPhone / Android）では動作しません。ご購入前にお使いのPCがWindowsであることをご確認ください。</p></details>
     <details><summary>本当に無料で使えますか？</summary><p>はい。標準機能はすべて無料で、期限もありません。天気・雨雲レーダーも無料です。レトロ携帯機風テーマのみ、無料版では5日間の体験期間があります（ミニマル・クラシックはずっと無料）。Pro版は壁紙モードなど一部の追加機能を解放するものです。</p></details>
     <details><summary>インストールは必要ですか？</summary><p>不要です。exeをダウンロードしてダブルクリックするだけ。必要な実行ライブラリは同梱済みです。</p></details>
     <details><summary>SmartScreenの警告が出ます</summary><p>個人開発のため署名が無いだけで動作に問題はありません。「詳細情報」→「実行」で起動できます。</p></details>
