@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>機能一覧 — ショートカットバー</title>
+<meta name="description" content="ショートカットバーの全機能を1ページで。ランチャー・フォルダ登録・ウィンドウ操作・PiP監視・天気と雨雲レーダー・単位換算・シークレットメモ・着せ替えまで、無料/Proの区別つきで解説します。">
+<meta property="og:title" content="機能一覧 — ショートカットバー">
+<meta property="og:description" content="全機能を1ページで。無料でできること、Proでできることがひと目で分かります。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://futurex-jp.github.io/shortcut-bar/features.html">
+<meta property="og:image" content="https://futurex-jp.github.io/shortcut-bar/img/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#0c1018; --bg2:#0f1524; --card:#161f33; --card2:#1a2540; --line:#243149;
+    --ink:#eaf1fb; --dim:#9fb2cc; --accent:#4aa3ff; --accent2:#2ec6a6;
+    --grad:linear-gradient(135deg,#4aa3ff,#2ec6a6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI","Meiryo",system-ui,sans-serif;background:var(--bg);
+       color:var(--ink);line-height:1.75;overflow-x:hidden}
+  a{color:inherit}
+  img{max-width:100%;height:auto}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;padding:15px 30px;border-radius:13px;font-weight:700;
+       text-decoration:none;font-size:1.05rem;transition:transform .12s;border:none}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-free{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .btn-pro{background:var(--grad);color:#04121f;box-shadow:0 10px 30px rgba(74,163,255,.35)}
+  .note{color:var(--dim);font-size:.9rem;margin-top:8px}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(12,16,24,.82);
+      backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .navin{display:flex;align-items:center;gap:22px;max-width:1020px;margin:0 auto;
+         padding:12px 22px;font-size:.92rem}
+  .navin .logo{font-weight:800;font-size:1rem;margin-right:auto;text-decoration:none}
+  .navin .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .navin a{text-decoration:none;color:var(--dim)}
+  .navin a:hover{color:var(--ink)}
+  .navin a.here{color:var(--ink);font-weight:700}
+  .navdl{background:var(--grad);color:#04121f!important;font-weight:700;
+         padding:7px 16px;border-radius:9px}
+  @media(max-width:640px){
+    .navin{flex-wrap:wrap;gap:10px 16px;padding:10px 16px}
+    .navin .logo{margin-right:auto;width:100%;margin-bottom:2px}
+  }
+
+  header.top{padding:56px 0 34px;position:relative}
+  header.top:before{content:"";position:absolute;inset:0;
+     background:radial-gradient(620px 300px at 20% 20%,rgba(74,163,255,.16),transparent 70%),
+     radial-gradient(560px 300px at 85% 30%,rgba(46,198,166,.13),transparent 70%);
+     pointer-events:none}
+  header.top h1{font-size:2.3rem;line-height:1.25;position:relative}
+  header.top h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header.top p.lead{color:var(--dim);font-size:1.06rem;margin-top:14px;max-width:660px;position:relative}
+  .badge{display:inline-block;background:var(--card);border:1px solid var(--line);
+         color:var(--dim);font-size:.82rem;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+
+  /* 目次 */
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:16px;
+       padding:20px 24px;margin:30px 0 0;position:relative}
+  .toc h2{font-size:.95rem;text-align:left;color:var(--dim);letter-spacing:.06em;margin-bottom:12px}
+  .toc ol{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px 20px}
+  @media(max-width:820px){.toc ol{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.toc ol{grid-template-columns:1fr}}
+  .toc a{text-decoration:none;color:var(--dim);font-size:.95rem}
+  .toc a:hover{color:var(--accent)}
+
+  section{padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:64px}
+  h2{font-size:1.65rem;margin-bottom:8px}
+  .sub{color:var(--dim);margin-bottom:28px}
+
+  /* 機能カード */
+  .fl{display:grid;gap:14px}
+  .f{background:var(--card);border:1px solid var(--line);border-radius:14px;
+     padding:20px 22px;transition:border-color .15s}
+  .f:hover{border-color:var(--accent)}
+  .f h3{font-size:1.08rem;margin-bottom:7px;display:flex;align-items:center;
+        gap:9px;flex-wrap:wrap}
+  .f h3 .ic{font-size:1.25rem}
+  .f p{color:var(--dim);font-size:.95rem}
+  .f ul{list-style:none;margin-top:10px}
+  .f ul li{color:var(--dim);font-size:.93rem;padding:3px 0 3px 24px;position:relative}
+  .f ul li:before{content:"✓";position:absolute;left:2px;color:var(--accent2);font-weight:800}
+  .f .how{margin-top:12px;background:var(--bg2);border:1px solid var(--line);
+          border-radius:10px;padding:10px 14px;color:var(--dim);font-size:.88rem}
+  .f .how b{color:var(--ink)}
+
+  .chip{display:inline-block;font-size:.7rem;font-weight:800;border-radius:999px;
+        padding:1px 10px;vertical-align:2px;white-space:nowrap}
+  .c-free{background:var(--card2);color:var(--accent2);border:1px solid var(--line)}
+  .c-pro{background:var(--grad);color:#04121f}
+  .c-new{background:#3a2a12;color:#ffb84d;border:1px solid #6b4a17}
+
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+        border-radius:16px;overflow:hidden}
+  th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem}
+  th{background:#111a2c}
+  td.y{color:var(--accent2);font-weight:700}
+  td.n{color:#5b6b83}
+
+  .kbd{display:inline-block;background:#0a0f1a;border:1px solid var(--line);
+       border-bottom-width:2px;border-radius:6px;padding:1px 8px;font-size:.85rem;
+       font-family:"Consolas",monospace;color:var(--ink)}
+
+  .cta-end{text-align:center;padding:56px 0 20px}
+  .cta-end .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+
+  footer{text-align:center;color:var(--dim);font-size:.82rem;padding:40px 20px 70px;border-top:1px solid var(--line)}
+  footer a{color:var(--dim)}
+  @media(max-width:560px){header.top h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navin">
+    <a class="logo" href="./"><span>ショートカットバー</span></a>
+    <a href="./#themes">着せ替え</a>
+    <a class="here" href="features.html">機能一覧</a>
+    <a href="./#guide">使い方</a>
+    <a href="./#pro">価格</a>
+    <a href="./#faq">FAQ</a>
+    <a class="navdl" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料DL</a>
+  </div>
+</nav>
+
+<header class="top">
+  <div class="wrap">
+    <span class="badge">機能一覧 — v1.7.54 時点</span>
+    <h1>できることを、<span class="g">ぜんぶ</span>ここに。</h1>
+    <p class="lead">
+      ショートカットバーは「アプリを並べるだけのランチャー」ではありません。
+      ウィンドウ操作・天気・単位換算・暗号化メモまで、
+      デスクトップ作業のこまごました手数を1本のバーに寄せています。
+      このページでは全機能を、<b>無料でできること</b>と<b>Proでできること</b>を分けて紹介します。
+    </p>
+
+    <div class="toc">
+      <h2>目次</h2>
+      <ol>
+        <li><a href="#launcher">1. ランチャーの基本</a></li>
+        <li><a href="#folder">2. フォルダのショートカット</a></li>
+        <li><a href="#search">3. 検索・電卓・単位換算</a></li>
+        <li><a href="#windows">4. ウィンドウの操作</a></li>
+        <li><a href="#peek">5. 覗き窓とPiP監視</a></li>
+        <li><a href="#weather">6. 天気・防災</a></li>
+        <li><a href="#clock">7. 時計と背景アニメ</a></li>
+        <li><a href="#tools">8. 小さな便利道具</a></li>
+        <li><a href="#secrets">9. シークレットメモ</a></li>
+        <li><a href="#theme">10. 着せ替えと相棒</a></li>
+        <li><a href="#start">11. スタートメニュー</a></li>
+        <li><a href="#settings">12. 設定・更新・プライバシー</a></li>
+        <li><a href="#compare">無料 / Pro 比較表</a></li>
+      </ol>
+    </div>
+  </div>
+</header>
+
+<!-- 1 ───────────────────────────────────────────── -->
+<section id="launcher">
+  <div class="wrap">
+    <h2>1. ランチャーの基本</h2>
+    <p class="sub">画面の端に常駐する細いバー。よく使うものを並べて、1クリックで開きます。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">⚡</span>ショートカットを並べる<span class="chip c-free">無料</span></h3>
+        <p>アプリ・ファイル・フォルダ・URL・Windowsの設定画面まで、なんでも1枚のタイルにできます。アイコンは実物から自動で拾うので、見た目のちぐはぐがありません。</p>
+        <ul>
+          <li>ドラッグ＆ドロップで並び替え</li>
+          <li>アイコンは実アイコン／絵文字／好きな画像から選択</li>
+          <li>名前は自由に変更可・長い名前は自動で省略</li>
+          <li>グループ分け（フォルダのようにまとめる）に対応</li>
+        </ul>
+        <div class="how"><b>追加のしかた</b>：バーを右クリック →「＋ショートカットを追加」。または、ファイルやフォルダをバーに<b>ドラッグ＆ドロップ</b>するだけ。</div>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🧩</span>作業セットの切り替え<span class="chip c-free">無料</span></h3>
+        <p>「今のセットを保存」で、並べたショートカット一式に名前を付けて保存できます。仕事用・ゲーム用・在宅用を、ワンクリックで入れ替え。</p>
+        <ul>
+          <li>前面のアプリに応じてセットを自動で切り替えることも可能</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">📌</span>タスクバーの代わりに使う<span class="chip c-free">無料</span></h3>
+        <p>画面の端に固定（AppBar）すると、他のウィンドウを最大化してもバーの上に重なりません。Windows標準のタスクバーを隠して、こちらを主役にできます。</p>
+        <ul>
+          <li>上下左右どこにでも固定可・自動で隠す設定も</li>
+          <li>半透明度の調整、マウスが離れたら薄くなる設定も</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 2 ───────────────────────────────────────────── -->
+<section id="folder">
+  <div class="wrap">
+    <h2>2. フォルダのショートカット</h2>
+    <p class="sub">よく開くフォルダこそ、1クリックで。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">📁</span>フォルダを選ぶだけで登録<span class="chip c-free">無料</span><span class="chip c-new">v1.7.53</span></h3>
+        <p>追加画面の「📁 フォルダを選ぶ…」から選ぶだけ。名前・場所・アイコンが自動で入ります。フォルダの見た目を変えている場合は、その絵柄のまま登録されます。</p>
+        <ul>
+          <li>検索欄に「ダウン」と打てばダウンロードフォルダが候補に出る</li>
+          <li>「C:\」と打てばドライブ直下のフォルダが並ぶ</li>
+          <li>右クリック →「📌 クイック追加」→「フォルダ…」が最短</li>
+          <li>隠しフォルダやシステムフォルダは候補に混ざりません</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🗂</span>開いているフォルダをそのままピン留め<span class="chip c-free">無料</span><span class="chip c-new">v1.7.54</span></h3>
+        <p>エクスプローラーで開いているフォルダを、バーの「起動中」一覧から右クリック →「📌 ピン留め」でそのまま登録できます。<b>今まさに見ている場所</b>が登録されるので、パスを探す必要がありません。</p>
+        <ul>
+          <li>タブを複数開いているときは、どのフォルダを登録するか選べます</li>
+          <li>同じ名前のフォルダが並んでも、親の場所を表示するので迷いません</li>
+          <li>「ホーム」「PC」をピン留めすると、その名前のボタンになります</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3 ───────────────────────────────────────────── -->
+<section id="search">
+  <div class="wrap">
+    <h2>3. 検索・電卓・単位換算</h2>
+    <p class="sub">バーの上の1本の入力欄が、いろいろな顔になります。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">🔎</span>横断検索<span class="chip c-free">無料</span></h3>
+        <p>登録したショートカット・インストール済みアプリ・フォルダ・Web検索を、1つの欄からまとめて呼び出せます。</p>
+        <ul>
+          <li>名前の一部を打つと候補が下に出る → 矢印キーで選んで <span class="kbd">Enter</span></li>
+          <li>「example.com」はそのまま開く／それ以外の語はWeb検索</li>
+          <li>「天気」「換算」などツール名を打つと、その画面が開く</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🧮</span>電卓<span class="chip c-free">無料</span></h3>
+        <p>検索欄に <span class="kbd">3980*1.1</span> と打つと <b>= 4378</b>。<span class="kbd">Enter</span> で結果をコピーします。電卓アプリを開く手間がありません。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">📐</span>単位換算パネル<span class="chip c-free">無料</span></h3>
+        <p>設備・建築の現場でよく使う単位をまとめました。検索欄に直接打っても、パネルを開いても使えます。</p>
+        <ul>
+          <li><b>呼び径 B ⇔ A</b> の早見表（1/2B ⇔ 15A など）。セルをクリックでコピー</li>
+          <li>圧力（kPa / MPa / mmAq / kgf/cm²）</li>
+          <li>流量・面積（㎡ ⇔ 畳 ⇔ 坪）・熱量・長さ・重さ</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">⌨️</span>どこからでも呼び出し<span class="chip c-free">無料</span></h3>
+        <p><span class="kbd">Ctrl</span> + <span class="kbd">Alt</span> + <span class="kbd">Space</span> で、他のアプリを操作中でもバーを前面に呼び出して、そのまま検索欄に打てます。</p>
+        <ul>
+          <li>ホットキーは設定で変更・無効化できます</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4 ───────────────────────────────────────────── -->
+<section id="windows">
+  <div class="wrap">
+    <h2>4. ウィンドウの操作</h2>
+    <p class="sub">開いている窓の一覧が、常にバーの中にあります。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">🪟</span>起動中アプリ一覧<span class="chip c-free">無料</span></h3>
+        <p>今開いているウィンドウが縦に並びます。クリックで前面へ、もう一度で最小化。同じアプリの複数の窓はまとまって表示され、展開もできます。</p>
+        <ul>
+          <li>右クリックで 前面 / 最大化 / 最小化 / 元のサイズ / 閉じる</li>
+          <li>各行の 📷 でその窓だけをスクリーンショット保存</li>
+          <li>右クリック →「📌 ピン留め」でショートカットに追加</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🥏</span>窓投げ・重力モード<span class="chip c-free">無料</span></h3>
+        <p>一覧の行をつかんで放り投げると、投げた方向にウィンドウがスナップします。左半分・右半分・最大化を、マウスひと振りで。</p>
+        <ul>
+          <li>重力モード：アイコンが物理演算で落ちて跳ねる、ちょっとした遊び</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">▦</span>全ウィンドウ一覧<span class="chip c-free">無料</span></h3>
+        <p>開いている窓を、ライブサムネイルのタイルで一覧表示。クリックで切り替えます。Alt+Tab より探しやすい場面があります。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">📷</span>スクリーンショット<span class="chip c-free">無料</span></h3>
+        <p>ウィンドウ単位で保存します。保存先は Windows 標準の <b>ピクチャ ＞ Screenshots</b> なので、他のアプリからもすぐ見つかります。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 5 ───────────────────────────────────────────── -->
+<section id="peek">
+  <div class="wrap">
+    <h2>5. 覗き窓と PiP 監視</h2>
+    <p class="sub">「切り替えずに、ちらっと見たい」を叶える機能です。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">👁</span>覗き窓（ライブプレビュー）<span class="chip c-free">無料</span></h3>
+        <p>起動中の行にマウスを乗せるだけで、その窓の<b>今の中身</b>が小さく浮かびます。静止画ではなくライブ映像です。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">📺</span>PiP監視（ミニ表示で見張る）<span class="chip c-pro">Pro</span></h3>
+        <p>任意のウィンドウを、常に手前の小窓でライブ表示します。ビルドの進捗・監視カメラ・チャット・長い処理の進み具合を、作業しながら見張れます。</p>
+        <ul>
+          <li>小窓の中を<b>そのまま操作できます</b>（クリック・スクロール）</li>
+          <li>小窓から<b>文字も打てます</b>。打っている間も相手の窓は前に出てきません</li>
+          <li>文字が打てる場所を押すと、黄色い枠と「ここに打てます」が出ます</li>
+          <li>大きさは自由・常に最前面・画面からはみ出さない位置に開きます</li>
+        </ul>
+        <div class="how"><b>使いかた</b>：起動中の行を右クリック →「📺 ミニ表示で監視（PiP）」。<br>
+        ※一部のアプリ（Brave など）は、アプリ側の設定で外部からの操作が切られています。その場合は理由と直し方を画面に表示します。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6 ───────────────────────────────────────────── -->
+<section id="weather">
+  <div class="wrap">
+    <h2>6. 天気・防災</h2>
+    <p class="sub">数値の出どころは気象庁。ブラウザを開かずに、傘の判断ができます。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">🌤</span>今の天気と予報<span class="chip c-free">無料</span></h3>
+        <ul>
+          <li>気温・湿度・風・体感（現在値はアメダスの実測）</li>
+          <li>今後24時間の<b>降水確率グラフ</b></li>
+          <li>時間ごとの<b>気温グラフ</b>（最高＝赤／最低＝青）</li>
+          <li>時間ごとの<b>風向き（矢印）と風速</b></li>
+          <li>週間予報（気象庁の公式発表に準拠）</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🌧</span>雨雲レーダー<span class="chip c-free">無料</span></h3>
+        <p>直近の実況に加えて<b>60分先までの予報</b>をアニメーション再生。コマ送りと拡大縮小に対応しているので、「あと何分で降るか」が読めます。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">⚠️</span>警報・注意報・地震<span class="chip c-free">無料</span></h3>
+        <ul>
+          <li>注意報＝黄／警報＝赤／特別警報＝紫 で色分け表示</li>
+          <li>最近の地震情報もあわせて表示</li>
+          <li>雨雲が近づくと、相棒が「傘の準備を！」と知らせます</li>
+        </ul>
+        <div class="how"><b>地域の設定</b>：現在地の自動取得のほか、<b>都道府県 → 市区町村</b>を選ぶだけ。地名を手で入力する必要はありません。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 7 ───────────────────────────────────────────── -->
+<section id="clock">
+  <div class="wrap">
+    <h2>7. 時計と背景アニメ</h2>
+    <p class="sub">ただの時計にしないための、小さなこだわり。</p>
+    <div class="fl">
+      <div class="f">
+        <h3><span class="ic">🕒</span>その日の空が背景になる時計<span class="chip c-free">無料</span></h3>
+        <p>時計の背景に、その時間・その天気の空をアニメーションで描きます。朝焼け、日中の雲、夕暮れ、そして夜は星と月。</p>
+        <ul>
+          <li>夜は<b>季節ごとの星座</b>が浮かびます</li>
+          <li>雨・雪の日はちゃんと降ります</li>
+          <li>風が強い日は、流れる線が増えて速くなります</li>
+          <li>アナログ時計／デジタル時計の切り替え可</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 ───────────────────────────────────────────── -->
+<section id="tools">
+  <div class="wrap">
+    <h2>8. 小さな便利道具</h2>
+    <p class="sub">「これだけのために別アプリを入れたくない」ものを詰めました。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">📋</span>クリップボード履歴<span class="chip c-free">無料</span></h3>
+        <p>コピーした文字がバーに残ります。クリックで再コピー。よく使う文はピン留めして常に先頭へ。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🗒</span>付箋マグネット<span class="chip c-free">無料</span></h3>
+        <p>画面に貼りっぱなしにできる小さなメモ。バーの端に磁石のようにくっつきます。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">📊</span>今日の作業ログ<span class="chip c-free">無料</span></h3>
+        <p>どのアプリをどれくらい使ったかを、その日ぶんだけ記録して表示します。<b>記録はあなたのパソコンの中だけ</b>で、どこにも送信しません。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🕘</span>最近のウィンドウ<span class="chip c-free">無料</span></h3>
+        <p>さっきまで開いていた窓に戻れます。閉じてしまったフォルダを探し直す手間が減ります。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 9 ───────────────────────────────────────────── -->
+<section id="secrets">
+  <div class="wrap">
+    <h2>9. シークレットメモ</h2>
+    <p class="sub">見せたくないものを、見せずに使う。</p>
+    <div class="fl">
+      <div class="f">
+        <h3><span class="ic">🔑</span>暗号化メモ<span class="chip c-pro">Pro</span></h3>
+        <p>パスワードや番号など、人に見られたくない短いメモを暗号化して保存します。中身は伏せ字で表示され、クリックするとクリップボードにコピーされます。</p>
+        <ul>
+          <li>コピーした内容は<b>30秒後に自動で消去</b>されます</li>
+          <li>保存先はあなたのパソコンの中だけ。クラウドには一切送りません</li>
+          <li>タスクバーやAlt+Tabにも中身が出ない作りです</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ──────────────────────────────────────────── -->
+<section id="theme">
+  <div class="wrap">
+    <h2>10. 着せ替えと相棒</h2>
+    <p class="sub">道具は、気に入った見た目のほうが長く使えます。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">🎨</span>3つのテーマ<span class="chip c-free">無料</span></h3>
+        <ul>
+          <li><b>ミニマル</b>：余白のある今どきの見た目</li>
+          <li><b>クラシック（青）</b>：懐かしのあの雰囲気。スタートメニューまで再現</li>
+          <li><b>レトロ携帯機風</b>：十字キーで操作するホーム画面</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🖼</span>壁紙モード<span class="chip c-pro">Pro</span></h3>
+        <p>好きな画像を1枚まるごとバーの背景に。スマホのホーム画面のように、アイコンも時計も写真の上に静かに並びます。</p>
+        <ul>
+          <li>表示範囲はプレビューをドラッグして選ぶだけ</li>
+          <li>文字色・書体もカスタム可。背景の明るさに応じて自動で読みやすく調整</li>
+          <li>壁紙の上でもクリック・ドラッグ・スクショなど全機能そのまま</li>
+        </ul>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🐬</span>デスクトップの相棒<span class="chip c-free">無料</span></h3>
+        <p>画面の中を小さな相棒がのんびり歩きます。標準はイルカの「フィン」、きせかえで作者の愛猫「めめ」にも。</p>
+        <ul>
+          <li>ファイルをドラッグして渡すとゴミ箱へ運んでくれる</li>
+          <li>雨雲が近づくと傘の準備を教えてくれる</li>
+          <li>ダブルクリックでなでなで・放置すると寝る・毎時の時報</li>
+          <li>リマインダーとポモドーロタイマー</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 11 ──────────────────────────────────────────── -->
+<section id="start">
+  <div class="wrap">
+    <h2>11. スタートメニュー</h2>
+    <p class="sub">クラシックテーマでは、あの青いスタートメニューが戻ってきます。</p>
+    <div class="fl">
+      <div class="f">
+        <h3><span class="ic">🚀</span>編集できるスタートメニュー<span class="chip c-free">無料</span></h3>
+        <p>左にピン留めしたショートカット、右にシステム項目とツール。並び順も表示・非表示も自分で決められます。</p>
+        <ul>
+          <li>システム欄：マイドキュメント／PC／コントロールパネル／Windows設定／Bluetooth／ネットワーク接続／プリンタとスキャナー／ファイル名を指定して実行／タスクマネージャー／電卓 など16項目から選択</li>
+          <li>ツール欄：天気／単位換算／全ウィンドウ一覧／重力モード／アシスタント／今日の作業ログ／今のセットを保存／シークレットメモ／ショートカット追加／バーの設定／使い方ツアー</li>
+          <li>「すべてのプログラム」は実際にインストール済みの項目をカスケード表示</li>
+          <li><span class="chip c-new">v1.7.54</span> 左のピン留めは、ウィンドウが縦に伸びない範囲で<b>できるだけ全部表示</b>します（以前は10件まででした）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ──────────────────────────────────────────── -->
+<section id="settings">
+  <div class="wrap">
+    <h2>12. 設定・更新・プライバシー</h2>
+    <p class="sub">安心して常駐させておけることを大事にしています。</p>
+    <div class="fl">
+
+      <div class="f">
+        <h3><span class="ic">⚙</span>設定<span class="chip c-free">無料</span></h3>
+        <p>表示する項目、テーマ、各機能のON/OFF、透明度、固定位置などをまとめて変更できます。項目は分類されているので、目当ての設定にすぐ辿り着けます。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🌈</span>自動アップデート<span class="chip c-free">無料</span></h3>
+        <p>新しいバージョンが出ると、ヘッダーの目玉が虹色になってお知らせします。クリックすれば更新は自動。失敗しても<b>前のバージョンへ自動で戻ります</b>。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">📦</span>インストール不要<span class="chip c-free">無料</span></h3>
+        <p>exeファイル1つで動きます。レジストリを汚しません。設定はあなたのユーザーフォルダの中の1ファイルだけなので、いらなくなったら消すだけで完全に消えます。</p>
+      </div>
+
+      <div class="f">
+        <h3><span class="ic">🔒</span>プライバシー<span class="chip c-free">無料</span></h3>
+        <p>使用状況の共有（テレメトリ）は<b>同意した場合のみ</b>送信されます。送るのは完全に匿名の利用状況だけです。</p>
+        <ul>
+          <li>ファイル名・フォルダの場所・パソコン名・ユーザー名は送りません</li>
+          <li>クリップボードの中身・メモの中身・ウィンドウのタイトルも送りません</li>
+          <li>作業ログはあなたのパソコンの中だけに保存されます</li>
+          <li>同意はいつでも設定から取り消せます</li>
+        </ul>
+        <div class="how">詳しくは <a href="privacy.html" style="color:var(--accent)">プライバシーポリシー</a> をご覧ください。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 比較表 ─────────────────────────────────────── -->
+<section id="compare">
+  <div class="wrap">
+    <h2>無料 / Pro 比較表</h2>
+    <p class="sub">無料のままでもずっと使えます。Proは買い切りです。</p>
+    <table>
+      <tr><th>機能</th><th>無料</th><th>Pro</th></tr>
+      <tr><td>ショートカット（アプリ・フォルダ・URL）</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>横断検索・電卓・単位換算</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>起動中アプリ一覧・窓投げ・スクショ</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>覗き窓（ライブプレビュー）</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>天気・雨雲レーダー・警報</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>クリップボード履歴・付箋・作業ログ</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>着せ替え3テーマ・相棒</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>スタートメニュー</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td><b>PiP監視</b>（小窓で見張る・操作する）</td><td class="n">—</td><td class="y">✓</td></tr>
+      <tr><td><b>壁紙モード</b></td><td class="n">—</td><td class="y">✓</td></tr>
+      <tr><td><b>シークレットメモ</b></td><td class="n">—</td><td class="y">✓</td></tr>
+    </table>
+    <p class="note" style="text-align:center;margin-top:16px">
+      初回ダウンロードから<b>14日間は、Pro機能をすべてお試し</b>いただけます。
+    </p>
+  </div>
+</section>
+
+<div class="cta-end">
+  <div class="wrap">
+    <h2>まずは無料で、置いてみてください</h2>
+    <p class="sub">インストール不要。exeを開くだけで、すぐ画面の端に住みつきます。</p>
+    <div class="btns">
+      <a class="btn btn-pro" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
+      <a class="btn btn-free" href="./#pro">Pro版を見る</a>
+    </div>
+    <p class="note">Windows 10 / 11 専用（macOS には対応していません）</p>
+  </div>
+</div>
+
+<footer>
+  <p>© FutureX — ショートカットバー</p>
+  <p style="margin-top:8px">
+    <a href="./">トップ</a> ・
+    <a href="privacy.html">プライバシーポリシー</a> ・
+    <a href="terms.html">利用規約</a> ・
+    <a href="tokushoho.html">特定商取引法に基づく表記</a>
+  </p>
+</footer>
+
+</body>
+</html>
