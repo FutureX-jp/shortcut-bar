@@ -176,6 +176,9 @@
 
   footer{text-align:center;color:var(--dim);font-size:.82rem;padding:44px 20px 70px;border-top:1px solid var(--line)}
   .pay{color:var(--dim);font-size:.85rem;margin-top:10px}
+.coupon{margin-top:14px;background:rgba(46,198,166,.10);border:1px solid var(--accent2);
+        border-radius:12px;padding:10px 16px;font-size:.95rem;line-height:1.6}
+.coupon small{color:var(--dim)} .coupon a{color:var(--accent2)}
   @media(max-width:560px){h1{font-size:2.05rem}.amt{font-size:2.4rem}}
 </style>
 </head>
@@ -206,7 +209,7 @@
         <a class="btn btn-pro" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
         <a class="btn btn-free" href="#pro">Pro版 ¥980（買い切り）</a>
       </div>
-      <p class="note">お支払いはカード / Apple Pay対応 ・ 自動更新つき</p>
+      <p class="note">お支払いはカード / Apple Pay対応 ・ 自動更新つき ・ 🎟 <a href="#pro" style="color:inherit">アプリ内のトラックシミュレーターで最大40%OFF</a></p>
       <p class="real">このページの画像は、すべて実際の動作画面です</p>
     </div>
     <div class="shots">
@@ -305,7 +308,7 @@
           <li>ダブルクリックでなでなで・放置すると寝る・毎時の時報も</li>
           <li>リマインダーやポモドーロタイマーもおまかせ</li>
         </ul>
-        <p class="note" style="margin-top:12px">🐾 将来的には、<b>あなたのペットの写真から“うちの子”をデスクトップに住まわせる</b>しくみも構想中です。</p>
+        <p class="note" style="margin-top:12px">🐾 <b>v1.7.57 から、あなたのペットの写真で“うちの子”をデスクトップに住まわせられます</b>（写真は1枚からOK・右クリック → 🎭 きせかえ）。</p>
       </div>
     </div>
 
@@ -322,6 +325,8 @@
       <div class="feat"><div class="ic">🚀</div><h3>スタートメニュー</h3><p>クラシック（青）では懐かしのスタートメニューを再現。項目の編集や検索起動も。</p></div>
       <div class="feat"><div class="ic">🪟</div><h3>窓投げ・重力モード</h3><p>ウィンドウを投げて整列、アイコンが落ちる重力モードも。</p></div>
       <div class="feat"><div class="ic">🌈</div><h3>自動アップデート</h3><p>新バージョンが出ると目玉が虹色にお知らせ。ワンクリック更新。</p></div>
+      <div class="feat"><div class="ic">🚚</div><h3>トラックシミュレーター<span class="pro-chip" style="background:#3a2a12;color:#ffb84d">NEW</span></h3><p>日本地図を走る放置系ミニゲーム（3D）。貯めたコインで<b>Pro版の割引コード（最大40%OFF）</b>がもらえます。</p></div>
+      <div class="feat"><div class="ic">🐾</div><h3>うちの子きせかえ<span class="pro-chip" style="background:#3a2a12;color:#ffb84d">NEW</span></h3><p>ペットの写真1枚で、あなたの子がバーを歩く。</p></div>
     </div>
     <p style="text-align:center;margin-top:30px">
       <a class="btn btn-free" href="features.html">📖 全機能を詳しく見る</a>
@@ -382,6 +387,8 @@
     <p class="sub">買い切り・ずっと使える</p>
     <div class="pricebox">
       <div class="amt">¥980 <small>／ 買い切り</small></div>
+      <p class="coupon">🎟 <b>アプリ内の 🚚 トラックシミュレーターで貯めたコインで、最大40%OFF（¥588）の割引コード</b>がもらえます<br>
+        <small>20%OFF＝100,000コイン ・ 40%OFF＝250,000コイン ・ 各コード先着30名・2026年12月10日まで ・ <a href="features.html#truck">くわしく</a></small></p>
       <p class="note">PC買い替えも同じキーで再認証OK ・ 30日以内なら返金対応</p>
       <div class="cta" style="justify-content:center"><a class="btn btn-pro" href="https://buy.stripe.com/eVqbIT6247Xn3i59s87Vm00">購入する</a></div>
       <p class="pay">購入後、登録メールにプロダクトキーが自動で届きます</p>
@@ -393,7 +400,7 @@
 <section id="boards">
   <div class="wrap">
     <h2>看板枠（広告）</h2>
-    <p class="sub">おまけの🚚トラック便で、高速道路ぞいの野立て看板にあなたの広告を出せます</p>
+    <p class="sub">おまけの🚚トラックシミュレーターで、高速道路ぞいの野立て看板にあなたの広告を出せます</p>
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
@@ -430,6 +437,7 @@
     <details><summary>おすすめの使い方はありますか？</summary><p>作者のおすすめは、Windowsの標準タスクバーを隠して<b>ショートカットバーをタスクバー代わりにする</b>使い方です。設定は2ステップ:</p><ol><li>バーの <b>⚙設定 → 配置 → 「画面端に固定」</b> で好きな画面端にドッキング</li><li>Windowsの<b>設定 → 個人用設定 → タスクバー → 「タスクバーを自動的に隠す」をON</b></li></ol><p>アプリの切替・時計・天気・クリップボード履歴はバーに揃っているので、標準タスクバーなしで画面を広く使えます。</p></details>
     <details><summary>天気のデータはどこから？</summary><p>日本国内は気象庁の公開データ（予報・警報・地震・雨雲ナウキャスト）を使用し、雨雲レーダーの地図は国土地理院のタイルを使用しています。海外の地点はOpen-Meteoを利用します。</p></details>
     <details><summary>PCを買い替えたらキーは？</summary><p>同じメールアドレスとキーでそのまま再認証できます。回数制限はありません。</p></details>
+    <details><summary>割引はありますか？</summary><p>あります。アプリ内の <b>🚚 トラックシミュレーター</b>（無料のミニゲーム）で貯めたコインを、🔧 ガレージの「券」の棚で <b>Pro版の割引コード</b>に換えられます。20%OFF（¥784）は100,000コイン、40%OFF（¥980 → ¥588）は250,000コイン。買うと割引コード入りの購入ページがその場で開きます。各コード先着30名・2026年12月10日まで。コインは1日でおよそ5,000貯まります。</p></details>
     <details><summary>支払い方法は？</summary><p>各種クレジットカード・Apple Payに対応（Stripeで安全に決済されます）。PayPayは現在審査中で、近日対応予定です。</p></details>
   </div>
 </section>
