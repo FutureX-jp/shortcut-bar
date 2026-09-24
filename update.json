@@ -1,7 +1,7 @@
 {
-  "notes": "【直したこと】\n・バーを画面の端に固定しているとき、最大化したウィンドウがバーの下に潜ってしまうことがあったのを直しました（Windowsのエクスプローラーが再起動すると、バーのぶんの場所取りが外れたままになっていました）\n・場所取りをやり直せなかったときも、そのままにせず取り直し続けるようにしました",
+  "notes": "【直したこと】\n・Microsoft Store から入れたアプリ（Power Automate など）をショートカットに登録していると、押したときにアプリが起動せず、ブラウザでexeファイルのダウンロードが始まってしまうことがあったのを直しました（アプリの更新で場所が変わったあとに起きていました）\n・起動できなかったときは、ブラウザに渡さずに記録を残すようにしました\n・作業ログで、記録が途切れていた時間を作業時間に数えないようにしました",
   "revoked": [],
-  "sha256": "2647fff9f7dc23c67db4c189f4e4a2e38cb61ff3027f3b451eb35274ea2c816e",
-  "version": "1.7.59",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.59/ShortcutBar.exe"
+  "sha256": "06adb15c74d705dcc31fd1a91678cf9b07325ac3ec7d2a58dc8b94a665bda612",
+  "version": "1.7.60",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.60/ShortcutBar.exe"
 }
