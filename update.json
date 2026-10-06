@@ -1,7 +1,7 @@
 {
-  "notes": "【直したこと】\n・Microsoft Store から入れたアプリ（Power Automate など）をショートカットに登録していると、押したときにアプリが起動せず、ブラウザでexeファイルのダウンロードが始まってしまうことがあったのを直しました（アプリの更新で場所が変わったあとに起きていました）\n・起動できなかったときは、ブラウザに渡さずに記録を残すようにしました\n・作業ログで、記録が途切れていた時間を作業時間に数えないようにしました",
+  "notes": "【直したこと】\n・Microsoft Teams をショートカットに登録していると、押したときに「問題が発生しました」という画面が出て Teams が開かないことがあったのを直しました（新しい Teams で起きていました）",
   "revoked": [],
-  "sha256": "06adb15c74d705dcc31fd1a91678cf9b07325ac3ec7d2a58dc8b94a665bda612",
-  "version": "1.7.60",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.60/ShortcutBar.exe"
+  "sha256": "25b1375b77a095340825fe81e9adb362d0aa2539032155fa4d9b5360db4d787a",
+  "version": "1.7.61",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.61/ShortcutBar.exe"
 }
