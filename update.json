@@ -1,7 +1,7 @@
 {
-  "notes": "【直したこと】\n・Microsoft Teams をショートカットに登録していると、押したときに「問題が発生しました」という画面が出て Teams が開かないことがあったのを直しました（新しい Teams で起きていました）",
+  "notes": "【直したこと】\n・タスクバーに出るショートカットバーのボタンの絵が、羽根のマークになっていたのを、ショートカットバーのアイコンに直しました\n・タスクバーのボタンが、起動のたびに出たり出なかったりしていたのを、毎回出るようにしました",
   "revoked": [],
-  "sha256": "25b1375b77a095340825fe81e9adb362d0aa2539032155fa4d9b5360db4d787a",
-  "version": "1.7.61",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.61/ShortcutBar.exe"
+  "sha256": "3c27006d218ede07c928e8504a8754d9ef47fccdd470c98eee00bbc3b8df3937",
+  "version": "1.7.62",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.62/ShortcutBar.exe"
 }
