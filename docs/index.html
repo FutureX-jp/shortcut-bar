@@ -1,481 +1,400 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ショートカットバー — 変幻自在の着せ替えランチャー</title>
-<meta name="description" content="Windowsに常駐する着せ替え自由のフローティング・ランチャー。アプリ/URL/ゲーム/仕事道具を1本のバーに。天気・雨雲レーダー・クリップボード履歴・スクショ・相棒つき。インストール不要・無料。">
-<meta property="og:title" content="ショートカットバー — 変幻自在の着せ替えランチャー">
-<meta property="og:description" content="アプリ・URL・ゲーム・仕事道具を1本のバーに。着せ替え3種類＋壁紙モード。天気や相棒までぜんぶ入り。無料。">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ショートカットバー — 画面の端に、ぜんぶある。</title>
+<meta name="description" content="Windowsの画面の端に常駐するランチャー。アプリ起動・ウィンドウ切替・横断検索・電卓・単位換算・天気と防災をバー1本に。ワンクリックで着せ替え。インストール不要・無料。Pro版は¥980の買い切り。">
+<meta name="theme-color" content="#0d141b">
+<meta property="og:title" content="ショートカットバー — 画面の端に、ぜんぶある。">
+<meta property="og:description" content="アプリ起動・ウィンドウ切替・検索・電卓・天気をバー1本に。着せ替え自由、インストール不要、無料。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://futurex-jp.github.io/shortcut-bar/">
 <meta property="og:image" content="https://futurex-jp.github.io/shortcut-bar/img/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<style>
-  :root{
-    --bg:#0c1018; --bg2:#0f1524; --card:#161f33; --card2:#1a2540; --line:#243149;
-    --ink:#eaf1fb; --dim:#9fb2cc; --accent:#4aa3ff; --accent2:#2ec6a6;
-    --grad:linear-gradient(135deg,#4aa3ff,#2ec6a6);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:"Segoe UI","Meiryo",system-ui,sans-serif;background:var(--bg);
-       color:var(--ink);line-height:1.75;overflow-x:hidden}
-  a{color:inherit}
-  img{max-width:100%;height:auto}
-  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
-  .btn{display:inline-block;padding:15px 30px;border-radius:13px;font-weight:700;
-       text-decoration:none;font-size:1.05rem;transition:transform .12s,box-shadow .12s;cursor:pointer;border:none}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-free{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-  .btn-pro{background:var(--grad);color:#04121f;box-shadow:0 10px 30px rgba(74,163,255,.35)}
-  .note{color:var(--dim);font-size:.9rem;margin-top:8px}
-
-  nav{position:sticky;top:0;z-index:50;background:rgba(12,16,24,.82);
-      backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .navin{display:flex;align-items:center;gap:22px;max-width:1020px;margin:0 auto;
-         padding:12px 22px;font-size:.92rem}
-  .navin .logo{font-weight:800;font-size:1rem;margin-right:auto;text-decoration:none}
-  .navin .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .navin a{text-decoration:none;color:var(--dim)}
-  .navin a:hover{color:var(--ink)}
-  .navdl{background:var(--grad);color:#04121f!important;font-weight:700;
-         padding:7px 16px;border-radius:9px}
-  @media(max-width:640px){
-    .navin{flex-wrap:wrap;gap:10px 16px;padding:10px 16px}
-    .navin .logo{margin-right:auto;width:100%;margin-bottom:2px}
-    .navin a:not(.logo){font-size:.9rem}
-  }
-
-  header{position:relative;overflow:hidden;padding:72px 0 64px}
-  .glow{position:absolute;inset:0;background:
-     radial-gradient(700px 340px at 30% -5%,rgba(74,163,255,.20),transparent 70%),
-     radial-gradient(560px 340px at 85% 30%,rgba(46,198,166,.14),transparent 70%);
-     pointer-events:none}
-  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
-  @media(max-width:820px){.hero{grid-template-columns:1fr}}
-  .badge{display:inline-block;background:var(--card);border:1px solid var(--line);
-         color:var(--dim);font-size:.82rem;padding:6px 14px;border-radius:999px;margin-bottom:22px}
-  .osbadge{display:inline-block;background:rgba(74,163,255,.14);border:1.5px solid var(--accent);
-           color:var(--accent);font-size:.95rem;font-weight:700;padding:7px 16px;
-           border-radius:999px;margin:0 0 22px 8px}
-  .oswarn{color:var(--dim);font-size:.9rem;margin-top:10px;
-          border:1px solid var(--line);border-radius:10px;padding:8px 14px;
-          display:inline-block;background:var(--card)}
-  .oswarn b{color:var(--accent)}
-  h1{font-size:2.7rem;letter-spacing:.01em;line-height:1.22}
-  h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .tag{color:var(--dim);font-size:1.12rem;margin-top:16px;max-width:560px}
-  .cta{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0 6px}
-  .real{display:inline-flex;align-items:center;gap:8px;color:var(--dim);
-        font-size:.85rem;margin-top:16px}
-  .real:before{content:"📷"}
-
-  .shots{position:relative;min-height:570px}
-  .shots img{position:absolute;border-radius:10px;
-     box-shadow:0 30px 70px rgba(0,0,0,.55),0 4px 18px rgba(0,0,0,.4)}
-  .shots .s1{width:46%;left:0;top:6px;transform:rotate(-5deg);opacity:.95}
-  .shots .s2{width:48%;right:0;top:0;z-index:2;animation:float 6s ease-in-out infinite}
-  .shots .s3{width:92%;left:4%;bottom:0;z-index:3}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-  @media(max-width:820px){
-    .shots{min-height:0;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:10px}
-    .shots img{position:static;transform:none;animation:none}
-    .shots .s1,.shots .s2{width:44%}
-    .shots .s3{width:92%}
-  }
-
-  section{padding:60px 0;border-top:1px solid var(--line);scroll-margin-top:64px}
-  h2{font-size:1.8rem;margin-bottom:8px;text-align:center}
-  .sub{color:var(--dim);text-align:center;margin-bottom:36px}
-
-  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:820px){.why{grid-template-columns:1fr}}
-  .why .w{background:var(--card);border:1px solid var(--line);border-radius:16px;
-      padding:26px 24px;text-align:center}
-  .why .ic{font-size:2rem;margin-bottom:10px}
-  .why h3{font-size:1.1rem;margin-bottom:8px}
-  .why p{color:var(--dim);font-size:.95rem}
-
-  /* 着せ替えギャラリー */
-  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end}
-  @media(max-width:820px){.gal{grid-template-columns:repeat(2,1fr)}}
-  .gal figure{background:var(--card);border:1px solid var(--line);border-radius:16px;
-      padding:14px;text-align:center;transition:transform .15s,border-color .15s}
-  .gal figure:hover{transform:translateY(-5px);border-color:var(--accent)}
-  .gal img{border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
-  .gal figcaption{margin-top:10px;font-weight:700;font-size:.95rem}
-  .gal figcaption small{display:block;color:var(--dim);font-weight:400;font-size:.8rem;line-height:1.5;margin-top:2px}
-  .galwide{margin-top:18px}
-  .galwide figure{background:var(--card);border:1px solid var(--line);
-      border-radius:16px;padding:16px;text-align:center;transition:transform .15s,border-color .15s}
-  .galwide figure:hover{transform:translateY(-5px);border-color:var(--accent2)}
-  .galwide img{border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
-  .galwide figcaption{font-weight:700;margin-top:10px}
-  .galwide figcaption small{display:block;color:var(--dim);font-weight:400;font-size:.85rem;line-height:1.6;margin-top:4px}
-  .pro-chip{display:inline-block;background:var(--grad);color:#04121f;font-size:.7rem;
-      font-weight:800;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:2px}
-  .soon-chip{display:inline-block;background:var(--card2);color:var(--dim);
-      border:1px solid var(--line);font-size:.7rem;font-weight:700;border-radius:999px;
-      padding:1px 9px;margin-left:6px;vertical-align:2px}
-
-  .bigrow{display:grid;grid-template-columns:1fr 1.1fr;gap:34px;align-items:center;
-      margin-bottom:56px}
-  .bigrow.rev{grid-template-columns:1.1fr 1fr}
-  .bigrow.rev .pic{order:2}
-  @media(max-width:820px){.bigrow,.bigrow.rev{grid-template-columns:1fr}
-    .bigrow.rev .pic{order:0}}
-  .bigrow .pic{text-align:center}
-  .bigrow .pic img{border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-  .bigrow .pic img.nofx{box-shadow:none;border-radius:0}
-  .bigrow h3{font-size:1.45rem;margin-bottom:12px;line-height:1.4}
-  .bigrow h3 small{display:block;font-size:.85rem;color:var(--accent);font-weight:700;
-      letter-spacing:.08em;margin-bottom:6px}
-  .bigrow p{color:var(--dim);margin-bottom:10px}
-  .ticks{list-style:none;margin-top:12px}
-  .ticks li{color:var(--dim);font-size:.95rem;padding:4px 0 4px 26px;position:relative}
-  .ticks li:before{content:"✓";position:absolute;left:2px;color:var(--accent2);font-weight:800}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
-        transition:transform .15s,border-color .15s}
-  .feat:hover{transform:translateY(-4px);border-color:var(--accent)}
-  .feat .ic{font-size:1.4rem;margin-bottom:6px}
-  .feat h3{font-size:1rem;margin-bottom:5px}
-  .feat p{color:var(--dim);font-size:.88rem}
-
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:820px){.steps{grid-template-columns:1fr}}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 24px}
-  .step .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
-     border-radius:50%;background:var(--grad);color:#04121f;font-weight:800;margin-bottom:12px}
-  .step h3{font-size:1.05rem;margin-bottom:6px}
-  .step p{color:var(--dim);font-size:.92rem}
-  .guide-note{text-align:center;color:var(--dim);font-size:.9rem;margin-top:30px}
-
-  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
-        border-radius:16px;overflow:hidden}
-  th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line)}
-  th{background:#111a2c;font-size:.95rem}
-  td.y{color:var(--accent2);font-weight:700}
-  td.n{color:#5b6b83}
-
-  .price{text-align:center}
-  .pricebox{display:inline-block;background:var(--card);border:1px solid var(--line);
-     border-radius:22px;padding:34px 46px;position:relative;overflow:hidden}
-  .pricebox:before{content:"";position:absolute;inset:0;background:var(--grad);opacity:.06;pointer-events:none}
-  .pricebox .cta{position:relative;z-index:1}
-  .amt{font-size:3rem;font-weight:800}
-  .amt small{font-size:1rem;color:var(--dim);font-weight:400}
-
-  details{background:var(--card);border:1px solid var(--line);border-radius:12px;
-          padding:14px 18px;margin-bottom:10px}
-  summary{cursor:pointer;font-weight:600}
-  details p,details ol{color:var(--dim);margin-top:8px;font-size:.95rem}
-  details ol{padding-left:1.4em}
-
-  footer{text-align:center;color:var(--dim);font-size:.82rem;padding:44px 20px 70px;border-top:1px solid var(--line)}
-  .pay{color:var(--dim);font-size:.85rem;margin-top:10px}
-.coupon{margin-top:14px;background:rgba(46,198,166,.10);border:1px solid var(--accent2);
-        border-radius:12px;padding:10px 16px;font-size:.95rem;line-height:1.6}
-.coupon small{color:var(--dim)} .coupon a{color:var(--accent2)}
-.adpill{display:inline-block;margin-top:12px;background:rgba(255,184,77,.10);border:1px solid #6b4a17;
-        color:#ffb84d;border-radius:999px;padding:7px 16px;font-size:.9rem;text-decoration:none}
-.adpill:hover{background:rgba(255,184,77,.18)}
-.adcta{text-align:center;margin-top:22px}
-.adcta .btn{background:linear-gradient(135deg,#ffb84d,#ff8a3d);color:#1a1000;box-shadow:0 10px 30px rgba(255,160,60,.28)}
-.adfree{display:inline-block;background:linear-gradient(135deg,#ffb84d,#ff8a3d);color:#1a1000;font-size:.75rem;
-        font-weight:800;border-radius:999px;padding:2px 12px;margin-left:10px;vertical-align:4px}
-  @media(max-width:560px){h1{font-size:2.05rem}.amt{font-size:2.4rem}}
-</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='11' y='3' width='10' height='26' rx='3' fill='%23c6f277'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main">本文へ</a>
 
-<nav>
-  <div class="navin">
-    <a class="logo" href="#"><span>ショートカットバー</span></a>
-    <a href="#themes">着せ替え</a>
-    <a href="#features">機能</a>
-    <a href="features.html">機能一覧</a>
-    <a href="#guide">使い方</a>
-    <a href="#pro">価格</a>
-    <a href="#boards">看板枠</a>
-    <a href="#faq">FAQ</a>
-    <a class="navdl" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料DL</a>
-  </div>
-</nav>
-
-<header>
-  <div class="glow"></div>
-  <div class="wrap hero">
-    <div>
-      <span class="badge">Windows 10 / 11 ・ exeを開くだけ ・ 無料ではじめられる</span><span class="osbadge">🪟 Windows専用（Mac非対応）</span>
-      <h1>デスクトップに寄り添う<br><span class="g">変幻自在の着せ替えランチャー</span></h1>
-      <p class="tag">アプリ・URL・ゲーム・仕事道具を1本のバーに。ミニマルからレトロ携帯ゲーム機風まで<b>ワンクリックで着せ替え</b>。天気・雨雲レーダーやスクショ、デスクトップの相棒までついてくる。</p>
-      <div class="cta">
-        <a class="btn btn-pro" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
-        <a class="btn btn-free" href="#pro">Pro版 ¥980（買い切り）</a>
-      </div>
-      <p class="note">お支払いはカード / Apple Pay対応 ・ 自動更新つき ・ 🎟 <a href="#pro" style="color:inherit">アプリ内のトラックシミュレーターで最大40%OFF</a></p>
-      <p class="real">このページの画像は、すべて実際の動作画面です</p>
-      <a class="adpill" href="#boards">🪧 個人開発者の方へ: アプリ内の高速道路の看板に、あなたの作品の広告を<b>無料</b>で出せます →</a>
-    </div>
-    <div class="shots">
-      <img class="s1" src="img/theme_minimal.png" alt="ミニマルテーマのショートカットバー" width="286" height="484">
-      <img class="s2" src="img/hero_xp.png" alt="クラシック（青）テーマのショートカットバー" width="286" height="522">
-      <img class="s3" src="img/theme_retro.png" alt="レトロ携帯機風テーマの十字メニュー" width="670" height="353">
-    </div>
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>ショートカットバー</a>
+    <nav class="nav" aria-label="ページ内">
+      <a href="#features">機能</a>
+      <a href="#themes">着せ替え</a>
+      <a href="#truck">トラック</a>
+      <a href="#pro">価格</a>
+      <a href="#faq">FAQ</a>
+      <a href="features.html">機能一覧</a>
+    </nav>
+    <a class="btn btn-main" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料ダウンロード</a>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <h2>選ばれる3つの理由</h2>
-    <p class="sub">まずは「見た目から入れる」ランチャーです</p>
-    <div class="why">
-      <div class="w"><div class="ic">🎨</div><h3>見た目は自分で決める</h3><p>ミニマル・クラシック（青）・レトロ携帯機風にワンクリック着せ替え（再起動不要）。Proなら好きな画像をバー全面の壁紙にもできます。</p></div>
-      <div class="w"><div class="ic">🧰</div><h3>これ1本で足りる</h3><p>アプリ起動・タスク切替・時計・クリップボード履歴・スクショ、さらに天気・雨雲レーダーまで。散らばっていた道具がバー1本にまとまります。</p></div>
-      <div class="w"><div class="ic">💴</div><h3>無料でずっと・Proは買い切り</h3><p>標準機能は無料のまま期限なし。気に入ったら¥980の買い切りで全部解放。サブスクはありません。</p></div>
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">Windows Launcher · ShortcutBar</p>
+      <h1 class="h-xl" style="margin-top:18px">
+        <span class="line"><span>画面の端に、</span></span>
+        <span class="line"><span>ぜんぶ<span class="mark">ある。</span></span></span>
+      </h1>
+      <p class="lead">アプリ起動・ウィンドウ切替・検索・電卓・天気。散らばっていた道具を、細いバー1本に寄せました。見た目はワンクリックで着せ替え。</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14"/></svg>
+          無料でダウンロード</a>
+        <a class="btn btn-ghost" href="#pro">Pro版 ¥980 <small>買い切り</small></a>
+      </div>
+      <ul class="facts">
+        <li>Windows 10 / 11</li><li>インストール不要・exe 1つ</li><li>無料版に期限なし</li>
+      </ul>
+      <p class="ver" data-latest>GitHub Releases で配布中</p>
+    </div>
+
+    <div>
+      <div class="desk" id="desk" role="img" aria-label="デスクトップの右端にショートカットバーが常駐している様子">
+        <div class="win w1"></div><div class="win w2"></div>
+        <div class="retro"><img src="img/theme_retro.png" alt="" width="670" height="353" loading="lazy"></div>
+        <div class="co co1">🔎 <b>3980*1.1</b> <i>→</i> <b>= 4378</b></div>
+        <div class="co co2">📐 <b>1/2B</b> <i>→</i> <b>15A</b></div>
+        <div class="co co3">🌧 <b>14時 76%</b> <i>雨雲レーダー</i></div>
+        <div class="bar">
+          <img class="on" data-theme="classic" src="img/hero_xp.png" alt="" width="286" height="522">
+          <img data-theme="minimal" src="img/theme_minimal.png" alt="" width="286" height="484" loading="lazy">
+          <img data-theme="wall" src="img/wall_mode.png" alt="" width="286" height="487" loading="lazy">
+          <img data-theme="sky" src="img/wall_weather.png" alt="" width="286" height="487" loading="lazy">
+        </div>
+        <div class="meme" title="めめ（作者の猫）"><span class="bubble">にゃ</span><img src="img/meme.png" alt="" width="220" height="289"></div>
+      </div>
+      <div class="chips" role="group" aria-label="着せ替えを試す">
+        <span class="lbl">THEME</span>
+        <button class="chip" data-theme-btn="classic" aria-pressed="true" data-cap="クラシック（青）— スタートメニュー付き">クラシック</button>
+        <button class="chip" data-theme-btn="minimal" aria-pressed="false" data-cap="ミニマル — 白基調でどこにでも馴染む">ミニマル</button>
+        <button class="chip" data-theme-btn="wall" aria-pressed="false" data-cap="壁紙モード（Pro）— 好きな画像をバー全面に">壁紙 <span class="tag pro">PRO</span></button>
+        <button class="chip" data-theme-btn="sky" aria-pressed="false" data-cap="時計の背景に、いまの空と天気のアニメ">空アニメ</button>
+        <button class="chip" data-theme-btn="retro" aria-pressed="false" data-cap="レトロ携帯機風 — 十字キーで操るホーム画面">レトロ携帯機</button>
+      </div>
+      <p class="cap" id="deskcap">クラシック（青）— スタートメニュー付き</p>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>アプリ起動</span><span>起動中ウィンドウ一覧</span><span>横断検索</span><span>電卓</span><span>1/2B ⇔ 15A</span><span>kPa ⇔ mmAq</span><span>雨雲レーダー</span><span>警報・地震</span><span>クリップボード履歴</span><span>窓だけスクショ</span><span>覗き窓</span><span>相棒</span><span>トラックシミュレーター</span>
+      <span>アプリ起動</span><span>起動中ウィンドウ一覧</span><span>横断検索</span><span>電卓</span><span>1/2B ⇔ 15A</span><span>kPa ⇔ mmAq</span><span>雨雲レーダー</span><span>警報・地震</span><span>クリップボード履歴</span><span>窓だけスクショ</span><span>覗き窓</span><span>相棒</span><span>トラックシミュレーター</span>
     </div>
   </div>
 </section>
 
-<section id="themes">
+<!-- ============ FEATURES ============ -->
+<section class="sec" id="features">
   <div class="wrap">
-    <h2>着せ替えギャラリー</h2>
-    <p class="sub">気分と作業に合わせて、ワンクリックで切替（再起動不要）</p>
+    <div class="sec-head reveal">
+      <div><p class="kicker">01 — Work</p><h2 class="h-l" style="margin-top:14px">探す時間を、<br>減らす。</h2></div>
+      <p class="lead">タスクバー、スタートメニュー、電卓、天気サイト。行ったり来たりしていた場所を、いつも見えている画面の端にまとめます。</p>
+    </div>
+
+    <div class="chapters">
+      <div class="chap reveal"><span class="n">01</span><h3>並べて、1クリックで開く</h3>
+        <p>アプリ・ファイル・フォルダ・URLを1枚のタイルに。アイコンは実物から自動で拾います。</p>
+        <ul><li>ファイルやフォルダはバーへドラッグするだけ</li><li>仕事用・在宅用など「作業セット」を丸ごと切替</li></ul></div>
+      <div class="chap reveal"><span class="n">02</span><h3>開いている窓が、いつも見える</h3>
+        <p>起動中のウィンドウが縦に並び、クリックで前面へ。マウスを乗せると中身がライブで浮かびます。</p>
+        <ul><li>行の📷でその窓だけをスクショ</li><li>行を放り投げると左右半分・最大化にスナップ</li></ul></div>
+      <div class="chap reveal"><span class="n">03</span><h3>1本の欄で、検索も計算も</h3>
+        <p>アプリ・フォルダ・Webを横断検索。式を打てば電卓、単位を打てば換算になります。</p>
+        <ul><li><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Space</kbd> でどこからでも呼び出し</li><li>クリップボード履歴・付箋もバーの中に</li></ul></div>
+      <div class="chap reveal"><span class="n">04</span><h3>設備屋の単位、そのまま</h3>
+        <p>呼び径 B⇔A の早見表、圧力・流量・面積・熱量の換算。設備・建築の現場で毎日使う数字を入れました。</p>
+        <ul><li>1/2B ⇔ 15A・kPa ⇔ mmAq・m³/h ⇔ L/min</li><li>坪 ⇔ ㎡・kW ⇔ kcal/h</li></ul></div>
+    </div>
+
+    <div class="try reveal">
+      <div>
+        <p class="kicker">Try it here</p>
+        <h3 style="margin-top:12px">アプリの検索欄を、ここで試せます</h3>
+        <p>換算の表はアプリ本体と同じ物を使っています。<span class="mute">（例: 1/2B・25A・10kPa・20坪・3980*1.1）</span></p>
+        <div class="eg">
+          <button data-eg="1/2B">1/2B</button><button data-eg="25A">25A</button><button data-eg="10kPa">10kPa</button>
+          <button data-eg="30m3/h">30m3/h</button><button data-eg="20坪">20坪</button><button data-eg="3980*1.1">3980*1.1</button>
+        </div>
+      </div>
+      <div>
+        <label class="field"><span class="vh">換算・計算する式</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="try-in" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="検索 / URL / アプリ" value="1/2B">
+        </label>
+        <div class="result" id="try-out" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEATHER ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap split">
+    <div class="split-media reveal">
+      <div class="stage">
+        <img src="img/wx_popup.png" alt="天気の画面。降水確率グラフ、週間予報、雨雲レーダーの地図が並ぶ" width="384" height="821" loading="lazy" style="width:min(100%,340px)">
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="kicker">02 — Weather &amp; Safety</p>
+      <h2 class="h-l" style="margin-top:14px">傘の判断は、<br>ブラウザなしで。</h2>
+      <p class="lead" style="margin-top:20px">数値の出どころは気象庁。雨雲レーダーは60分先までアニメで再生できるので「あと何分で降るか」が読めます。</p>
+      <ul class="points">
+        <li><span class="ic">☂</span><span><b>24時間の降水確率グラフ</b>と週間予報、時間ごとの気温・風</span></li>
+        <li><span class="ic">🛰</span><span><b>雨雲レーダー</b>：直近の実況＋60分先の予報、コマ送り・拡大縮小</span></li>
+        <li><span class="ic">⚠</span><span><b>警報・注意報・地震・津波</b>をひと目で。雨雲が近づくと相棒が知らせます</span></li>
+        <li><span class="ic">📍</span><span>地域は 都道府県 → 市区町村 を選ぶだけ。地名の入力は要りません</span></li>
+      </ul>
+      <div class="legend" aria-label="警報の色分け"><span style="background:#f2d64b">注意報</span><span style="background:#ff6b5a">警報</span><span style="background:#c58bff">特別警報</span></div>
+      <p class="src">出典: 気象庁（予報・警報・地震・雨雲ナウキャスト）／地図: 国土地理院</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THEMES ============ -->
+<section class="sec" id="themes" style="background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg))">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><p class="kicker">03 — Themes</p><h2 class="h-l" style="margin-top:14px">道具は、気に入った<br>見た目で使う。</h2></div>
+      <p class="lead">ミニマルから、懐かしの青いクラシック、レトロ携帯機風のホーム画面まで。切り替えに再起動は要りません。下の画像はすべて実際の画面です。</p>
+    </div>
     <div class="gal">
-      <figure>
-        <img src="img/theme_minimal.png" alt="ミニマルテーマ" loading="lazy">
-        <figcaption>ミニマル<small>白基調。どんなデスクトップにも馴染む</small></figcaption>
-      </figure>
-      <figure>
-        <img src="img/hero_xp.png" alt="クラシック（青）テーマ" loading="lazy">
-        <figcaption>クラシック（青）<small>懐かしさ全開。スタートメニュー付き</small></figcaption>
-      </figure>
-      <figure>
-        <img src="img/wall_weather.png" alt="壁紙モード（天気アニメ時計）" loading="lazy">
-        <figcaption>壁紙モード<span class="pro-chip">Pro</span><small>好きな画像をバー全面に。時計には空のアニメ</small></figcaption>
-      </figure>
-      <figure>
-        <img src="img/theme_glass.png" alt="ガラス風テーマ（開発中）" loading="lazy" style="opacity:.85">
-        <figcaption>ガラス風<span class="soon-chip">今後公開予定</span><small>涼しげな半透明ブルー。開発中のプレビュー</small></figcaption>
-      </figure>
-    </div>
-    <div class="galwide">
-      <figure>
-        <img src="img/theme_retro.png" alt="レトロ携帯機風テーマの十字メニュー" loading="lazy">
-        <figcaption>レトロ携帯機風<small>月替わりカラーの十字メニュー。Steam / Epic のゲームが自動で並び、操作音・季節のパーティクルまで再現。ゲーム機のホーム画面感覚でPCを操作できる（無料版は5日間の体験つき・Proで無制限）。</small></figcaption>
+      <figure class="reveal"><div class="fr"><img src="img/theme_minimal.png" alt="ミニマルテーマのバー" width="286" height="484" loading="lazy"></div>
+        <figcaption>ミニマル <span class="tag free">FREE</span><span class="d">白基調。どんなデスクトップにも馴染む</span></figcaption></figure>
+      <figure class="reveal"><div class="fr"><img src="img/hero_xp.png" alt="クラシック（青）テーマのバー" width="286" height="522" loading="lazy"></div>
+        <figcaption>クラシック（青） <span class="tag free">FREE</span><span class="d">懐かしさ全開。スタートメニュー付き</span></figcaption></figure>
+      <figure class="reveal"><div class="fr"><img src="img/wall_mode.png" alt="壁紙モードのバー" width="286" height="487" loading="lazy"></div>
+        <figcaption>壁紙モード <span class="tag pro">PRO</span><span class="d">好きな画像をバー全面に。文字色・書体も</span></figcaption></figure>
+      <figure class="reveal"><div class="fr"><img src="img/wall_weather.png" alt="時計の背景に雲が流れるバー" width="286" height="487" loading="lazy"></div>
+        <figcaption>空アニメの時計 <span class="tag free">FREE</span><span class="d">いまの空と天気が時計の背景に。夜は星座</span></figcaption></figure>
+      <figure class="wide reveal">
+        <div class="fr"><img src="img/theme_retro.png" alt="レトロ携帯機風のホーム画面" width="670" height="353" loading="lazy" style="width:100%"></div>
+        <figcaption style="display:block">
+          <span style="display:block;font-size:22px;font-weight:800;color:var(--ink)">レトロ携帯機風</span>
+          <span style="display:block;margin-top:10px;font-size:15px;font-weight:400;color:var(--ink2)">月替わりカラーの十字メニュー。Steam / Epic のゲームが自動で並び、操作音や季節のパーティクルまで。ゲーム機のホーム画面の感覚でPCを操作できます。</span>
+          <span style="display:block;margin-top:12px"><span class="tag free">無料版は5日間の体験</span> <span class="tag pro">Proで無制限</span></span>
+        </figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section id="features">
+<!-- ============ BUDDY ============ -->
+<section class="sec buddy">
   <div class="wrap">
-    <h2>主な機能</h2>
-    <p class="sub">ランチャーの基本から、ちょっと欲張りな機能まで</p>
+    <div class="sec-head reveal">
+      <div><p class="kicker">04 — Buddy</p><h2 class="h-l" style="margin-top:14px">デスクトップに、<br>相棒がすみつく。</h2></div>
+      <p class="lead">画面の中を小さな相棒が歩きます。標準はイルカの「フィン」。きせかえで、作者の家のシャム猫「めめ」にも。あなたのペットの写真1枚からも作れます。</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="e">🗑</div><h3>ファイルを運ぶ</h3><p>ドラッグして渡すと、ゴミ箱まで運んでくれます。</p></div>
+      <div class="card reveal"><div class="e">☔</div><h3>雨を知らせる</h3><p>雨雲が近づくと「傘の準備を！」。リマインダーやポモドーロも。</p></div>
+      <div class="card reveal"><div class="e">🐾</div><h3>うちの子きせかえ</h3><p>ペットの写真から相棒を作れます。1枚でも動きます（無いポーズは合成）。</p></div>
+    </div>
+  </div>
+  <div class="buddy-floor" aria-hidden="true"><div class="meme"><span class="bubble">にゃ</span><img src="img/meme.png" alt="" width="220" height="289" loading="lazy"></div></div>
+  <div class="wrap"><p class="cap">↑ 本物の めめ。押すとしゃべります</p></div>
+</section>
 
-    <div class="bigrow">
-      <div class="pic"><img src="img/wall_weather.png" alt="壁紙モードの実画面" width="280"></div>
+<!-- ============ TRUCK ============ -->
+<section class="sec road-sec" id="truck">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><p class="kicker">05 — Truck Simulator</p><h2 class="h-l" style="margin-top:14px">走って貯めて、<br>Pro版を<span class="mark">40%OFF</span>。</h2></div>
+      <p class="lead">バーの中に、日本地図を走る小さな運送会社があります。窓を閉じていてもバーが起きていれば走り続け、貯めたコインはPro版の割引コードに換えられます。</p>
+    </div>
+    <div class="scene reveal" aria-label="高速道路をトラックが走り、道路ぞいに看板が流れるイメージ図" role="img">
+      <span class="note">ILLUSTRATION — イメージ図</span>
+      <div class="stars"></div><div class="moon"></div><div class="city"></div>
+      <div class="boards">
+        <div class="board ad"><div class="face">Pro版 最大40%OFF</div><div class="pole"></div></div>
+        <div class="board you"><div class="face">あなたの広告を<br>ここに（無料）</div><div class="pole"></div></div>
+        <div class="board co"><div class="face">走って貯めて割引コード</div><div class="pole"></div></div>
+        <div class="board you"><div class="face">個人開発の<br>ソフト・お店も</div><div class="pole"></div></div>
+      </div>
+      <div class="asphalt"></div><div class="lane"></div>
+      <svg class="truck" viewBox="0 0 240 110" aria-hidden="true">
+        <rect x="6" y="12" width="150" height="70" rx="4" fill="#e9ecef"/>
+        <rect x="6" y="12" width="150" height="8" fill="#c6f277"/>
+        <rect x="6" y="74" width="150" height="8" fill="#c6f277"/>
+        <g fill="#ffb547"><circle cx="14" cy="16" r="2.4"/><circle cx="34" cy="16" r="2.4"/><circle cx="54" cy="16" r="2.4"/><circle cx="74" cy="16" r="2.4"/><circle cx="94" cy="16" r="2.4"/><circle cx="114" cy="16" r="2.4"/><circle cx="134" cy="16" r="2.4"/><circle cx="150" cy="16" r="2.4"/></g>
+        <text x="81" y="54" text-anchor="middle" font-family="Grotesk,sans-serif" font-weight="700" font-size="17" fill="#0d141b">SHORTCUT BAR</text>
+        <path d="M160 30h40l22 24v28h-62z" fill="#2f6fd6"/>
+        <path d="M166 36h30l16 18h-46z" fill="#9ed3ff"/>
+        <rect x="200" y="20" width="16" height="8" rx="2" fill="#ffd76a"/>
+        <rect x="222" y="66" width="10" height="8" rx="2" fill="#fff6c8"/>
+        <rect x="156" y="82" width="80" height="6" fill="#20262f"/><rect x="0" y="82" width="160" height="6" fill="#20262f"/>
+        <g fill="#111"><circle cx="34" cy="92" r="13"/><circle cx="66" cy="92" r="13"/><circle cx="194" cy="92" r="13"/></g>
+        <g fill="#8a95a3"><circle cx="34" cy="92" r="5"/><circle cx="66" cy="92" r="5"/><circle cx="194" cy="92" r="5"/></g>
+      </svg>
+    </div>
+    <div class="coupon">
+      <div class="c reveal"><div class="big num">¥784<small>20%OFF</small></div><p>🎟 100,000 コインで交換。🔧 ガレージの「券」の棚から</p></div>
+      <div class="c hot reveal"><div class="big num">¥588<small>40%OFF</small></div><p>🎟 250,000 コインで交換。買うと割引コード入りの購入ページがその場で開きます</p></div>
+      <div class="c reveal"><div class="big num">≈5,000<small>coin / 日</small></div><p>作者の実測。各コード <b>先着30名・2026年12月10日まで</b></p></div>
+    </div>
+    <p class="cap" style="margin-top:18px">主要51都市・実在ルートの日本地図／運転席・後方・地図の3視点の3D／未回収のコインは12時間ぶんまで。<a href="features.html#truck" style="color:var(--lime)">くわしく →</a></p>
+  </div>
+</section>
+
+<!-- ============ BOARDS ============ -->
+<section class="sec" id="boards" style="padding-top:0">
+  <div class="wrap">
+    <div class="slot reveal">
       <div>
-        <h3><small>WALLPAPER MODE</small>🖼 バーが、あなたの壁紙になる<span class="pro-chip">Pro</span></h3>
-        <p>スマホのホーム画面のように、お気に入りの画像を1枚まるごとバーの背景へ。アイコンも時計も、写真の上に静かに並びます。</p>
-        <ul class="ticks">
-          <li>表示範囲はプレビューをドラッグして選ぶだけ</li>
-          <li>文字色・書体もカスタム可。明るさに応じて自動で読みやすく調整</li>
-          <li>壁紙の上でもクリック・ドラッグ・スクショなど全機能そのまま</li>
-        </ul>
+        <p class="kicker">06 — Billboard</p>
+        <h2 class="h-l" style="margin-top:14px;font-size:clamp(28px,3.6vw,46px)">高速道路の看板に、<br>あなたの広告を。<span class="tag new" style="font-size:13px;vertical-align:6px">いま無料</span></h2>
+        <p class="lead" style="margin-top:18px">トラックシミュレーターの本線ぞいの看板は、クリックでリンク先が開き、ときどき画面いっぱいに大写しになります。走らせている間ずっと目に入る、ゲーム内の広告枠です。</p>
+        <div class="cta-row" style="margin-top:26px">
+          <a class="btn btn-main" href="mailto:sh-sasaki@futurex-works.jp?subject=%E7%9C%8B%E6%9D%BF%E6%9E%A0%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF&amp;body=%E6%8E%B2%E8%BC%89%E3%81%97%E3%81%9F%E3%81%84%E3%82%82%E3%81%AE%EF%BC%88%E3%82%BD%E3%83%95%E3%83%88%E5%90%8D%E3%83%BB%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%90%8D%EF%BC%89%3A%0A%0A%E3%83%AA%E3%83%B3%E3%82%AF%E5%85%88%EF%BC%88https%20%E3%81%A7%E5%A7%8B%E3%81%BE%E3%82%8BURL%EF%BC%89%3A%0A%0A%E7%94%BB%E5%83%8F%3A%20%E3%81%93%E3%81%AE%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AB%E6%B7%BB%E4%BB%98%EF%BC%88%E6%A8%AA%E9%95%B74%3A1%E3%81%8F%E3%82%89%E3%81%84%E3%83%BBPNG/JPG%E3%83%BB400KB%E4%BB%A5%E4%B8%8B%EF%BC%89%0A%E3%80%80%E3%81%BE%E3%81%9F%E3%81%AF%20%E6%96%87%E5%AD%97%E3%81%A0%E3%81%91%E3%81%AE%E7%9C%8B%E6%9D%BF%EF%BC%8860%E6%96%87%E5%AD%97%E3%81%BE%E3%81%A7%EF%BC%89%3A%0A%0A%E2%80%BB%E6%8E%B2%E8%BC%89%E3%81%AF%E7%84%A1%E6%96%99%E3%81%A7%E3%81%99%E3%80%821%E6%97%A51%E5%9B%9E%E3%81%AE%E6%9B%B4%E6%96%B0%E3%81%A7%E5%85%A8%E5%93%A1%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E5%87%BA%E3%81%BE%E3%81%99%0A">📧 看板を申し込む（無料）</a>
+        </div>
+        <p class="fine" style="margin-top:12px">メールが開きます。返事は1〜2日以内</p>
       </div>
-    </div>
-
-    <div class="bigrow rev">
-      <div class="pic"><img src="img/wx_popup.png" alt="天気・防災パネルの実画面" width="330"></div>
       <div>
-        <h3><small>WEATHER & SAFETY</small>🌤 天気・防災もついてくる（無料）</h3>
-        <p>気象庁のデータで、今の天気から週間予報までひと目で。雨雲レーダーは再生・コマ送り・ズームつきで「あと何分で降るか」まで教えてくれます。</p>
-        <ul class="ticks">
-          <li>24時間の降水確率グラフ＋週間予報（気温は気象庁準拠）</li>
-          <li>時間ごとの気温グラフと風向き・風速もひと目で</li>
-          <li>雨雲レーダー: 直近の実況＋60分先までの予報をアニメ再生・拡大縮小OK</li>
-          <li>警報・注意報を色分け（注意報=黄 / 警報=赤 / 特別警報=紫）・最近の地震も</li>
-          <li>地域は 都道府県 → 市区町村 を選ぶだけ（入力不要）</li>
-          <li>時計の背景でその時の空をアニメ表示。夜は星と月と季節の星座</li>
+        <ol class="steps">
+          <li><div><b>掲載料はいま無料</b><span>利用者数がまだ少なく、広告費をいただけるだけの数字が出ていないためです。有料にするときは事前にご連絡します。相互紹介も歓迎。</span></div></li>
+          <li><div><b>送るのは画像とリンクだけ</b><span>横長4:1くらいのPNG/JPG（400KB以下）と、https で始まるリンク先。文字だけの看板（60文字まで）もOK。</span></div></li>
+          <li><div><b>最大12枚・1日1回の更新</b><span>全員のアプリに反映されます。個人開発のソフト、創作物、お店やサービスなど。</span></div></li>
+        </ol>
+        <p class="fine" style="margin-top:22px">広告SDKもトラッキングも入っていません。アプリは1日1回この配信ファイルを読むだけで、こちらから送るデータはありません。利用者は 🚚の窓 →「🖼看板」からスポンサー看板をOFFにできます。<br>お断りする場合: 公序良俗に反するもの・出会い系・投資勧誘・アダルト・他社の商標やロゴを無断で使ったもの。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="sec" id="pro">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><p class="kicker">07 — Pricing</p><h2 class="h-l" style="margin-top:14px">無料でずっと。<br>Proは<span class="mark">買い切り</span>。</h2></div>
+      <p class="lead">標準機能は無料のまま期限なし。気に入ったら ¥980 で全部解放。サブスクはありません。</p>
+    </div>
+    <div class="price">
+      <div class="plan reveal">
+        <h3>無料版 <span class="tag free">FREE</span></h3>
+        <div class="amt num">¥0<small>期限なし</small></div>
+        <ul>
+          <li>ランチャー・横断検索・電卓・単位換算</li>
+          <li>起動中アプリ一覧・覗き窓・窓投げ・スクショ</li>
+          <li>天気・雨雲レーダー・警報・地震</li>
+          <li>クリップボード履歴・付箋・作業ログ</li>
+          <li>着せ替え（ミニマル／クラシック）・相棒・トラックシミュレーター</li>
         </ul>
+        <a class="btn btn-ghost" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
+        <p class="sub">初回から14日間は Pro機能もすべてお試しできます</p>
       </div>
-    </div>
-
-    <div class="bigrow">
-      <div class="pic"><img class="nofx" src="img/meme.png" alt="デスクトップのお供（ねこスキン）" width="170"></div>
-      <div>
-        <h3><small>DESKTOP BUDDY</small>🐬 デスクトップに、相棒がすみつく</h3>
-        <p>画面の中を小さな相棒がのんびり歩きます。標準はイルカの「フィン」、きせかえで<b>作者の愛猫「めめ」</b>にも（写真がその めめ です）。ちゃんと役に立つのがポイント。</p>
-        <ul class="ticks">
-          <li>ファイルをドラッグして渡すとゴミ箱へ運んでくれる</li>
-          <li>雨雲が近づくと「傘の準備を！」と教えてくれる</li>
-          <li>ダブルクリックでなでなで・放置すると寝る・毎時の時報も</li>
-          <li>リマインダーやポモドーロタイマーもおまかせ</li>
+      <div class="plan pro reveal">
+        <h3>Pro版 <span class="tag pro">PRO</span></h3>
+        <div class="amt num">¥980<small>税込・買い切り</small></div>
+        <ul>
+          <li>壁紙モード（好きな画像をバー全面に・文字カスタム）</li>
+          <li>PiP監視（小窓でライブ表示・そのまま操作）</li>
+          <li>シークレットメモ（暗号化・30秒で自動消去）</li>
+          <li>レトロ携帯機風テーマを無制限・時計の書体と色</li>
+          <li>カスタムカテゴリ無制限・相棒2匹まで</li>
         </ul>
-        <p class="note" style="margin-top:12px">🐾 <b>v1.7.57 から、あなたのペットの写真で“うちの子”をデスクトップに住まわせられます</b>（写真は1枚からOK・右クリック → 🎭 きせかえ）。</p>
+        <a class="btn btn-main" href="https://buy.stripe.com/eVqbIT6247Xn3i59s87Vm00">Pro版を購入する</a>
+        <p class="sub">購入後、登録メールにプロダクトキーが自動で届きます。PC買い替えも同じキーで再認証OK・30日以内は返金に応じます</p>
       </div>
     </div>
 
-    <h2 style="font-size:1.3rem;margin-top:10px">まだまだあります</h2>
-    <p class="sub" style="margin-bottom:22px">迷ったらバーを右クリック。機能がメニューにまとまっています</p>
-    <div class="grid">
-      <div class="feat"><div class="ic">🔎</div><h3>横断検索・電卓</h3><p>1つの検索欄でアプリ・URL・Webを横断。式を打てば電卓に。候補は矢印キーで選んでEnterで起動。</p></div>
-      <div class="feat"><div class="ic">📐</div><h3>単位換算パネル</h3><p>呼び径（1/2B⇔15A等）の早見表に加え、圧力・流量・面積・熱量もワンクリックで換算。検索欄からも呼び出せます。</p></div>
-      <div class="feat"><div class="ic">⌨️</div><h3>どこからでも呼び出し</h3><p>Ctrl+Alt+Spaceで、他のアプリを操作中でもバーを前面に呼び出せます（設定でオフも可）。</p></div>
-      <div class="feat"><div class="ic">📋</div><h3>クリップボード履歴</h3><p>コピーの履歴がバーに残る。クリックで再コピー。</p></div>
-      <div class="feat"><div class="ic">📷</div><h3>ウィンドウのスクショ</h3><p>起動中の行の📷で、その窓だけを画像保存。</p></div>
-      <div class="feat"><div class="ic">👁</div><h3>覗き窓・PiP監視</h3><p>行にカーソルで中身をプレビュー（無料）。ミニ表示で見張るPiP監視はPro。</p></div>
-      <div class="feat"><div class="ic">🔑</div><h3>シークレットメモ<span class="pro-chip">Pro</span></h3><p>暗号化メモ。クリックでコピー→30秒後に自動消去。</p></div>
-      <div class="feat"><div class="ic">🚀</div><h3>スタートメニュー</h3><p>クラシック（青）では懐かしのスタートメニューを再現。項目の編集や検索起動も。</p></div>
-      <div class="feat"><div class="ic">🪟</div><h3>窓投げ・重力モード</h3><p>ウィンドウを投げて整列、アイコンが落ちる重力モードも。</p></div>
-      <div class="feat"><div class="ic">🌈</div><h3>自動アップデート</h3><p>新バージョンが出ると目玉が虹色にお知らせ。ワンクリック更新。</p></div>
-      <div class="feat"><div class="ic">🚚</div><h3>トラックシミュレーター<span class="pro-chip" style="background:#3a2a12;color:#ffb84d">NEW</span></h3><p>日本地図を走る放置系ミニゲーム（3D）。貯めたコインで<b>Pro版の割引コード（最大40%OFF）</b>がもらえます。</p></div>
-      <div class="feat"><div class="ic">🐾</div><h3>うちの子きせかえ<span class="pro-chip" style="background:#3a2a12;color:#ffb84d">NEW</span></h3><p>ペットの写真1枚で、あなたの子がバーを歩く。</p></div>
-      <div class="feat"><div class="ic">📊</div><h3>作業ログ<span class="pro-chip" style="background:#3a2a12;color:#ffb84d">NEW</span></h3><p>「一番よく繰り返している往復」と「時間がかかっている手順」を見つけます。<b>はじめからOFF・記録はあなたのPCの中だけ</b>。</p></div>
-      <div class="feat"><div class="ic">🪧</div><h3>看板枠（広告を無料で）</h3><p>トラックシミュレーターの高速道路ぞいの看板に、<b>あなたのソフトやお店の広告</b>を出せます。<a href="#boards" style="color:var(--accent)">いまは掲載料 無料</a>。</p></div>
+    <div class="table-wrap reveal">
+      <table class="cmp">
+        <thead><tr><th>機能</th><th>無料</th><th>Pro</th></tr></thead>
+        <tbody>
+          <tr><td>ランチャー・検索・電卓・単位換算・クリップボード履歴・スクショ</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>天気・防災（週間予報・雨雲レーダー・警報・地震）・時計の空アニメ</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>着せ替え: ミニマル／クラシック（青）・相棒・覗き窓・重力モード</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>🚚 トラックシミュレーター</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>着せ替え: レトロ携帯機風</td><td>5日間の体験</td><td class="y">無制限</td></tr>
+          <tr><td>カスタムカテゴリ（自分専用の列）</td><td>1つまで</td><td class="y">無制限</td></tr>
+          <tr><td>PiP監視（実映像・クリック転送・見張り）</td><td class="n">—</td><td class="y">✓</td></tr>
+          <tr><td>壁紙モード</td><td class="n">—</td><td class="y">✓</td></tr>
+          <tr><td>シークレットメモ</td><td class="n">—</td><td class="y">✓</td></tr>
+          <tr><td>時計の書体・カスタム色</td><td class="n">—</td><td class="y">✓</td></tr>
+        </tbody>
+      </table>
     </div>
-    <p style="text-align:center;margin-top:30px">
-      <a class="btn btn-free" href="features.html">📖 全機能を詳しく見る</a>
-    </p>
-    <p class="note" style="text-align:center">無料でできること / Proでできることを分けて解説しています</p>
+    <p class="warn">⚠ 本アプリは <b>Windows 10 / 11 専用</b>です。Mac・スマホでは動きません。ご購入前にお使いのPCをご確認ください。</p>
   </div>
 </section>
 
-<section id="guide">
+<!-- ============ GUIDE ============ -->
+<section class="sec" id="guide" style="padding-top:0">
   <div class="wrap">
-    <h2>はじめかたは3ステップ</h2>
-    <p class="sub">インストーラーはありません。exeを開くだけ</p>
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <h3>ダウンロードして開く</h3>
-        <p><b>ShortcutBar.exe</b> をダブルクリックするだけ。画面の端に小さなバーが現れます。</p>
-      </div>
-      <div class="step">
-        <div class="num">2</div>
-        <h3>よく使うものを登録</h3>
-        <p>バーを右クリック →「📌ショートカットを追加」。アプリ名を打つと候補が出て、<b>名前もアイコンも自動</b>で入ります。URLやフォルダも登録OK。</p>
-      </div>
-      <div class="step">
-        <div class="num">3</div>
-        <h3>着せ替えて、タスクバー代わりに</h3>
-        <p><b>⚙設定 → テーマ</b> で好みの見た目に。<b>配置 → 画面端に固定</b>＋Windowsのタスクバーを自動的に隠す設定にすれば、画面が広々。</p>
-      </div>
+    <div class="sec-head reveal">
+      <div><p class="kicker">08 — Start</p><h2 class="h-l" style="margin-top:14px">はじめかたは、<br>3ステップ。</h2></div>
+      <p class="lead">インストーラーはありません。exe を開くだけで、画面の端に住みつきます。</p>
     </div>
-    <p class="guide-note">迷ったら、まずバーを<b>右クリック</b>。使える機能がメニューにまとまっています。</p>
+    <ol class="guide">
+      <li class="reveal"><h3>ダウンロードして開く</h3><p><code>ShortcutBar.exe</code> をダブルクリック。画面の端に小さなバーが現れます。SmartScreen が出たら「詳細情報」→「実行」。</p></li>
+      <li class="reveal"><h3>よく使うものを登録</h3><p>バーを右クリック →「📌ショートカットを追加」。アプリ名を打つと候補が出て、名前もアイコンも自動で入ります。</p></li>
+      <li class="reveal"><h3>タスクバーの代わりに</h3><p>⚙設定 → 配置 →「画面端に固定」。Windows のタスクバーを自動で隠す設定にすれば、画面が広々。</p></li>
+    </ol>
+    <p class="cap" style="margin-top:28px">迷ったら、まずバーを右クリック。使える機能がメニューにまとまっています。</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <h2>無料版とPro版</h2>
-    <p class="sub">無料でもほぼ全部使える。Proはもっと深く。</p>
-    <table>
-      <tr><th>機能</th><th>無料</th><th>Pro</th></tr>
-      <tr><td>ランチャー・検索・電卓・クリップボード履歴・スクショ</td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td>天気・防災（週間予報・雨雲レーダー・警報・地震）・時計の空アニメ</td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td>着せ替え（ワンクリック切替・再起動不要）</td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td>デスクトップのお供・覗き窓・重力モード ほか</td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td>テーマ: ミニマル / クラシック（青）</td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td>テーマ: レトロ携帯機風</td><td>5日間の体験版</td><td class="y">無制限</td></tr>
-      <tr><td>PiP監視（実映像・クリック転送・見張り）</td><td class="n">—</td><td class="y">✓</td></tr>
-      <tr><td>壁紙モード（好きな画像をバー全面に・文字カスタム）</td><td class="n">—</td><td class="y">✓</td></tr>
-      <tr><td>シークレットメモ（暗号化・自動消去）</td><td class="n">—</td><td class="y">✓</td></tr>
-      <tr><td>時計の書体・カスタム色</td><td class="n">—</td><td class="y">✓</td></tr>
-      <tr><td>カスタムカテゴリ（自分専用の列）</td><td>1つまで</td><td class="y">無制限</td></tr>
-    </table>
-  </div>
-</section>
-
-<section class="price" id="pro">
-  <div class="wrap">
-    <h2>Pro版</h2>
-    <p class="sub">買い切り・ずっと使える</p>
-    <div class="pricebox">
-      <div class="amt">¥980 <small>／ 買い切り</small></div>
-      <p class="coupon">🎟 <b>アプリ内の 🚚 トラックシミュレーターで貯めたコインで、最大40%OFF（¥588）の割引コード</b>がもらえます<br>
-        <small>20%OFF＝100,000コイン ・ 40%OFF＝250,000コイン ・ 各コード先着30名・2026年12月10日まで ・ <a href="features.html#truck">くわしく</a></small></p>
-      <p class="note">PC買い替えも同じキーで再認証OK ・ 30日以内なら返金対応</p>
-      <div class="cta" style="justify-content:center"><a class="btn btn-pro" href="https://buy.stripe.com/eVqbIT6247Xn3i59s87Vm00">購入する</a></div>
-      <p class="pay">購入後、登録メールにプロダクトキーが自動で届きます</p>
-      <p class="oswarn">⚠ 本アプリは<b>Windows専用</b>です（Mac・スマホでは動作しません）。ご購入前にお使いのPCがWindows 10 / 11であることをご確認ください。</p>
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap" style="max-width:900px">
+    <p class="kicker reveal">09 — FAQ</p>
+    <h2 class="h-l reveal" style="margin:14px 0 36px">よくある質問</h2>
+    <div class="faq reveal">
+      <details><summary>Macやスマホで使えますか？</summary><div class="a"><p>いいえ。<b>Windows 10 / 11 専用</b>です。Mac・Linux・スマートフォン（iPhone / Android）では動きません。</p></div></details>
+      <details><summary>本当に無料で使えますか？</summary><div class="a"><p>はい。標準機能は無料で、期限もありません。天気・雨雲レーダーも無料です。レトロ携帯機風テーマのみ、無料版では5日間の体験期間があります（ミニマル・クラシックはずっと無料）。</p></div></details>
+      <details><summary>インストールは必要ですか？</summary><div class="a"><p>不要です。exe をダウンロードしてダブルクリックするだけ。必要な実行ライブラリは同梱済みです。設定はユーザーフォルダの中の1ファイルだけなので、いらなくなったら消すだけで消えます。</p></div></details>
+      <details><summary>SmartScreenの警告が出ます</summary><div class="a"><p>個人開発でコード署名をしていないために出る表示です。「詳細情報」→「実行」で起動できます。</p></div></details>
+      <details><summary>おすすめの使い方は？</summary><div class="a"><p>作者のおすすめは、Windows 標準のタスクバーを隠して、ショートカットバーをタスクバー代わりにする使い方です。</p>
+        <ol><li>バーの ⚙設定 → 配置 →「画面端に固定」で好きな画面端にドッキング</li><li>Windows の 設定 → 個人用設定 → タスクバー →「タスクバーを自動的に隠す」をON</li></ol></div></details>
+      <details><summary>天気のデータはどこから？</summary><div class="a"><p>日本国内は気象庁の公開データ（予報・警報・地震・雨雲ナウキャスト）、雨雲レーダーの地図は国土地理院のタイルです。海外の地点は Open-Meteo を使います。</p></div></details>
+      <details><summary>PCを買い替えたらキーは？</summary><div class="a"><p>同じメールアドレスとキーでそのまま再認証できます。回数制限はありません。</p></div></details>
+      <details><summary>割引はありますか？</summary><div class="a"><p>あります。アプリ内の 🚚 トラックシミュレーター（無料）で貯めたコインを、🔧 ガレージの「券」の棚で Pro版の割引コードに換えられます。20%OFF（¥784）は100,000コイン、40%OFF（¥588）は250,000コイン。各コード先着30名・2026年12月10日まで。コインは1日でおよそ5,000貯まります（作者の実測）。</p></div></details>
+      <details><summary>自分のソフトやお店の広告を出せますか？</summary><div class="a"><p>出せます。トラックシミュレーターの高速道路ぞいの看板に、横長の画像＋https のリンク先（または文字だけ）を載せられます。いまは掲載料無料・最大12枚。<a href="#boards" style="color:var(--lime)">看板枠</a>からどうぞ。</p></div></details>
+      <details><summary>支払い方法は？</summary><div class="a"><p>Stripe の購入ページで決済します。使える支払い方法は購入ページに表示されます。カード情報が開発者に渡ることはありません。</p></div></details>
+      <details><summary>データは外に送られますか？</summary><div class="a"><p>使用状況の共有（テレメトリ）は、同意した場合だけ匿名で送ります。ファイル名・パス・クリップボード・メモの中身・ウィンドウのタイトルは送りません。くわしくは<a href="privacy.html" style="color:var(--lime)">プライバシーポリシー</a>へ。</p></div></details>
     </div>
   </div>
 </section>
 
-<section id="boards">
+<!-- ============ FINAL ============ -->
+<section class="final"><span class="edge" aria-hidden="true"></span>
   <div class="wrap">
-    <h2>看板枠（広告）<span class="adfree">いま無料</span></h2>
-    <p class="sub">🚚 トラックシミュレーターの高速道路ぞいの野立て看板に、あなたの広告を出せます。<b>看板は本線ぞいに流れ、クリックするとリンク先が開き、ときどき画面いっぱいに大写し</b>になります。利用者が走らせている間ずっと目に入る、ゲーム内広告です。</p>
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <h3>いまは掲載料 無料</h3>
-        <p>利用者数がまだ少なく、<b>広告費をいただけるだけの数字が出ていない</b>ためです。数が増えたら有料化するかもしれませんが、<b>そのときは事前にご連絡</b>します。相互紹介も歓迎です。</p>
-      </div>
-      <div class="step">
-        <div class="num">2</div>
-        <h3>出せるもの</h3>
-        <p>個人開発のソフト・ツール、創作物、お店やサービスなど。<b>横長4:1くらいのPNG/JPG（400KB以下）</b>と、<b>https で始まるリンク先</b>をお送りください。文字だけの看板（60文字まで）もOK。</p>
-      </div>
-      <div class="step">
-        <div class="num">3</div>
-        <h3>申し込み</h3>
-        <p><a href="mailto:sh-sasaki@futurex-works.jp?subject=%E7%9C%8B%E6%9D%BF%E6%9E%A0%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF">sh-sasaki@futurex-works.jp</a> に画像とリンク先を送ってください。掲載は最大12枚。1日1回の更新で全員のアプリに反映されます。</p>
-      </div>
+    <h2 class="h-xl reveal">まずは無料で、<br>端に置いてみる。</h2>
+    <div class="cta-row reveal">
+      <a class="btn btn-main" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料でダウンロード</a>
+      <a class="btn btn-ghost" href="features.html">全機能を見る</a>
     </div>
-    <div class="adcta">
-      <a class="btn" href="mailto:sh-sasaki@futurex-works.jp?subject=%E7%9C%8B%E6%9D%BF%E6%9E%A0%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF&body=%E6%8E%B2%E8%BC%89%E3%81%97%E3%81%9F%E3%81%84%E3%82%82%E3%81%AE%EF%BC%88%E3%82%BD%E3%83%95%E3%83%88%E5%90%8D%E3%83%BB%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%90%8D%EF%BC%89%3A%0A%0A%E3%83%AA%E3%83%B3%E3%82%AF%E5%85%88%EF%BC%88https%20%E3%81%A7%E5%A7%8B%E3%81%BE%E3%82%8BURL%EF%BC%89%3A%0A%0A%E7%94%BB%E5%83%8F%3A%20%E3%81%93%E3%81%AE%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AB%E6%B7%BB%E4%BB%98%EF%BC%88%E6%A8%AA%E9%95%B74%3A1%E3%81%8F%E3%82%89%E3%81%84%E3%83%BBPNG/JPG%E3%83%BB400KB%E4%BB%A5%E4%B8%8B%EF%BC%89%0A%E3%80%80%E3%81%BE%E3%81%9F%E3%81%AF%20%E6%96%87%E5%AD%97%E3%81%A0%E3%81%91%E3%81%AE%E7%9C%8B%E6%9D%BF%EF%BC%8860%E6%96%87%E5%AD%97%E3%81%BE%E3%81%A7%EF%BC%89%3A%0A%0A%E2%80%BB%E6%8E%B2%E8%BC%89%E3%81%AF%E7%84%A1%E6%96%99%E3%81%A7%E3%81%99%E3%80%821%E6%97%A51%E5%9B%9E%E3%81%AE%E6%9B%B4%E6%96%B0%E3%81%A7%E5%85%A8%E5%93%A1%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E5%87%BA%E3%81%BE%E3%81%99%0A">📧 看板を申し込む（無料・メールが開きます）</a>
-      <p class="note">画像とリンク先を送るだけ。文字だけの看板なら画像も要りません。返事は1〜2日以内</p>
-    </div>
-    <p class="guide-note">
-      <b>広告SDKもトラッキングも入っていません。</b>アプリは1日1回この配信ファイルを読むだけで、こちらから送るデータはありません。
-      利用者は 🚚の窓 →「🖼看板」から<b>スポンサー看板の表示をOFF</b>にできます。
-      お断りする場合: 公序良俗に反するもの・出会い系・投資勧誘・アダルト・他社の商標やロゴを無断で使ったもの。
-    </p>
+    <p class="ver" data-latest style="margin-top:18px">Windows 10 / 11 ・ インストール不要</p>
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap">
-    <h2>よくある質問</h2>
-    <p class="sub"></p>
-    <details><summary>Macやスマホで使えますか？</summary><p>いいえ、本アプリは<b>Windows 10 / 11専用</b>です。Mac・Linux・スマートフォン（iPhone / Android）では動作しません。ご購入前にお使いのPCがWindowsであることをご確認ください。</p></details>
-    <details><summary>本当に無料で使えますか？</summary><p>はい。標準機能はすべて無料で、期限もありません。天気・雨雲レーダーも無料です。レトロ携帯機風テーマのみ、無料版では5日間の体験期間があります（ミニマル・クラシックはずっと無料）。Pro版は壁紙モードなど一部の追加機能を解放するものです。</p></details>
-    <details><summary>インストールは必要ですか？</summary><p>不要です。exeをダウンロードしてダブルクリックするだけ。必要な実行ライブラリは同梱済みです。</p></details>
-    <details><summary>SmartScreenの警告が出ます</summary><p>個人開発のため署名が無いだけで動作に問題はありません。「詳細情報」→「実行」で起動できます。</p></details>
-    <details><summary>おすすめの使い方はありますか？</summary><p>作者のおすすめは、Windowsの標準タスクバーを隠して<b>ショートカットバーをタスクバー代わりにする</b>使い方です。設定は2ステップ:</p><ol><li>バーの <b>⚙設定 → 配置 → 「画面端に固定」</b> で好きな画面端にドッキング</li><li>Windowsの<b>設定 → 個人用設定 → タスクバー → 「タスクバーを自動的に隠す」をON</b></li></ol><p>アプリの切替・時計・天気・クリップボード履歴はバーに揃っているので、標準タスクバーなしで画面を広く使えます。</p></details>
-    <details><summary>天気のデータはどこから？</summary><p>日本国内は気象庁の公開データ（予報・警報・地震・雨雲ナウキャスト）を使用し、雨雲レーダーの地図は国土地理院のタイルを使用しています。海外の地点はOpen-Meteoを利用します。</p></details>
-    <details><summary>PCを買い替えたらキーは？</summary><p>同じメールアドレスとキーでそのまま再認証できます。回数制限はありません。</p></details>
-    <details><summary>割引はありますか？</summary><p>あります。アプリ内の <b>🚚 トラックシミュレーター</b>（無料のミニゲーム）で貯めたコインを、🔧 ガレージの「券」の棚で <b>Pro版の割引コード</b>に換えられます。20%OFF（¥784）は100,000コイン、40%OFF（¥980 → ¥588）は250,000コイン。買うと割引コード入りの購入ページがその場で開きます。各コード先着30名・2026年12月10日まで。コインは1日でおよそ5,000貯まります。</p></details>
-    <details><summary>自分のソフトやお店の広告を出せますか？</summary><p>出せます。アプリ内の 🚚 トラックシミュレーターの高速道路ぞいの看板に、あなたの広告（横長の画像＋https のリンク先、または文字だけ）を載せられます。<b>いまは掲載料 無料</b>・最大12枚・1日1回の更新で全員のアプリに反映。<a href="#boards">看板枠</a>の「📧 看板を申し込む」からどうぞ。</p></details>
-    <details><summary>支払い方法は？</summary><p>各種クレジットカード・Apple Payに対応（Stripeで安全に決済されます）。PayPayは現在審査中で、近日対応予定です。</p></details>
-  </div>
-</section>
+</main>
 
-<footer>
+<footer class="ftr">
   <div class="wrap">
-    <p>本アプリは個人が開発した非公式のツールです。<br>
-    Microsoft・Apple・ソニー・インタラクティブエンタテインメント・Valve・Epic Games ほか、
-    いかなる企業とも関係ありません。<br>
-    各テーマは雰囲気を楽しむためのオリジナルの近似表現であり、各社のロゴ・画像・音声等の素材は使用していません。<br>
-    天気情報は気象庁・Open-Meteo、地図は国土地理院のデータを利用しています。<br>
-    記載の製品名・サービス名は、各社の商標または登録商標です。</p>
-    <p style="margin-top:14px;">
-      <a href="terms.html">利用規約</a> ・
-      <a href="features.html">機能一覧</a> ・
-    <a href="privacy.html">プライバシーポリシー</a> ・
-      <a href="tokushoho.html">特定商取引法に基づく表記</a>
-    </p>
-    <p style="margin-top:14px;">© FutureX</p>
+    <div class="row">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>ショートカットバー</a>
+      <nav aria-label="フッター">
+        <a href="features.html">機能一覧</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a>
+      </nav>
+    </div>
+    <p class="disc">本アプリは個人が開発した非公式のツールです。Microsoft・Apple・ソニー・インタラクティブエンタテインメント・Valve・Epic Games ほか、いかなる企業とも関係ありません。各テーマは雰囲気を楽しむためのオリジナルの近似表現で、各社のロゴ・画像・音声等の素材は使用していません。天気情報は気象庁・Open-Meteo、地図は国土地理院のデータを利用しています。記載の製品名・サービス名は各社の商標または登録商標です。</p>
+    <p>© FutureX</p>
   </div>
 </footer>
 
-  <!-- Cloudflare Web Analytics（Cookie不使用・アクセス数の計測） -->
-  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d5f73f37eca40deae01422ff966717f"}'></script>
+<script src="assets/site.js" defer></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d5f73f37eca40deae01422ff966717f"}'></script>
 </body>
 </html>

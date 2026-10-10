@@ -1,84 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>プライバシーポリシー — ショートカットバー</title>
-<style>
-  :root{--bg:#0c1018;--card:#161f33;--line:#243149;--ink:#eaf1fb;--dim:#9fb2cc;--accent:#4aa3ff;--warn:#ffcf6b}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Segoe UI","Meiryo",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
-  .wrap{max-width:860px;margin:0 auto;padding:48px 18px 80px}
-  h1{font-size:1.6rem;margin-bottom:24px}
-  h2{font-size:1.1rem;margin:32px 0 8px}
-  p,li{color:var(--dim);font-size:.95rem}
-  ul{padding-left:22px;margin:8px 0}
-  a{color:var(--accent)}
-  strong{color:var(--ink)}
-  code{font-size:.85rem}
-  .tbl{overflow-x:auto;margin:10px 0}
-  table{border-collapse:collapse;width:100%;min-width:600px;font-size:.88rem}
-  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;color:var(--dim)}
-  th{background:var(--card);color:var(--ink);white-space:nowrap}
-  td:first-child{color:var(--ink);width:24%}
-  .back{display:inline-block;margin-top:28px;color:var(--dim)}
-</style>
+<meta name="description" content="ショートカットバーのプライバシーポリシー。アプリとサイトが外部へ送る情報と、その条件">
+<meta name="theme-color" content="#0d141b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='11' y='3' width='10' height='26' rx='3' fill='%23c6f277'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<div class="wrap">
-  <h1>プライバシーポリシー</h1>
-  <p>本ポリシーは、デスクトップアプリ「ショートカットバー」（以下「本アプリ」）および本サイトにおける情報の取り扱いを定めるものです。</p>
+<a class="skip" href="#main">本文へ</a>
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>ショートカットバー</a>
+    <nav class="nav" aria-label="サイト">
+      <a href="./#features">トップ</a>
+      <a href="./#themes">着せ替え</a>
+      <a href="./#pro">価格</a>
+      <a href="./#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-main" href="https://github.com/FutureX-jp/shortcut-bar/releases/latest/download/ShortcutBar.exe">無料ダウンロード</a>
+  </div>
+</header>
 
-  <h2>1. 本アプリが外部へ送る情報（場面ごと）</h2>
-  <p>本アプリは、下の表の場面以外で、利用者の情報を開発者へ送ることはありません。<strong>氏名・ファイルの中身・閲覧したURL・クリップボード・画面の内容は、どの場面でも自動では送りません。</strong></p>
-  <div class="tbl"><table>
-    <tr><th>場面</th><th>送る条件</th><th>送る内容</th></tr>
-    <tr><td>使用状況（テレメトリ）</td><td>「匿名の使用データ提供」がONのときだけ。初回起動時に確認し、拒否しても全機能を使えます。設定からいつでも変更できます</td><td>端末ごとにランダム生成した匿名ID、アプリの版、OSの種類と版、出来事の名前（起動・同意・Pro有効化など）、時刻。Pro有効化時のみライセンスキーの指紋（キーから計算した値の先頭10桁。指紋からキーやメールアドレスは復元できません）</td></tr>
-    <tr><td>操作が相手のアプリに届かなかったとき</td><td>上と同じ同意がONのときだけ。同じ種類の失敗は1回だけ送ります</td><td>相手アプリの実行ファイル名、ウィンドウと部品の種類を表す名前（クラス名）、失敗の理由。同じ内容はお使いのパソコンの一時フォルダ（<code>sbar_pip_miss.log</code>）にも記録します</td></tr>
-    <tr><td>作業ログの集計（v1.7.58〜）</td><td>同意がONで、利用者が「集計を送る」を押し、表示された中身を見て「送る」を選んだときだけ</td><td>アプリ名・回数・秒数の集計値だけ。ウィンドウの題・ファイル名・パスは含まれません（含まれていた場合は送信を中止します）</td></tr>
-    <tr><td>フィードバック</td><td>利用者が送信ボタンを押したとき（上の同意の設定に関係なく送ります）。<strong>送信すると、使用状況の提供がONになります</strong>（送信画面に表示しています。設定でいつでもOFFにできます）</td><td>入力した本文（4,000字まで）、添付した画像とそのファイル名（任意）、不具合の再現用の環境情報（画面とバーの大きさ、表示倍率、テーマなどの表示設定、直近のエラーの文面）、匿名ID、版、OS</td></tr>
-    <tr><td>Pro版の認証</td><td>プロダクトキーを入力して有効化したとき</td><td>購入時のメールアドレス、プロダクトキー、匿名ID（同じキーを使う端末の数を数えるため）</td></tr>
-    <tr><td>更新の確認</td><td>更新の自動確認がONのとき（初期状態はON。前回から2時間以上たった起動時）</td><td>最新版の情報ファイルを取得するだけで、利用者の情報は送りません（取得先には通信に伴うIPアドレス等が届きます）</td></tr>
-  </table></div>
+<main id="main" class="legal">
+<h1>プライバシーポリシー</h1>
+<p>本ポリシーは、デスクトップアプリ「ショートカットバー」（以下「本アプリ」）および本サイトにおける情報の取り扱いを定めるものです。</p>
+<h2>1. 本アプリが外部へ送る情報（場面ごと）</h2>
+<p>本アプリは、下の表の場面以外で、利用者の情報を開発者へ送ることはありません。<strong>氏名・ファイルの中身・閲覧したURL・クリップボード・画面の内容は、どの場面でも自動では送りません。</strong></p>
+<table>
+<tr><th>場面</th><th>送る条件</th><th>送る内容</th></tr>
+<tr><td>使用状況（テレメトリ）</td><td>「匿名の使用データ提供」がONのときだけ。初回起動時に確認し、拒否しても全機能を使えます。設定からいつでも変更できます</td><td>端末ごとにランダム生成した匿名ID、アプリの版、OSの種類と版、出来事の名前（起動・同意・Pro有効化など）、時刻。Pro有効化時のみライセンスキーの指紋（キーから計算した値の先頭10桁。指紋からキーやメールアドレスは復元できません）</td></tr>
+<tr><td>操作が相手のアプリに届かなかったとき</td><td>上と同じ同意がONのときだけ。同じ種類の失敗は1回だけ送ります</td><td>相手アプリの実行ファイル名、ウィンドウと部品の種類を表す名前（クラス名）、失敗の理由。同じ内容はお使いのパソコンの一時フォルダ（<code>sbar_pip_miss.log</code>）にも記録します</td></tr>
+<tr><td>作業ログの集計（v1.7.58〜）</td><td>同意がONで、利用者が「集計を送る」を押し、表示された中身を見て「送る」を選んだときだけ</td><td>アプリ名・回数・秒数の集計値だけ。ウィンドウの題・ファイル名・パスは含まれません（含まれていた場合は送信を中止します）</td></tr>
+<tr><td>フィードバック</td><td>利用者が送信ボタンを押したとき（上の同意の設定に関係なく送ります）。<strong>送信すると、使用状況の提供がONになります</strong>（送信画面に表示しています。設定でいつでもOFFにできます）</td><td>入力した本文（4,000字まで）、添付した画像とそのファイル名（任意）、不具合の再現用の環境情報（画面とバーの大きさ、表示倍率、テーマなどの表示設定、直近のエラーの文面）、匿名ID、版、OS</td></tr>
+<tr><td>Pro版の認証</td><td>プロダクトキーを入力して有効化したとき</td><td>購入時のメールアドレス、プロダクトキー、匿名ID（同じキーを使う端末の数を数えるため）</td></tr>
+<tr><td>更新の確認</td><td>更新の自動確認がONのとき（初期状態はON。前回から2時間以上たった起動時）</td><td>最新版の情報ファイルを取得するだけで、利用者の情報は送りません（取得先には通信に伴うIPアドレス等が届きます）</td></tr>
+</table>
+<h2>2. 利用する外部サービスと、そこに届く情報</h2>
+<p>本アプリと本サイトは、次の外部サービスを利用します。各サービスには、通信に伴ってIPアドレスやブラウザー・OSの種類などの技術情報が届きます。</p>
+<table>
+<tr><th>サービス</th><th>用途</th><th>届く・保存される主な情報</th></tr>
+<tr><td>Google（Apps Script・スプレッドシート・ドライブ・Gmail）</td><td>使用状況・フィードバック・Pro認証の受け付けと保存、受信の通知</td><td>1章の表の内容。フィードバックの画像は開発者のGoogleドライブに保存し、受信時に開発者宛てに通知メールが届きます</td></tr>
+<tr><td>Stripe</td><td>Pro版の決済</td><td>購入時に入力する情報。<strong>クレジットカード情報は開発者に渡りません</strong></td></tr>
+<tr><td>GitHub（Releases・Pages）</td><td>本アプリの配布、更新情報の配信、本サイトの公開、アプリ内看板の内容の配信</td><td>通信に伴う技術情報</td></tr>
+<tr><td>Cloudflare Web Analytics</td><td>本サイトの閲覧数の把握</td><td>閲覧されたページ、参照元、ブラウザー・OSの種類、おおまかな国・地域。Cookie・ローカルストレージは使いません（<a href="https://www.cloudflare.com/web-analytics-privacy/" rel="noopener" target="_blank">Cloudflareの説明</a>）</td></tr>
+<tr><td>気象庁</td><td>天気・警報・地震・津波・雨雲の表示</td><td>表示する地域の指定、通信に伴う技術情報</td></tr>
+<tr><td>Open-Meteo</td><td>天気の取得、地名の検索</td><td>天気を表示する地点の緯度経度、検索した地名、通信に伴う技術情報</td></tr>
+<tr><td>国土地理院</td><td>地図の表示</td><td>表示範囲の地図タイルの指定、通信に伴う技術情報</td></tr>
+<tr><td>OSRM（router.project-osrm.org）</td><td>内蔵ゲーム「トラックシミュレーター」の道路経路</td><td>ゲーム内の出発地・目的地の座標（利用者の現在地ではありません）</td></tr>
+</table>
+<p>外部サービスの処理は、各サービスの契約と体制により、日本国外（米国など）で行われる場合があります。</p>
+<h2>3. パソコンの中だけに保存するもの</h2>
+<ul>
+<li>設定と匿名ID: 本アプリの設定ファイルに保存します</li>
+<li>作業ログ（初期状態はOFF）: <code>%USERPROFILE%\.shortcut_bar_worklog\</code> に、前面になった時刻・アプリ名・ウィンドウの題・無操作だった秒数を記録します。120日より古い日は自動で削除し、OFFにすれば記録は止まり、フォルダごと削除できます。<strong>この記録がそのまま送られることはありません</strong></li>
+</ul>
+<p>本アプリをアンインストールしたり、パソコン内のファイルを消したりしても、すでに送った情報は開発者側から自動では消えません。削除をご希望の場合は6章の窓口へご連絡ください。</p>
+<h2>4. 使い道と第三者提供</h2>
+<p>集めた情報は、不具合の調査、品質改善、Pro版の発行・再送・返金対応、お問い合わせ対応にだけ使います。第三者への提供・販売は行いません（決済・保存のために上記の外部サービスへ預ける場合と、法令に基づく場合を除きます）。</p>
+<h2>5. 保存期間と削除</h2>
+<p>使用状況・フィードバック・認証の記録は、削除のご依頼を受けるまで保存します。<strong>一定期間で自動的に削除する仕組みは現在ありません。</strong>ご依頼を受けた場合は、該当する記録を開発者のスプレッドシート・Googleドライブから削除します。ただし、Google側のごみ箱や通知メールなどに一定期間残る場合があります。</p>
+<h2>6. お問い合わせ・削除のご依頼</h2>
+<p>情報の確認・削除のご依頼、本ポリシーへのお問い合わせは、<a href="tokushoho.html">特定商取引法に基づく表記</a>記載の連絡先までお願いします。使用状況の削除をご希望の場合は、アプリの版とおおよその利用時期をお知らせください。プロダクトキーやパスワードはメールに書かないでください。</p>
+<h2>7. 改定</h2>
+<p>情報の取り扱いを変えた場合は、このページを更新し、重要な変更はアプリ内または本サイトでお知らせします。</p>
+<p style="margin-top:24px">制定日: 2026-07-07 ／ 最終改定: 2026-09-30</p>
+<a class="back" href="./">← トップへ戻る</a>
+</main>
 
-  <h2>2. 利用する外部サービスと、そこに届く情報</h2>
-  <p>本アプリと本サイトは、次の外部サービスを利用します。各サービスには、通信に伴ってIPアドレスやブラウザー・OSの種類などの技術情報が届きます。</p>
-  <div class="tbl"><table>
-    <tr><th>サービス</th><th>用途</th><th>届く・保存される主な情報</th></tr>
-    <tr><td>Google（Apps Script・スプレッドシート・ドライブ・Gmail）</td><td>使用状況・フィードバック・Pro認証の受け付けと保存、受信の通知</td><td>1章の表の内容。フィードバックの画像は開発者のGoogleドライブに保存し、受信時に開発者宛てに通知メールが届きます</td></tr>
-    <tr><td>Stripe</td><td>Pro版の決済</td><td>購入時に入力する情報。<strong>クレジットカード情報は開発者に渡りません</strong></td></tr>
-    <tr><td>GitHub（Releases・Pages）</td><td>本アプリの配布、更新情報の配信、本サイトの公開、アプリ内看板の内容の配信</td><td>通信に伴う技術情報</td></tr>
-    <tr><td>Cloudflare Web Analytics</td><td>本サイトの閲覧数の把握</td><td>閲覧されたページ、参照元、ブラウザー・OSの種類、おおまかな国・地域。Cookie・ローカルストレージは使いません（<a href="https://www.cloudflare.com/web-analytics-privacy/" target="_blank" rel="noopener">Cloudflareの説明</a>）</td></tr>
-    <tr><td>気象庁</td><td>天気・警報・地震・津波・雨雲の表示</td><td>表示する地域の指定、通信に伴う技術情報</td></tr>
-    <tr><td>Open-Meteo</td><td>天気の取得、地名の検索</td><td>天気を表示する地点の緯度経度、検索した地名、通信に伴う技術情報</td></tr>
-    <tr><td>国土地理院</td><td>地図の表示</td><td>表示範囲の地図タイルの指定、通信に伴う技術情報</td></tr>
-    <tr><td>OSRM（router.project-osrm.org）</td><td>内蔵ゲーム「トラックシミュレーター」の道路経路</td><td>ゲーム内の出発地・目的地の座標（利用者の現在地ではありません）</td></tr>
-  </table></div>
-  <p>外部サービスの処理は、各サービスの契約と体制により、日本国外（米国など）で行われる場合があります。</p>
-
-  <h2>3. パソコンの中だけに保存するもの</h2>
-  <ul>
-    <li>設定と匿名ID: 本アプリの設定ファイルに保存します</li>
-    <li>作業ログ（初期状態はOFF）: <code>%USERPROFILE%\.shortcut_bar_worklog\</code> に、前面になった時刻・アプリ名・ウィンドウの題・無操作だった秒数を記録します。120日より古い日は自動で削除し、OFFにすれば記録は止まり、フォルダごと削除できます。<strong>この記録がそのまま送られることはありません</strong></li>
-  </ul>
-  <p>本アプリをアンインストールしたり、パソコン内のファイルを消したりしても、すでに送った情報は開発者側から自動では消えません。削除をご希望の場合は6章の窓口へご連絡ください。</p>
-
-  <h2>4. 使い道と第三者提供</h2>
-  <p>集めた情報は、不具合の調査、品質改善、Pro版の発行・再送・返金対応、お問い合わせ対応にだけ使います。第三者への提供・販売は行いません（決済・保存のために上記の外部サービスへ預ける場合と、法令に基づく場合を除きます）。</p>
-
-  <h2>5. 保存期間と削除</h2>
-  <p>使用状況・フィードバック・認証の記録は、削除のご依頼を受けるまで保存します。<strong>一定期間で自動的に削除する仕組みは現在ありません。</strong>ご依頼を受けた場合は、該当する記録を開発者のスプレッドシート・Googleドライブから削除します。ただし、Google側のごみ箱や通知メールなどに一定期間残る場合があります。</p>
-
-  <h2>6. お問い合わせ・削除のご依頼</h2>
-  <p>情報の確認・削除のご依頼、本ポリシーへのお問い合わせは、<a href="tokushoho.html">特定商取引法に基づく表記</a>記載の連絡先までお願いします。使用状況の削除をご希望の場合は、アプリの版とおおよその利用時期をお知らせください。プロダクトキーやパスワードはメールに書かないでください。</p>
-
-  <h2>7. 改定</h2>
-  <p>情報の取り扱いを変えた場合は、このページを更新し、重要な変更はアプリ内または本サイトでお知らせします。</p>
-
-  <p style="margin-top:24px">制定日: 2026-07-07 ／ 最終改定: 2026-09-30</p>
-  <a class="back" href="index.html">← トップへ戻る</a>
-</div>
-  <!-- Cloudflare Web Analytics（Cookie不使用・アクセス数の計測） -->
-  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d5f73f37eca40deae01422ff966717f"}'></script>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>ショートカットバー</a>
+      <nav aria-label="フッター">
+        <a href="./">トップ</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a>
+      </nav>
+    </div>
+    <p class="disc">本アプリは個人が開発した非公式のツールです。いかなる企業とも関係ありません。記載の製品名・サービス名は各社の商標または登録商標です。</p>
+    <p>© FutureX</p>
+  </div>
+</footer>
+<script src="assets/site.js" defer></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d5f73f37eca40deae01422ff966717f"}'></script>
 </body>
 </html>
