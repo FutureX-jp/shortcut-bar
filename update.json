@@ -1,7 +1,7 @@
 {
-  "notes": "【直したこと】\n・ショートカットバーから開いたアプリ（LINEなど）がファイルを保存したとき、セキュリティソフトがショートカットバーのしわざと判断して止めてしまうことがあったのを、アプリをWindowsのエクスプローラー経由で開くようにして避けました\n【🚚 トラックシミュレーター】\n・看板に「掲載例」として、ブラウザで遊べるゲーム「フカシPK」の広告を追加しました（看板枠は個人開発の作品などを無料で掲載できます）",
+  "notes": "【🚚 トラックシミュレーター】\n・看板の「掲載例」フカシPKを、ゲームの絵の看板にしました。押すとPlaygamaの遊べるページが開きます（ブラウザで無料）",
   "revoked": [],
-  "sha256": "3c3bed8e8a92d660d9bbcb5074e827bb0c72d519de569a59139b047b04a4cecd",
-  "version": "1.7.63",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.63/ShortcutBar.exe"
+  "sha256": "ac1116250f2bab2edbb2cff4ec4531bd3814dc5cd50039c5032cba25a6a3cfbd",
+  "version": "1.7.64",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.64/ShortcutBar.exe"
 }
