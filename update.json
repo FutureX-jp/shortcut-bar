@@ -1,7 +1,7 @@
 {
-  "notes": "【🚚 トラックシミュレーター】\n・看板の「掲載例」フカシPKを、ゲームの絵の看板にしました。押すとPlaygamaの遊べるページが開きます（ブラウザで無料）",
+  "notes": "【🚚 トラックシミュレーター】\n・看板「フカシPK」を、走りながらでも読める大きな文字の看板に作り直しました",
   "revoked": [],
-  "sha256": "ac1116250f2bab2edbb2cff4ec4531bd3814dc5cd50039c5032cba25a6a3cfbd",
-  "version": "1.7.64",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.64/ShortcutBar.exe"
+  "sha256": "dc8a6710d89d7b9da09977326db8a66b0761c214d26a5dc3afcc520ab0f9f930",
+  "version": "1.7.65",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.65/ShortcutBar.exe"
 }
