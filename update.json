@@ -1,7 +1,7 @@
 {
-  "notes": "【直したこと】\n・タスクバーに出るショートカットバーのボタンの絵が、羽根のマークになっていたのを、ショートカットバーのアイコンに直しました\n・タスクバーのボタンが、起動のたびに出たり出なかったりしていたのを、毎回出るようにしました",
+  "notes": "【直したこと】\n・ショートカットバーから開いたアプリ（LINEなど）がファイルを保存したとき、セキュリティソフトがショートカットバーのしわざと判断して止めてしまうことがあったのを、アプリをWindowsのエクスプローラー経由で開くようにして避けました\n【🚚 トラックシミュレーター】\n・看板に「掲載例」として、ブラウザで遊べるゲーム「フカシPK」の広告を追加しました（看板枠は個人開発の作品などを無料で掲載できます）",
   "revoked": [],
-  "sha256": "3c27006d218ede07c928e8504a8754d9ef47fccdd470c98eee00bbc3b8df3937",
-  "version": "1.7.62",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.62/ShortcutBar.exe"
+  "sha256": "3c3bed8e8a92d660d9bbcb5074e827bb0c72d519de569a59139b047b04a4cecd",
+  "version": "1.7.63",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.63/ShortcutBar.exe"
 }
