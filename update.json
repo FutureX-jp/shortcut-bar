@@ -1,7 +1,7 @@
 {
-  "notes": "【🚚 トラックシミュレーター】\n・看板「フカシPK」を、走りながらでも読める大きな文字の看板に作り直しました",
+  "notes": "【直したこと（安全）】\n・2026年10月に鍵が漏れたと公表された eMudhra の中間証明書（8種類）で作られた偽の証明書を、通信のたびに見分けて接続を止めるようにしました（天気・防災・Gmail・ライセンス確認・自動更新・トラックシミュレーターの地図など、ショートカットバーの通信すべて）\n・自動更新は、更新情報に書かれた値と GitHub が配布ファイルに付けている値の両方が一致したときだけ入れるようにしました。公式の配布場所以外からは更新しません",
   "revoked": [],
-  "sha256": "dc8a6710d89d7b9da09977326db8a66b0761c214d26a5dc3afcc520ab0f9f930",
-  "version": "1.7.65",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.65/ShortcutBar.exe"
+  "sha256": "552d37e168d6ef2f342cff50218859161eae897dac00f9aba45b525ec7da2424",
+  "version": "1.7.66",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.66/ShortcutBar.exe"
 }
