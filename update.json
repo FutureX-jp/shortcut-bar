@@ -1,7 +1,7 @@
 {
-  "notes": "バーを終了・再起動したときにデスクトップのアイコンが散らかる問題に対応しました。新機能: デスクトップのアイコン配置の見張り。崩れたら自動で元の位置に戻し、トレイやスタートの「🖥 デスクトップの配置」からいつでも元に戻せます。通信の安全対策も強化しました。",
+  "notes": "デスクトップの配置の見張りを改善しました。自動で戻すをオンにしたときや、バーをしまっている間に、アイコンを勝手に動かさないようにしました",
   "revoked": [],
-  "sha256": "beb2f62c52fcdb49888c8445f24aef57cfce234c443521ff8201b6936f0afa97",
-  "version": "1.7.67",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.67/ShortcutBar.exe"
+  "sha256": "d9a34a67e958c07e0143aeb32591c2fd0cdbf3f80a8b21598285f5181c623215",
+  "version": "1.7.68",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.68/ShortcutBar.exe"
 }
