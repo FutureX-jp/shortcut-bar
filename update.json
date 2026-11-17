@@ -1,7 +1,7 @@
 {
-  "notes": "【直したこと（安全）】\n・2026年10月に鍵が漏れたと公表された eMudhra の中間証明書（8種類）で作られた偽の証明書を、通信のたびに見分けて接続を止めるようにしました（天気・防災・Gmail・ライセンス確認・自動更新・トラックシミュレーターの地図など、ショートカットバーの通信すべて）\n・自動更新は、更新情報に書かれた値と GitHub が配布ファイルに付けている値の両方が一致したときだけ入れるようにしました。公式の配布場所以外からは更新しません",
+  "notes": "バーを終了・再起動したときにデスクトップのアイコンが散らかる問題に対応しました。新機能: デスクトップのアイコン配置の見張り。崩れたら自動で元の位置に戻し、トレイやスタートの「🖥 デスクトップの配置」からいつでも元に戻せます。通信の安全対策も強化しました。",
   "revoked": [],
-  "sha256": "552d37e168d6ef2f342cff50218859161eae897dac00f9aba45b525ec7da2424",
-  "version": "1.7.66",
-  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.66/ShortcutBar.exe"
+  "sha256": "beb2f62c52fcdb49888c8445f24aef57cfce234c443521ff8201b6936f0afa97",
+  "version": "1.7.67",
+  "url": "https://github.com/FutureX-jp/shortcut-bar/releases/download/v1.7.67/ShortcutBar.exe"
 }
